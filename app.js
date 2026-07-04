@@ -109,30 +109,37 @@ function hideBio() {
   $bio.classList.remove("show", "pinned");
 }
 
-function showBioFor(el, { name, teamLine, actions }, pin) {
+function bioHTML(name, teamLine, extraNote) {
   const bio = BIOS[name] ?? {};
   const age = ageFrom(bio.born);
   const wcLine = wcStatLine(name);
-  $bio.innerHTML = `
+  return `
     <div class="bio-head">${name}${age != null ? ` <span class="bio-age">· ${age} yrs</span>` : ""}</div>
     <div class="bio-meta">${teamLine}</div>
+    ${extraNote ? `<div class="bio-note">${extraNote}</div>` : ""}
     ${wcLine ? `<div class="bio-wc">${wcLine}</div>` : ""}
     ${bio.b ? `<div class="bio-text">${bio.b}</div>` : ""}`;
-  if (pin && actions?.length) {
-    const row = document.createElement("div");
-    row.className = "bio-actions";
-    for (const a of actions) {
-      const btn = document.createElement("button");
-      btn.textContent = a.label;
-      btn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        hideBio();
-        navigate(a.hash);
-      });
-      row.appendChild(btn);
-    }
-    $bio.appendChild(row);
+}
+
+function actionButtons(actions, onNavigate) {
+  const row = document.createElement("div");
+  row.className = "bio-actions";
+  for (const a of actions) {
+    const btn = document.createElement("button");
+    btn.textContent = a.label;
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      onNavigate?.();
+      navigate(a.hash);
+    });
+    row.appendChild(btn);
   }
+  return row;
+}
+
+function showBioFor(el, { name, teamLine, actions }, pin) {
+  $bio.innerHTML = bioHTML(name, teamLine);
+  if (pin && actions?.length) $bio.appendChild(actionButtons(actions, hideBio));
   const r = el.getBoundingClientRect();
   $bio.style.visibility = "hidden";
   $bio.classList.add("show");
@@ -302,7 +309,7 @@ function infoDot() {
 function renderClub(clubId) {
   const club = clubById(clubId) || DATA.clubs[0];
   $banner.innerHTML = "";
-  $bench.innerHTML = "";
+  renderClubBench(club);
   renderRail(club.id);
   renderNationRail(null);
 
@@ -403,6 +410,44 @@ const $list = document.getElementById("list");
 const $pitchWrap = document.getElementById("pitch-wrap");
 const $bench = document.getElementById("bench");
 
+/* club bench: players at this club who start for a featured national team but not for the club */
+function renderClubBench(club) {
+  $bench.innerHTML = "";
+  const entries = [];
+  for (const [code, n] of Object.entries(DATA.nations)) {
+    for (const p of n.rows.flat()) {
+      if (p.club !== club.name) continue;
+      if (club.rows.flat().some((x) => x.name === p.name)) continue;
+      entries.push({ name: p.name, code, pos: p.pos, natName: n.name });
+    }
+  }
+  if (!entries.length) return;
+  const title = document.createElement("div");
+  title.className = "bench-title";
+  title.textContent = "Internationals · not in XI";
+  $bench.appendChild(title);
+  for (const b of entries) {
+    const card = document.createElement("button");
+    card.className = "bench-card";
+    card.appendChild(headshot(b.name));
+    const s = WC.players[b.name];
+    const badges =
+      (s?.g ? `<span class="wc-badge goals">⚽${s.g}</span>` : "") +
+      (s?.a ? `<span class="wc-badge assists">A${s.a}</span>` : "");
+    const info = document.createElement("div");
+    info.className = "bench-info";
+    info.innerHTML = `<div class="bench-name">${b.name}</div>
+      <div class="bench-stats"><img class="flag-mini" src="${flagUrl(b.code, 40)}" alt="" />${badges}</div>`;
+    card.appendChild(info);
+    attachBio(card, {
+      name: b.name,
+      teamLine: `${b.pos} · ${club.name} · ${b.natName}`,
+      actions: [{ label: `${b.natName} XI →`, hash: `#nation/${b.code}/${encodeURIComponent(b.name)}` }],
+    });
+    $bench.appendChild(card);
+  }
+}
+
 /* bench: players with WC goal involvements who aren't in the shown XI */
 function renderBench(code, nationName) {
   $bench.innerHTML = "";
@@ -499,7 +544,7 @@ function renderTop() {
   const t = document.createElement("div");
   const upd = WC.updated ? ` · stats through ${WC.updated.slice(0, 4)}-${WC.updated.slice(4, 6)}-${WC.updated.slice(6, 8)}` : "";
   t.innerHTML = `<h1>★ Top Players</h1>
-    <div class="sub">The biggest names of the 2026 World Cup · click a row for his national XI, a crest for his club${upd}</div>`;
+    <div class="sub">The biggest names of the 2026 World Cup · click a row to expand his bio · a crest jumps to his club${upd}</div>`;
   $header.appendChild(t);
   const spacer = document.createElement("div");
   spacer.className = "spacer";
@@ -557,11 +602,33 @@ function renderTop() {
       .join("");
     row.appendChild(statCell);
 
-    const actions = [{ label: `${nation?.name ?? "National"} XI →`, hash: `#nation/${p.nation}/${encodeURIComponent(p.name)}` }];
-    if (eplClub) actions.push({ label: `${eplClub.short ?? eplClub.name} XI →`, hash: `#club/${eplClub.id}` });
-    attachBio(row, { name: p.name, teamLine: `${p.pos} · ${clubLabel(p.club)} · ${nation?.name ?? ""}`, actions });
-    return row;
+    // accordion: click expands the bio below the row; one open at a time
+    const expand = document.createElement("div");
+    expand.className = "top-bio";
+    expand.hidden = true;
+    row.addEventListener("click", () => {
+      if (openBio && openBio.expand !== expand) {
+        openBio.expand.hidden = true;
+        openBio.row.classList.remove("open");
+      }
+      const opening = expand.hidden;
+      if (opening && !expand.innerHTML) {
+        expand.innerHTML = bioHTML(p.name, `${p.pos} · ${clubLabel(p.club)} · ${nation?.name ?? ""}`, p.note);
+        const actions = [{ label: `${nation?.name ?? "National"} XI →`, hash: `#nation/${p.nation}/${encodeURIComponent(p.name)}` }];
+        if (eplClub) actions.push({ label: `${eplClub.short ?? eplClub.name} XI →`, hash: `#club/${eplClub.id}` });
+        expand.appendChild(actionButtons(actions));
+      }
+      expand.hidden = !opening;
+      row.classList.toggle("open", opening);
+      openBio = opening ? { row, expand } : null;
+    });
+
+    const frag = document.createDocumentFragment();
+    frag.appendChild(row);
+    frag.appendChild(expand);
+    return frag;
   };
+  let openBio = null;
 
   const main = DATA.topPlayers ?? [];
   main.forEach((p, i) => $list.appendChild(makeRow(p, i + 1)));
