@@ -63,9 +63,13 @@ function headshot(name) {
   }
 }
 
-function playerCard({ name, pos, meta, chipUrl, chipRound, featured, onClick }) {
+function playerCard({ name, pos, meta, chipUrl, chipRound, featured, natStarter, onClick }) {
   const el = document.createElement(onClick ? "button" : "div");
-  el.className = "player" + (featured ? " featured" : "") + (onClick ? "" : " static");
+  el.className =
+    "player" +
+    (featured ? " featured" : "") +
+    (natStarter ? " nat-starter" : "") +
+    (onClick ? "" : " static");
   const head = headshot(name);
   if (chipUrl) {
     const chip = document.createElement("img");
@@ -104,29 +108,14 @@ function renderPitch(rows, cardFor) {
 }
 
 /* ---------------- club rail ---------------- */
-const $railTip = document.createElement("div");
-$railTip.id = "rail-tip";
-document.body.appendChild($railTip);
-
 function renderRail(activeClubId) {
   $rail.innerHTML = "";
   for (const c of DATA.clubs) {
     const btn = document.createElement("button");
     btn.className = "rail-btn" + (c.id === activeClubId ? " active" : "");
     btn.style.setProperty("--club-color", c.color);
-    btn.innerHTML = `<img src="${c.badge}" alt="${c.name}" />`;
-    btn.addEventListener("mouseenter", () => {
-      const r = btn.getBoundingClientRect();
-      $railTip.textContent = c.name;
-      $railTip.style.left = `${r.right + 10}px`;
-      $railTip.style.top = `${r.top + r.height / 2}px`;
-      $railTip.classList.add("show");
-    });
-    btn.addEventListener("mouseleave", () => $railTip.classList.remove("show"));
-    btn.addEventListener("click", () => {
-      $railTip.classList.remove("show");
-      navigate(`#club/${c.id}`);
-    });
+    btn.innerHTML = `<img src="${c.badge}" alt="" /><span>${c.short ?? c.name}</span>`;
+    btn.addEventListener("click", () => navigate(`#club/${c.id}`));
     $rail.appendChild(btn);
   }
 }
@@ -153,7 +142,7 @@ function renderClub(clubId) {
   $header.appendChild(badge);
   const t = document.createElement("div");
   t.innerHTML = `<h1>${club.name}</h1>
-    <div class="sub">Typical starting XI · ${club.formation} · click a player to see his national team</div>`;
+    <div class="sub">Typical starting XI · ${club.formation} · click a player to see his national team · <span class="legend-ring"></span> starts for his country</div>`;
   $header.appendChild(t);
   const spacer = document.createElement("div");
   spacer.className = "spacer";
@@ -167,6 +156,7 @@ function renderClub(clubId) {
       meta: DATA.nations[p.nation]?.name ?? "",
       chipUrl: flagUrl(p.nation, 40),
       featured: false,
+      natStarter: DATA.nations[p.nation]?.rows.flat().some((x) => x.name === p.name) ?? false,
       onClick: () => navigate(`#nation/${p.nation}/${encodeURIComponent(p.name)}`),
     })
   );
