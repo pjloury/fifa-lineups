@@ -1,5 +1,6 @@
 const DATA = window.APP_DATA;
 const IMAGES = window.PLAYER_IMAGES || {};
+const BIOS = window.PLAYER_BIOS || {};
 
 const $header = document.getElementById("header");
 const $rail = document.getElementById("rail");
@@ -66,6 +67,58 @@ function headshot(name) {
   }
 }
 
+/* ---------------- bio hover card ---------------- */
+const $bio = document.createElement("div");
+$bio.id = "bio-pop";
+document.body.appendChild($bio);
+let bioTimer = null;
+
+function ageFrom(born) {
+  if (!born) return null;
+  const m = born.match(/(\d{1,2}) (\w+) (\d{4})/);
+  const d = m ? new Date(`${m[2]} ${m[1]}, ${m[3]}`) : new Date(`June 30, ${born}`);
+  if (isNaN(d)) return null;
+  const now = new Date();
+  let age = now.getFullYear() - d.getFullYear();
+  if (now < new Date(now.getFullYear(), d.getMonth(), d.getDate())) age -= 1;
+  return age;
+}
+
+function attachBio(el, { name, teamLine }) {
+  el.addEventListener("mouseenter", () => {
+    const bio = BIOS[name];
+    if (!bio) return;
+    clearTimeout(bioTimer);
+    bioTimer = setTimeout(() => {
+      const age = ageFrom(bio.born);
+      $bio.innerHTML = `
+        <div class="bio-head">${name}${age != null ? ` <span class="bio-age">· ${age} yrs</span>` : ""}</div>
+        <div class="bio-meta">${teamLine}</div>
+        ${bio.b ? `<div class="bio-text">${bio.b}</div>` : ""}`;
+      const r = el.getBoundingClientRect();
+      $bio.style.visibility = "hidden";
+      $bio.classList.add("show");
+      const w = $bio.offsetWidth;
+      const h = $bio.offsetHeight;
+      let x = r.right + 12;
+      if (x + w > innerWidth - 8) x = r.left - w - 12;
+      if (x < 8) x = Math.min(Math.max(8, r.left), innerWidth - w - 8);
+      let y = Math.min(Math.max(8, r.top + r.height / 2 - h / 2), innerHeight - h - 8);
+      $bio.style.left = `${x}px`;
+      $bio.style.top = `${y}px`;
+      $bio.style.visibility = "";
+    }, 180);
+  });
+  el.addEventListener("mouseleave", () => {
+    clearTimeout(bioTimer);
+    $bio.classList.remove("show");
+  });
+  el.addEventListener("click", () => {
+    clearTimeout(bioTimer);
+    $bio.classList.remove("show");
+  });
+}
+
 function playerCard({ name, pos, meta, chipUrl, chipRound, featured, natStarter, onClick }) {
   const el = document.createElement(onClick ? "button" : "div");
   el.className =
@@ -92,6 +145,7 @@ function playerCard({ name, pos, meta, chipUrl, chipRound, featured, natStarter,
   metaEl.textContent = pos + (meta ? ` · ${meta}` : "");
   el.appendChild(metaEl);
   if (onClick) el.addEventListener("click", onClick);
+  attachBio(el, { name, teamLine: pos + (meta ? ` · ${meta}` : "") });
   return el;
 }
 
@@ -306,6 +360,7 @@ function renderTop() {
     natCell.innerHTML = `<img class="flag-ico" src="${flagUrl(p.nation, 40)}" alt="" /><span>${nation?.name ?? ""}</span>`;
     row.appendChild(natCell);
 
+    attachBio(row, { name: p.name, teamLine: `${p.pos} · ${p.club} · ${nation?.name ?? ""}` });
     $list.appendChild(row);
   });
 }

@@ -163,6 +163,26 @@ main {
 .banner-inner img { height: 30px; width: 30px; border-radius: 50%; object-fit: cover; background: #223; flex: none; }
 .banner-inner b { color: var(--accent); }
 
+/* ---------- bio hover card ---------- */
+#bio-pop {
+  position: fixed;
+  width: 290px;
+  background: #14231c;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 12px;
+  padding: 11px 13px;
+  box-shadow: 0 12px 34px rgba(0,0,0,.6);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .12s;
+  z-index: 30;
+}
+#bio-pop.show { opacity: 1; }
+#bio-pop .bio-head { font-weight: 800; font-size: 14px; }
+#bio-pop .bio-age { color: var(--accent); font-weight: 700; font-size: 12px; }
+#bio-pop .bio-meta { color: var(--ink-dim); font-size: 11.5px; font-weight: 600; margin: 2px 0 6px; }
+#bio-pop .bio-text { font-size: 12px; line-height: 1.45; color: var(--ink); }
+
 /* ---------- top players list ---------- */
 .top-players-btn { margin-bottom: 8px; border: 1.5px solid rgba(255,210,77,.35); }
 .top-players-btn .star { color: var(--accent); font-size: 15px; flex: none; }

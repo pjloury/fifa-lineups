@@ -4,6 +4,7 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
+import { WIKI_OVERRIDES } from "./wiki-overrides.mjs";
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const dataSrc = readFileSync(path.join(root, "data.js"), "utf8");
@@ -30,35 +31,6 @@ const EPL_CLUB_TO_FPL = {
   "Tottenham Hotspur": "Spurs",
   "West Ham United": "West Ham",
   Wolves: "Wolves",
-};
-
-// Wikipedia article titles for names that are ambiguous or differ from the page title.
-const WIKI_OVERRIDES = {
-  Rodri: ["Rodri (footballer, born 1996)"],
-  "João Pedro": ["João Pedro (footballer, born September 2001)"],
-  Vitinha: ["Vitinha (footballer, born February 2000)"],
-  "Nuno Mendes": ["Nuno Mendes (footballer, born 2002)"],
-  Estêvão: ["Estêvão Willian"],
-  Trezeguet: ["Trézéguet (Egyptian footballer)"],
-  Zizo: ["Ahmed Sayed Zizo", "Zizo (footballer)"],
-  "Moumi Ngamaleu": ["Nicolas Moumi Ngamaleu"],
-  "Jamal Lewis": ["Jamal Lewis (footballer)"],
-  "Wesley Fofana": ["Wesley Fofana (footballer)"],
-  "Reece James": ["Reece James (footballer, born 1999)"],
-  "Viktor Johansson": ["Viktor Johansson (footballer, born 1998)"],
-  "Barnabás Varga": ["Barnabás Varga (footballer, born 1994)"],
-  "Gideon Mensah": ["Gideon Mensah (footballer, born 1998)"],
-  "Emiliano Martínez": ["Emiliano Martínez (footballer, born 1992)", "Emiliano Martínez"],
-  "Alisson Becker": ["Alisson Becker", "Alisson"],
-  "Joan García": ["Joan García (footballer, born 2001)", "Joan García (footballer)"],
-  "Pablo Barrios": ["Pablo Barrios (footballer, born 2003)", "Pablo Barrios (footballer)"],
-  "Chris Richards": ["Chris Richards (soccer)"],
-  "Matt Freese": ["Matt Freese", "Matt Freese (soccer)"],
-  "Ricardo Rodríguez": ["Ricardo Rodríguez (footballer, born 1992)"],
-  "Đorđe Petrović": ["Đorđe Petrović (footballer, born 1999)", "Đorđe Petrović"],
-  "Luis Díaz": ["Luis Díaz", "Luis Díaz (footballer, born 1997)"],
-  "Brahim Díaz": ["Brahim Díaz"],
-  "Kenan Yıldız": ["Kenan Yıldız", "Kenan Yıldız (footballer)"],
 };
 
 const norm = (s) =>
