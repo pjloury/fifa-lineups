@@ -2,8 +2,12 @@ const DATA = window.APP_DATA;
 const IMAGES = window.PLAYER_IMAGES || {};
 
 const $header = document.getElementById("header");
+const $rail = document.getElementById("rail");
 const $banner = document.getElementById("banner");
 const $pitch = document.getElementById("pitch");
+
+const CREDITS =
+  "Typical starting XIs — 2025-26 season and recent internationals. EPL photos: premierleague.com · other portraits: Wikipedia · flags: flagcdn.com";
 
 const flagUrl = (code, w = 80) => `https://flagcdn.com/w${w}/${code}.png`;
 const clubById = (id) => DATA.clubs.find((c) => c.id === id);
@@ -99,33 +103,48 @@ function renderPitch(rows, cardFor) {
   });
 }
 
+/* ---------------- club rail ---------------- */
+function renderRail(activeClubId) {
+  $rail.innerHTML = "";
+  for (const c of DATA.clubs) {
+    const btn = document.createElement("button");
+    btn.className = "rail-btn" + (c.id === activeClubId ? " active" : "");
+    btn.style.setProperty("--club-color", c.color);
+    btn.title = c.name;
+    btn.innerHTML = `<img src="${c.badge}" alt="${c.name}" />`;
+    btn.addEventListener("click", () => navigate(`#club/${c.id}`));
+    $rail.appendChild(btn);
+  }
+}
+
+function infoDot() {
+  const dot = document.createElement("div");
+  dot.className = "info-dot";
+  dot.textContent = "i";
+  dot.title = CREDITS;
+  return dot;
+}
+
 /* ---------------- club view ---------------- */
 function renderClub(clubId) {
   const club = clubById(clubId) || DATA.clubs[0];
   $banner.innerHTML = "";
+  renderRail(club.id);
 
   $header.innerHTML = "";
-  const titleRow = document.createElement("div");
-  titleRow.className = "title-row";
-  titleRow.innerHTML = `
-    <img class="badge" src="${club.badge}" alt="" />
-    <div>
-      <h1>${club.name}</h1>
-      <div class="sub">Typical starting XI · ${club.formation} · click a player to see his national team</div>
-    </div>`;
-  $header.appendChild(titleRow);
-
-  const tabs = document.createElement("div");
-  tabs.className = "tabs";
-  for (const c of DATA.clubs) {
-    const tab = document.createElement("button");
-    tab.className = "tab" + (c.id === club.id ? " active" : "");
-    tab.style.setProperty("--tab-color", c.color);
-    tab.innerHTML = `<img src="${c.badge}" alt="" />${c.name.replace("Manchester", "Man").replace(" Hotspur", "")}`;
-    tab.addEventListener("click", () => navigate(`#club/${c.id}`));
-    tabs.appendChild(tab);
-  }
-  $header.appendChild(tabs);
+  const badge = document.createElement("img");
+  badge.className = "badge";
+  badge.src = club.badge;
+  badge.alt = "";
+  $header.appendChild(badge);
+  const t = document.createElement("div");
+  t.innerHTML = `<h1>${club.name}</h1>
+    <div class="sub">Typical starting XI · ${club.formation} · click a player to see his national team</div>`;
+  $header.appendChild(t);
+  const spacer = document.createElement("div");
+  spacer.className = "spacer";
+  $header.appendChild(spacer);
+  $header.appendChild(infoDot());
 
   renderPitch(club.rows, (p) =>
     playerCard({
@@ -143,28 +162,29 @@ function renderClub(clubId) {
 function renderNation(code, featuredName, fromClubId) {
   const nation = DATA.nations[code];
   if (!nation) return renderClub(DATA.clubs[0].id);
+  renderRail(null);
 
   $header.innerHTML = "";
-  const titleRow = document.createElement("div");
-  titleRow.className = "title-row";
-
   const back = document.createElement("button");
   back.className = "back-btn";
-  back.textContent = "← Back to " + (clubById(fromClubId)?.name ?? "clubs");
+  back.textContent = "← " + (clubById(fromClubId)?.short ?? "Clubs");
   back.addEventListener("click", () => navigate(`#club/${fromClubId || DATA.clubs[0].id}`));
-  titleRow.appendChild(back);
+  $header.appendChild(back);
 
   const flag = document.createElement("img");
   flag.className = "flag";
   flag.src = flagUrl(code, 160);
   flag.alt = "";
-  titleRow.appendChild(flag);
+  $header.appendChild(flag);
 
   const t = document.createElement("div");
   t.innerHTML = `<h1>${nation.name}</h1>
     <div class="sub">National team · typical XI · ${nation.formation}</div>`;
-  titleRow.appendChild(t);
-  $header.appendChild(titleRow);
+  $header.appendChild(t);
+  const spacer = document.createElement("div");
+  spacer.className = "spacer";
+  $header.appendChild(spacer);
+  $header.appendChild(infoDot());
 
   const inXI = nation.rows.flat().some((p) => p.name === featuredName);
   $banner.innerHTML = "";

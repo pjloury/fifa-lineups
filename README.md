@@ -1,7 +1,8 @@
-# EPL Starting XIs → FIFA National Teams
+# Top Club Starting XIs → FIFA National Teams
 
-A zero-dependency web app showing the typical starting lineups of the top Premier League
-clubs laid out TV-style on a pitch, with each player's photo and national-team flag.
+A zero-dependency web app showing the typical starting lineups of top European clubs
+(EPL big six plus Real Madrid, Barcelona, Bayern, PSG, Inter, AC Milan, Atlético)
+laid out TV-style on a pitch, with each player's photo and national-team flag.
 Click any player to see his FIFA national team's typical starting XI with him highlighted
 (or, if he isn't an international regular, a banner plus the XI he's competing to break into).
 EPL players in a national lineup are clickable to jump back to their club view.
@@ -18,7 +19,7 @@ open index.html
 ## Files
 
 - `index.html` / `styles.css` / `app.js` — the app (vanilla JS, hash routing: `#club/<id>`, `#nation/<code>/<player>`)
-- `data.js` — hand-curated lineups: 6 EPL clubs + 23 national teams (typical XIs, 2025-26 season / recent internationals)
+- `data.js` — hand-curated lineups: 13 top European clubs + 32 national teams (typical XIs, 2025-26 season / recent internationals)
 - `images.js` — generated photo-URL map (Premier League headshots + Wikipedia portraits)
 - `scripts/fetch-images.mjs` — regenerates `images.js`; incremental, so reruns only fetch what's missing:
 

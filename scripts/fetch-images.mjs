@@ -50,6 +50,15 @@ const WIKI_OVERRIDES = {
   "Gideon Mensah": ["Gideon Mensah (footballer, born 1998)"],
   "Emiliano Martínez": ["Emiliano Martínez (footballer, born 1992)", "Emiliano Martínez"],
   "Alisson Becker": ["Alisson Becker", "Alisson"],
+  "Joan García": ["Joan García (footballer, born 2001)", "Joan García (footballer)"],
+  "Pablo Barrios": ["Pablo Barrios (footballer, born 2003)", "Pablo Barrios (footballer)"],
+  "Chris Richards": ["Chris Richards (soccer)"],
+  "Matt Freese": ["Matt Freese", "Matt Freese (soccer)"],
+  "Ricardo Rodríguez": ["Ricardo Rodríguez (footballer, born 1992)"],
+  "Đorđe Petrović": ["Đorđe Petrović (footballer, born 1999)", "Đorđe Petrović"],
+  "Luis Díaz": ["Luis Díaz", "Luis Díaz (footballer, born 1997)"],
+  "Brahim Díaz": ["Brahim Díaz"],
+  "Kenan Yıldız": ["Kenan Yıldız", "Kenan Yıldız (footballer)"],
 };
 
 const norm = (s) =>
