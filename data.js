@@ -3,6 +3,34 @@
 window.APP_DATA = {
   // shown in the right-edge rail, in this order
   featuredNations: ["fr", "de", "es", "pt", "br", "us", "ar", "gb-eng", "nl", "it", "be", "hr", "ma", "co", "uy", "no"],
+
+  // the marquee names of the 2026 World Cup: club + country at a glance
+  topPlayers: [
+    { name: "Lionel Messi", pos: "RW", club: "Inter Miami", nation: "ar", note: "8× Ballon d'Or · defending champion, chasing a final bow" },
+    { name: "Kylian Mbappé", pos: "ST", club: "Real Madrid", nation: "fr", note: "France captain · 2022 final hat-trick hero" },
+    { name: "Ousmane Dembélé", pos: "LW", club: "Paris Saint-Germain", nation: "fr", note: "2025 Ballon d'Or winner" },
+    { name: "Erling Haaland", pos: "ST", club: "Manchester City", nation: "no", note: "Goal machine · Norway's first World Cup since 1998" },
+    { name: "Vinícius Júnior", pos: "LW", club: "Real Madrid", nation: "br", note: "Brazil's talisman" },
+    { name: "Lamine Yamal", pos: "RW", club: "Barcelona", nation: "es", note: "Teenage phenom · Euro 2024 champion" },
+    { name: "Jude Bellingham", pos: "AM", club: "Real Madrid", nation: "gb-eng", note: "England's midfield engine" },
+    { name: "Harry Kane", pos: "ST", club: "Bayern Munich", nation: "gb-eng", note: "England captain and record scorer" },
+    { name: "Mohamed Salah", pos: "RW", club: "Liverpool", nation: "eg", note: "Egyptian king · Africa's biggest star" },
+    { name: "Cristiano Ronaldo", pos: "ST", club: "Al-Nassr", nation: "pt", note: "5× Ballon d'Or · one last World Cup at 41" },
+    { name: "Florian Wirtz", pos: "AM", club: "Liverpool", nation: "de", note: "Germany's creative heartbeat" },
+    { name: "Kevin De Bruyne", pos: "AM", club: "Napoli", nation: "be", note: "Belgium's golden-generation closer" },
+    { name: "Luka Modrić", pos: "CM", club: "AC Milan", nation: "hr", note: "2018 Ballon d'Or · still running Croatia at 40" },
+    { name: "Rodri", pos: "DM", club: "Manchester City", nation: "es", note: "2024 Ballon d'Or · Spain's anchor" },
+    { name: "Julián Álvarez", pos: "ST", club: "Atlético Madrid", nation: "ar", note: "World champion · Atlético's spearhead" },
+    { name: "Lautaro Martínez", pos: "ST", club: "Inter Milan", nation: "ar", note: "Inter captain" },
+    { name: "Bukayo Saka", pos: "RW", club: "Arsenal", nation: "gb-eng", note: "Arsenal's star boy" },
+    { name: "Khvicha Kvaratskhelia", pos: "LW", club: "Paris Saint-Germain", nation: "ge", note: "Kvaradona · Georgia's first World Cup" },
+    { name: "Christian Pulisic", pos: "LW", club: "AC Milan", nation: "us", note: "Captain America · host-nation hope" },
+    { name: "Virgil van Dijk", pos: "CB", club: "Liverpool", nation: "nl", note: "The Netherlands' colossus" },
+    { name: "Federico Valverde", pos: "CM", club: "Real Madrid", nation: "uy", note: "Uruguay's all-action leader" },
+    { name: "Robert Lewandowski", pos: "ST", club: "Barcelona", nation: "pl", note: "Poland's record scorer" },
+    { name: "Achraf Hakimi", pos: "RB", club: "Paris Saint-Germain", nation: "ma", note: "Morocco's 2022 semifinal hero" },
+    { name: "Alexander Isak", pos: "ST", club: "Liverpool", nation: "se", note: "British-record signing" },
+  ],
   clubs: [
     {
       id: "arsenal",

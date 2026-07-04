@@ -124,8 +124,13 @@ function renderRail(activeClubId) {
 }
 
 /* ---------------- national-team rail (right edge) ---------------- */
-function renderNationRail(activeCode) {
+function renderNationRail(activeCode, topActive = false) {
   $nrail.innerHTML = "";
+  const top = document.createElement("button");
+  top.className = "rail-btn top-players-btn" + (topActive ? " active" : "");
+  top.innerHTML = `<span class="star">★</span><span>Top Players</span>`;
+  top.addEventListener("click", () => navigate("#top"));
+  $nrail.appendChild(top);
   for (const code of DATA.featuredNations ?? []) {
     const n = DATA.nations[code];
     if (!n) continue;
@@ -238,6 +243,73 @@ function renderNation(code, featuredName, fromClubId) {
   });
 }
 
+/* ---------------- top players view ---------------- */
+const $list = document.getElementById("list");
+const $pitchWrap = document.getElementById("pitch-wrap");
+
+function showList(on) {
+  $list.hidden = !on;
+  $pitchWrap.style.display = on ? "none" : "";
+}
+
+function renderTop() {
+  renderRail(null);
+  renderNationRail(null, true);
+  $banner.innerHTML = "";
+  showList(true);
+
+  $header.innerHTML = "";
+  const t = document.createElement("div");
+  t.innerHTML = `<h1>★ Top Players</h1>
+    <div class="sub">The biggest names of the 2026 World Cup · click a row for his national XI, a crest for his club</div>`;
+  $header.appendChild(t);
+  const spacer = document.createElement("div");
+  spacer.className = "spacer";
+  $header.appendChild(spacer);
+  $header.appendChild(infoDot());
+
+  $list.innerHTML = "";
+  (DATA.topPlayers ?? []).forEach((p, i) => {
+    const nation = DATA.nations[p.nation];
+    const eplClub = clubByName(p.club);
+    const row = document.createElement("button");
+    row.className = "top-row";
+    row.addEventListener("click", () => navigate(`#nation/${p.nation}/${encodeURIComponent(p.name)}`));
+
+    const rank = document.createElement("div");
+    rank.className = "rank";
+    rank.textContent = i + 1;
+    row.appendChild(rank);
+
+    row.appendChild(headshot(p.name));
+
+    const who = document.createElement("div");
+    who.className = "who";
+    who.innerHTML = `<div class="who-name">${p.name} <span class="who-pos">${p.pos}</span></div>
+      <div class="who-note">${p.note}</div>`;
+    row.appendChild(who);
+
+    const clubCell = document.createElement("div");
+    clubCell.className = "cell club-cell" + (eplClub ? " linked" : "");
+    clubCell.innerHTML = eplClub
+      ? `<img src="${eplClub.badge}" alt="" /><span>${p.club}</span>`
+      : `<span>${p.club}</span>`;
+    if (eplClub)
+      clubCell.addEventListener("click", (e) => {
+        e.stopPropagation();
+        navigate(`#club/${eplClub.id}`);
+      });
+    row.appendChild(clubCell);
+
+    const natCell = document.createElement("div");
+    natCell.className = "cell";
+    natCell.innerHTML = `<img class="flag-ico" src="${flagUrl(p.nation, 40)}" alt="" /><span>${nation?.name ?? ""}</span>`;
+    row.appendChild(natCell);
+
+    $list.appendChild(row);
+  });
+}
+
 /* ---------------- routing ---------------- */
 let lastClubId = DATA.clubs[0].id;
 
@@ -248,7 +320,10 @@ function navigate(hash) {
 
 function route() {
   const parts = location.hash.slice(1).split("/");
-  if (parts[0] === "nation" && parts[1]) {
+  if (parts[0] !== "top") showList(false);
+  if (parts[0] === "top") {
+    renderTop();
+  } else if (parts[0] === "nation" && parts[1]) {
     renderNation(parts[1], decodeURIComponent(parts[2] || ""), lastClubId);
   } else {
     lastClubId = parts[1] && clubById(parts[1]) ? parts[1] : lastClubId;
