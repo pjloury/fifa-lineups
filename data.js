@@ -1,6 +1,8 @@
 // Typical starting XIs, 2025-26 season (club) and recent internationals (national teams).
 // rows are ordered goalkeeper-first; each row is laid out left-to-right on the pitch.
 window.APP_DATA = {
+  // shown in the right-edge rail, in this order
+  featuredNations: ["fr", "de", "es", "pt", "br", "us", "ar", "gb-eng", "nl", "it", "be", "hr", "ma", "co", "uy", "no"],
   clubs: [
     {
       id: "arsenal",

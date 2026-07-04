@@ -3,6 +3,9 @@ const IMAGES = window.PLAYER_IMAGES || {};
 
 const $header = document.getElementById("header");
 const $rail = document.getElementById("rail");
+const $nrail = document.getElementById("nrail");
+
+const NATION_SHORT = { "United States": "USA" };
 const $banner = document.getElementById("banner");
 const $pitch = document.getElementById("pitch");
 
@@ -120,6 +123,20 @@ function renderRail(activeClubId) {
   }
 }
 
+/* ---------------- national-team rail (right edge) ---------------- */
+function renderNationRail(activeCode) {
+  $nrail.innerHTML = "";
+  for (const code of DATA.featuredNations ?? []) {
+    const n = DATA.nations[code];
+    if (!n) continue;
+    const btn = document.createElement("button");
+    btn.className = "rail-btn" + (code === activeCode ? " active" : "");
+    btn.innerHTML = `<img class="flag-ico" src="${flagUrl(code, 40)}" alt="" /><span>${NATION_SHORT[n.name] ?? n.name}</span>`;
+    btn.addEventListener("click", () => navigate(`#nation/${code}`));
+    $nrail.appendChild(btn);
+  }
+}
+
 function infoDot() {
   const dot = document.createElement("div");
   dot.className = "info-dot";
@@ -133,6 +150,7 @@ function renderClub(clubId) {
   const club = clubById(clubId) || DATA.clubs[0];
   $banner.innerHTML = "";
   renderRail(club.id);
+  renderNationRail(null);
 
   $header.innerHTML = "";
   const badge = document.createElement("img");
@@ -167,6 +185,7 @@ function renderNation(code, featuredName, fromClubId) {
   const nation = DATA.nations[code];
   if (!nation) return renderClub(DATA.clubs[0].id);
   renderRail(null);
+  renderNationRail(code);
 
   $header.innerHTML = "";
   const back = document.createElement("button");

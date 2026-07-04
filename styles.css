@@ -89,6 +89,27 @@ main {
 }
 #rail::-webkit-scrollbar { display: none; }
 
+#nrail {
+  flex: none;
+  width: 168px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 10px 8px;
+  overflow-y: auto;
+  scrollbar-width: none;
+  border-left: 1px solid rgba(255,255,255,.07);
+}
+#nrail::-webkit-scrollbar { display: none; }
+
+.rail-btn img.flag-ico {
+  width: clamp(20px, 3.4vh, 26px);
+  height: clamp(14px, 2.4vh, 18px);
+  border-radius: 3px;
+  object-fit: cover;
+  box-shadow: 0 0 0 1px rgba(255,255,255,.2);
+}
+
 .rail-btn {
   flex: none;
   display: flex;
@@ -309,9 +330,12 @@ main {
 .player.static { cursor: default; }
 .player.static:hover { transform: translate(-50%, -50%); }
 
-@media (max-width: 700px) {
-  #rail { width: 56px; padding: 10px 6px; }
+@media (max-width: 900px) {
+  #rail, #nrail { width: 56px; padding: 10px 6px; }
   .rail-btn { justify-content: center; padding: 6px; }
   .rail-btn span { display: none; }
+}
+
+@media (max-width: 700px) {
   .pmeta { display: none; }
 }
