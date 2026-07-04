@@ -68,6 +68,20 @@ header .sub { color: var(--ink-dim); font-size: clamp(10px, 1.5vh, 13px); margin
 
 header .spacer { flex: 1; }
 
+.team-facts { display: flex; gap: 6px; flex-wrap: wrap; margin-left: 10px; }
+.fact {
+  background: var(--card);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 999px;
+  padding: 4px 11px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.fact.gold { color: var(--accent); border-color: rgba(255,210,77,.5); }
+.fact.bad { color: #ff8f85; border-color: rgba(255,110,95,.4); }
+
 .info-dot {
   color: var(--ink-dim);
   font-size: 13px;

@@ -787,6 +787,314 @@ window.WC = {
   "ma": "active",
   "ge": "nq"
  },
+ "nationsInfo": {
+  "gb-eng": {
+   "w": 3,
+   "d": 0,
+   "l": 1,
+   "gf": 8,
+   "ga": 3,
+   "lastRound": "the Round of 32",
+   "next": {
+    "opp": "Mexico",
+    "date": "2026-07-06",
+    "round": "the Round of 16"
+   },
+   "out": null
+  },
+  "fr": {
+   "w": 4,
+   "d": 0,
+   "l": 0,
+   "gf": 13,
+   "ga": 2,
+   "lastRound": "the Round of 32",
+   "next": {
+    "opp": "Paraguay",
+    "date": "2026-07-04",
+    "round": "the Round of 16"
+   },
+   "out": null
+  },
+  "br": {
+   "w": 3,
+   "d": 0,
+   "l": 1,
+   "gf": 9,
+   "ga": 2,
+   "lastRound": "the Round of 32",
+   "next": {
+    "opp": "Norway",
+    "date": "2026-07-05",
+    "round": "the Round of 16"
+   },
+   "out": null
+  },
+  "es": {
+   "w": 3,
+   "d": 0,
+   "l": 1,
+   "gf": 8,
+   "ga": 0,
+   "lastRound": "the Round of 32",
+   "next": {
+    "opp": "Portugal",
+    "date": "2026-07-06",
+    "round": "the Round of 16"
+   },
+   "out": null
+  },
+  "nl": {
+   "w": 2,
+   "d": 0,
+   "l": 2,
+   "gf": 11,
+   "ga": 5,
+   "lastRound": "the Round of 32",
+   "next": null,
+   "out": {
+    "round": "the Round of 32",
+    "by": "Morocco"
+   }
+  },
+  "pt": {
+   "w": 2,
+   "d": 0,
+   "l": 2,
+   "gf": 8,
+   "ga": 2,
+   "lastRound": "the Round of 32",
+   "next": {
+    "opp": "Spain",
+    "date": "2026-07-06",
+    "round": "the Round of 16"
+   },
+   "out": null
+  },
+  "ar": {
+   "w": 4,
+   "d": 0,
+   "l": 0,
+   "gf": 11,
+   "ga": 3,
+   "lastRound": "the Round of 32",
+   "next": {
+    "opp": "Egypt",
+    "date": "2026-07-07",
+    "round": "the Round of 16"
+   },
+   "out": null
+  },
+  "be": {
+   "w": 2,
+   "d": 0,
+   "l": 2,
+   "gf": 9,
+   "ga": 4,
+   "lastRound": "the Round of 32",
+   "next": {
+    "opp": "United States",
+    "date": "2026-07-07",
+    "round": "the Round of 16"
+   },
+   "out": null
+  },
+  "no": {
+   "w": 3,
+   "d": 0,
+   "l": 1,
+   "gf": 10,
+   "ga": 8,
+   "lastRound": "the Round of 32",
+   "next": {
+    "opp": "Brazil",
+    "date": "2026-07-05",
+    "round": "the Round of 16"
+   },
+   "out": null
+  },
+  "se": {
+   "w": 1,
+   "d": 0,
+   "l": 3,
+   "gf": 7,
+   "ga": 10,
+   "lastRound": "the Round of 32",
+   "next": null,
+   "out": {
+    "round": "the Round of 32",
+    "by": "France"
+   }
+  },
+  "hr": {
+   "w": 2,
+   "d": 0,
+   "l": 2,
+   "gf": 6,
+   "ga": 7,
+   "lastRound": "the Round of 32",
+   "next": null,
+   "out": {
+    "round": "the Round of 32",
+    "by": "Portugal"
+   }
+  },
+  "de": {
+   "w": 2,
+   "d": 0,
+   "l": 2,
+   "gf": 11,
+   "ga": 5,
+   "lastRound": "the Round of 32",
+   "next": null,
+   "out": {
+    "round": "the Round of 32",
+    "by": "Paraguay"
+   }
+  },
+  "eg": {
+   "w": 2,
+   "d": 0,
+   "l": 2,
+   "gf": 6,
+   "ga": 4,
+   "lastRound": "the Round of 32",
+   "next": {
+    "opp": "Argentina",
+    "date": "2026-07-07",
+    "round": "the Round of 16"
+   },
+   "out": null
+  },
+  "ec": {
+   "w": 1,
+   "d": 0,
+   "l": 3,
+   "gf": 2,
+   "ga": 4,
+   "lastRound": "the Round of 32",
+   "next": null,
+   "out": {
+    "round": "the Round of 32",
+    "by": "Mexico"
+   }
+  },
+  "ci": {
+   "w": 2,
+   "d": 0,
+   "l": 2,
+   "gf": 5,
+   "ga": 4,
+   "lastRound": "the Round of 32",
+   "next": null,
+   "out": {
+    "round": "the Round of 32",
+    "by": "Norway"
+   }
+  },
+  "uy": {
+   "w": 0,
+   "d": 0,
+   "l": 3,
+   "gf": 3,
+   "ga": 4,
+   "lastRound": "the group stage",
+   "next": null,
+   "out": null
+  },
+  "gh": {
+   "w": 1,
+   "d": 0,
+   "l": 3,
+   "gf": 2,
+   "ga": 3,
+   "lastRound": "the Round of 32",
+   "next": null,
+   "out": {
+    "round": "the Round of 32",
+    "by": "Colombia"
+   }
+  },
+  "at": {
+   "w": 1,
+   "d": 0,
+   "l": 3,
+   "gf": 6,
+   "ga": 9,
+   "lastRound": "the Round of 32",
+   "next": null,
+   "out": {
+    "round": "the Round of 32",
+    "by": "Spain"
+   }
+  },
+  "co": {
+   "w": 3,
+   "d": 0,
+   "l": 1,
+   "gf": 5,
+   "ga": 1,
+   "lastRound": "the Round of 32",
+   "next": {
+    "opp": "Switzerland",
+    "date": "2026-07-07",
+    "round": "the Round of 16"
+   },
+   "out": null
+  },
+  "us": {
+   "w": 3,
+   "d": 0,
+   "l": 1,
+   "gf": 10,
+   "ga": 4,
+   "lastRound": "the Round of 32",
+   "next": {
+    "opp": "Belgium",
+    "date": "2026-07-07",
+    "round": "the Round of 16"
+   },
+   "out": null
+  },
+  "ch": {
+   "w": 3,
+   "d": 0,
+   "l": 1,
+   "gf": 9,
+   "ga": 3,
+   "lastRound": "the Round of 32",
+   "next": {
+    "opp": "Colombia",
+    "date": "2026-07-07",
+    "round": "the Round of 16"
+   },
+   "out": null
+  },
+  "tr": {
+   "w": 1,
+   "d": 0,
+   "l": 2,
+   "gf": 3,
+   "ga": 5,
+   "lastRound": "the group stage",
+   "next": null,
+   "out": null
+  },
+  "ma": {
+   "w": 3,
+   "d": 0,
+   "l": 1,
+   "gf": 7,
+   "ga": 4,
+   "lastRound": "the Round of 32",
+   "next": {
+    "opp": "Canada",
+    "date": "2026-07-04",
+    "round": "the Round of 16"
+   },
+   "out": null
+  }
+ },
  "bench": {
   "us": [
    {

@@ -2,6 +2,45 @@ const DATA = window.APP_DATA;
 const IMAGES = window.PLAYER_IMAGES || {};
 const BIOS = window.PLAYER_BIOS || {};
 const WC = window.WC || { players: {}, nations: {} };
+const SEASONS = window.CLUB_SEASONS || {};
+
+const ordinal = (n) =>
+  `${n}${n % 100 >= 11 && n % 100 <= 13 ? "th" : ["th", "st", "nd", "rd"][Math.min(n % 10, 4)] ?? "th"}`;
+const fmtDate = (iso) =>
+  new Date(`${iso}T12:00:00Z`).toLocaleDateString("en-US", { month: "short", day: "numeric" });
+
+function factsChips(items) {
+  const div = document.createElement("div");
+  div.className = "team-facts";
+  for (const it of items.filter(Boolean)) {
+    const chip = document.createElement("span");
+    chip.className = "fact" + (it.cls ? ` ${it.cls}` : "");
+    chip.textContent = it.text;
+    div.appendChild(chip);
+  }
+  return div;
+}
+
+function clubFacts(club) {
+  const s = SEASONS[club.name];
+  if (!s) return [];
+  return [
+    { text: `${s.league} ${s.season} · ${ordinal(s.pos)}${s.pos === 1 ? " 🏆" : ""}`, cls: s.pos === 1 ? "gold" : "" },
+    { text: `${s.pts} pts · W${s.w} D${s.d} L${s.l} · GD ${s.gd > 0 ? "+" : ""}${s.gd}` },
+  ];
+}
+
+function nationFacts(code) {
+  const status = WC.nations?.[code];
+  if (status === "nq") return [{ text: "Did not qualify for World Cup 2026", cls: "bad" }];
+  const t = WC.nationsInfo?.[code];
+  if (!t) return [];
+  const facts = [{ text: `WC 2026: W${t.w} D${t.d} L${t.l} · GF ${t.gf} · GA ${t.ga}` }];
+  if (t.out) facts.push({ text: `Eliminated in ${t.out.round.replace("the ", "")} by ${t.out.by}`, cls: "bad" });
+  else if (t.next)
+    facts.push({ text: `Next: ${t.next.round.replace("the ", "")} vs ${t.next.opp} · ${fmtDate(t.next.date)}`, cls: "gold" });
+  return facts;
+}
 
 function wcStatLine(name) {
   const s = WC.players[name];
@@ -337,6 +376,7 @@ function renderClub(clubId) {
   t.innerHTML = `<h1>${club.name}</h1>
     <div class="sub">Typical starting XI · ${club.formation} · click a player for his bio &amp; national team · <span class="legend-ring"></span> starts for his country</div>`;
   $header.appendChild(t);
+  $header.appendChild(factsChips(clubFacts(club)));
   const spacer = document.createElement("div");
   spacer.className = "spacer";
   $header.appendChild(spacer);
@@ -384,6 +424,7 @@ function renderNation(code, featuredName, fromClubId) {
   t.innerHTML = `<h1>${nation.name}</h1>
     <div class="sub">National team · typical XI · ${nation.formation}</div>`;
   $header.appendChild(t);
+  $header.appendChild(factsChips(nationFacts(code)));
   const spacer = document.createElement("div");
   spacer.className = "spacer";
   $header.appendChild(spacer);
