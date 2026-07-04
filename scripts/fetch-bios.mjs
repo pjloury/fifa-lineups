@@ -16,6 +16,13 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const players = new Set();
 for (const club of APP_DATA.clubs) for (const p of club.rows.flat()) players.add(p.name);
 for (const nation of Object.values(APP_DATA.nations)) for (const p of nation.rows.flat()) players.add(p.name);
+// bench players surfaced by the World Cup crawl need bios too
+try {
+  const WCD = new Function(
+    `const window={}; ${readFileSync(path.join(root, "wc.js"), "utf8")}; return window.WC;`
+  )();
+  for (const list of Object.values(WCD.bench ?? {})) for (const p of list) players.add(p.name);
+} catch {}
 
 async function summary(title) {
   let res;

@@ -9,7 +9,7 @@ window.APP_DATA = {
     "Leicester City": "England", "Stoke City": "England", "Leeds United": "England",
     "West Bromwich Albion": "England", "Birmingham City": "England", Bournemouth: "England",
     "Preston North End": "England", "Bolton Wanderers": "England", "Exeter City": "England",
-    Wolves: "England", "Brighton & Hove Albion": "England",
+    Wolves: "England", "Brighton & Hove Albion": "England", "West Ham United": "England",
     Rangers: "Scotland", Celtic: "Scotland",
     "Real Sociedad": "Spain", "Athletic Club": "Spain", Sevilla: "Spain", Osasuna: "Spain",
     Mallorca: "Spain", Villarreal: "Spain", Espanyol: "Spain", Levante: "Spain",
@@ -578,8 +578,8 @@ window.APP_DATA = {
         ],
         [
           { name: "Cody Gakpo", pos: "LW", club: "Liverpool" },
-          { name: "Memphis Depay", pos: "ST", club: "Corinthians" },
-          { name: "Xavi Simons", pos: "RW", club: "Tottenham Hotspur" },
+          { name: "Brian Brobbey", pos: "ST", club: "Sunderland" },
+          { name: "Crysencio Summerville", pos: "RW", club: "West Ham United" },
         ],
       ],
     },
@@ -647,9 +647,9 @@ window.APP_DATA = {
         [
           { name: "Jérémy Doku", pos: "LW", club: "Manchester City" },
           { name: "Kevin De Bruyne", pos: "AM", club: "Napoli" },
-          { name: "Charles De Ketelaere", pos: "RW", club: "Atalanta" },
+          { name: "Leandro Trossard", pos: "RW", club: "Arsenal" },
         ],
-        [{ name: "Loïs Openda", pos: "ST", club: "Juventus" }],
+        [{ name: "Romelu Lukaku", pos: "ST", club: "Napoli" }],
       ],
     },
     it: {
@@ -810,7 +810,7 @@ window.APP_DATA = {
           { name: "Florian Wirtz", pos: "AM", club: "Liverpool" },
           { name: "Serge Gnabry", pos: "RW", club: "Bayern Munich" },
         ],
-        [{ name: "Nick Woltemade", pos: "ST", club: "Newcastle United" }],
+        [{ name: "Deniz Undav", pos: "ST", club: "Stuttgart" }],
       ],
     },
     eg: {
@@ -826,7 +826,7 @@ window.APP_DATA = {
         ],
         [
           { name: "Marwan Attia", pos: "DM", club: "Al Ahly" },
-          { name: "Hamdy Fathy", pos: "CM", club: "AEK Athens" },
+          { name: "Emam Ashour", pos: "CM", club: "Al Ahly" },
         ],
         [
           { name: "Trezeguet", pos: "LW", club: "Trabzonspor" },
@@ -1129,7 +1129,7 @@ window.APP_DATA = {
         ],
         [
           { name: "Ruben Vargas", pos: "LW", club: "Sevilla" },
-          { name: "Fabian Rieder", pos: "AM", club: "Augsburg" },
+          { name: "Johan Manzambi", pos: "AM", club: "Freiburg" },
           { name: "Dan Ndoye", pos: "RW", club: "Nottingham Forest" },
         ],
         [{ name: "Breel Embolo", pos: "ST", club: "Rennes" }],
@@ -1172,7 +1172,7 @@ window.APP_DATA = {
         [
           { name: "Azzedine Ounahi", pos: "CM", club: "Girona" },
           { name: "Sofyan Amrabat", pos: "DM", club: "Real Betis" },
-          { name: "Bilal El Khannouss", pos: "CM", club: "Stuttgart" },
+          { name: "Ismael Saibari", pos: "CM", club: "PSV Eindhoven" },
         ],
         [
           { name: "Abde Ezzalzouli", pos: "LW", club: "Real Betis" },

@@ -48,6 +48,14 @@ for (const club of APP_DATA.clubs)
 for (const nation of Object.values(APP_DATA.nations))
   for (const row of nation.rows)
     for (const p of row) if (!players.has(p.name)) players.set(p.name, p.club);
+// bench players surfaced by the World Cup crawl (club unknown -> Wikipedia path)
+try {
+  const WCD = new Function(
+    `const window={}; ${readFileSync(path.join(root, "wc.js"), "utf8")}; return window.WC;`
+  )();
+  for (const list of Object.values(WCD.bench ?? {}))
+    for (const p of list) if (!players.has(p.name)) players.set(p.name, "");
+} catch {}
 
 // ---- FPL lookup ----
 async function fplIndex() {

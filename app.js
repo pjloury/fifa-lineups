@@ -14,8 +14,9 @@ function wcStatLine(name) {
   return bits.length ? `World Cup 2026: ${bits.join(" · ")}` : "";
 }
 
-const $header = document.getElementById("header");
+const $header = document.getElementById("hbar");
 const $rail = document.getElementById("rail");
+document.getElementById("logo").addEventListener("click", () => navigate("#home"));
 const $nrail = document.getElementById("nrail");
 
 const NATION_SHORT = { "United States": "USA" };
@@ -301,6 +302,7 @@ function infoDot() {
 function renderClub(clubId) {
   const club = clubById(clubId) || DATA.clubs[0];
   $banner.innerHTML = "";
+  $bench.innerHTML = "";
   renderRail(club.id);
   renderNationRail(null);
 
@@ -393,15 +395,97 @@ function renderNation(code, featuredName, fromClubId) {
       actions: eplClub ? [{ label: `${eplClub.short ?? eplClub.name} XI →`, hash: `#club/${eplClub.id}` }] : [],
     });
   }, { img: flagUrl(code, 320), label: nation.name, flag: true, colors: DATA.nationColors?.[code] });
+  renderBench(code, nation.name);
 }
 
 /* ---------------- top players view ---------------- */
 const $list = document.getElementById("list");
 const $pitchWrap = document.getElementById("pitch-wrap");
+const $bench = document.getElementById("bench");
 
-function showList(on) {
-  $list.hidden = !on;
-  $pitchWrap.style.display = on ? "none" : "";
+/* bench: players with WC goal involvements who aren't in the shown XI */
+function renderBench(code, nationName) {
+  $bench.innerHTML = "";
+  const listData = (WC.bench?.[code] ?? []).slice(0, 9);
+  if (!listData.length) return;
+  const title = document.createElement("div");
+  title.className = "bench-title";
+  title.textContent = "In form · not in XI";
+  $bench.appendChild(title);
+  for (const b of listData) {
+    const card = document.createElement("button");
+    card.className = "bench-card";
+    card.appendChild(headshot(b.name));
+    const info = document.createElement("div");
+    info.className = "bench-info";
+    const badges =
+      (b.g ? `<span class="wc-badge goals">⚽${b.g}</span>` : "") +
+      (b.a ? `<span class="wc-badge assists">A${b.a}</span>` : "");
+    info.innerHTML = `<div class="bench-name">${b.name}</div><div class="bench-stats">${badges}</div>`;
+    card.appendChild(info);
+    const club = DATA.clubs.find((c) => c.rows.flat().some((x) => x.name === b.name));
+    const actions = club ? [{ label: `${club.short ?? club.name} XI →`, hash: `#club/${club.id}` }] : [];
+    attachBio(card, { name: b.name, teamLine: `${nationName} squad${club ? ` · ${club.name}` : ""}`, actions });
+    $bench.appendChild(card);
+  }
+}
+
+const $home = document.getElementById("home");
+
+function showView(view) {
+  $list.hidden = view !== "list";
+  $home.hidden = view !== "home";
+  $pitchWrap.style.display = view === "pitch" ? "" : "none";
+}
+const showList = (on) => showView(on ? "list" : "pitch");
+
+/* ---------------- home page ---------------- */
+function renderHome() {
+  renderRail(null);
+  renderNationRail(null);
+  $banner.innerHTML = "";
+  $bench.innerHTML = "";
+  setIdentity(null);
+  showView("home");
+
+  $header.innerHTML = `<div><h1>World Cup 2026 Lineup Explorer</h1>
+    <div class="sub">Top club XIs · national teams · live tournament stats</div></div>`;
+
+  $home.innerHTML = `
+    <div class="home-hero">
+      <h2>Every top club XI.<br/>Every World Cup contender.<br/>One pitch.</h2>
+      <p>Starting lineups laid out TV-style, cross-linked between the biggest clubs in Europe
+      and the national teams chasing the 2026 World Cup — with live tournament stats.</p>
+      <div class="home-ctas">
+        <button data-hash="#club/arsenal">Browse clubs →</button>
+        <button data-hash="#nation/fr">France XI →</button>
+        <button data-hash="#top">★ Top Players →</button>
+      </div>
+    </div>
+    <div class="home-grid">
+      <div class="home-card"><span>🛡️</span><b>Pick a club</b>
+        The left rail lists 13 top European clubs. Each shows its typical 2025-26 starting XI
+        in real formation, with every player's photo and national flag.</div>
+      <div class="home-card"><span>🏳️</span><b>Pick a nation</b>
+        The right rail lists 16 World Cup contenders in seeding order. Greyed-out teams are
+        knocked out (OUT) or didn't qualify (DNQ).</div>
+      <div class="home-card"><span>👤</span><b>Click any player</b>
+        A pinned card shows his age, bio and World Cup stats, with buttons to jump between
+        his club XI and national XI. Click anywhere else to dismiss it.</div>
+      <div class="home-card"><span>⚽</span><b>Read the badges</b>
+        Goal and assist badges over a photo are live World Cup 2026 numbers. In club views,
+        a gold ring means the player starts for his country.</div>
+      <div class="home-card"><span>★</span><b>Top Players</b>
+        A ranked table of the tournament's biggest names — goals, assists and cards — plus each
+        nation's leading scorer.</div>
+      <div class="home-card"><span>🪑</span><b>Check the bench</b>
+        On national team pages, in-form players with goal involvements who aren't in the XI
+        appear beside the pitch — click them for bios too.</div>
+    </div>
+    <div class="home-foot">${CREDITS} · World Cup stats: ESPN, refreshed through ${WC.updated ? `${WC.updated.slice(0,4)}-${WC.updated.slice(4,6)}-${WC.updated.slice(6,8)}` : "the group stage"}</div>`;
+  $home.querySelectorAll("[data-hash]").forEach((b) =>
+    b.addEventListener("click", () => navigate(b.dataset.hash))
+  );
 }
 
 function renderTop() {
@@ -523,14 +607,17 @@ function navigate(hash) {
 function route() {
   hideBio();
   const parts = location.hash.slice(1).split("/");
-  if (parts[0] !== "top") showList(false);
   if (parts[0] === "top") {
     renderTop();
   } else if (parts[0] === "nation" && parts[1]) {
+    showView("pitch");
     renderNation(parts[1], decodeURIComponent(parts[2] || ""), lastClubId);
-  } else {
+  } else if (parts[0] === "club") {
+    showView("pitch");
     lastClubId = parts[1] && clubById(parts[1]) ? parts[1] : lastClubId;
     renderClub(lastClubId);
+  } else {
+    renderHome(); // default view: how-to-use landing page
   }
   window.scrollTo(0, 0);
 }

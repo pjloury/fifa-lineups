@@ -50,6 +50,12 @@ window.WC = {
    "yc": 0,
    "rc": 0
   },
+  "Ismael Saibari": {
+   "g": 3,
+   "a": 0,
+   "yc": 0,
+   "rc": 0
+  },
   "Brahim Díaz": {
    "g": 0,
    "a": 2,
@@ -74,6 +80,12 @@ window.WC = {
    "yc": 0,
    "rc": 0
   },
+  "Deniz Undav": {
+   "g": 3,
+   "a": 2,
+   "yc": 0,
+   "rc": 0
+  },
   "Virgil van Dijk": {
    "g": 1,
    "a": 1,
@@ -92,9 +104,9 @@ window.WC = {
    "yc": 0,
    "rc": 0
   },
-  "Memphis Depay": {
-   "g": 0,
-   "a": 1,
+  "Crysencio Summerville": {
+   "g": 2,
+   "a": 2,
    "yc": 1,
    "rc": 0
   },
@@ -167,6 +179,18 @@ window.WC = {
   "Mohamed Salah": {
    "g": 1,
    "a": 2,
+   "yc": 0,
+   "rc": 0
+  },
+  "Emam Ashour": {
+   "g": 2,
+   "a": 0,
+   "yc": 0,
+   "rc": 0
+  },
+  "Maximiliano Araújo": {
+   "g": 2,
+   "a": 1,
    "yc": 0,
    "rc": 0
   },
@@ -326,6 +350,12 @@ window.WC = {
    "yc": 0,
    "rc": 0
   },
+  "Johan Manzambi": {
+   "g": 3,
+   "a": 2,
+   "yc": 0,
+   "rc": 0
+  },
   "Nico Elvedi": {
    "g": 0,
    "a": 0,
@@ -359,6 +389,12 @@ window.WC = {
   "Denzel Dumfries": {
    "g": 0,
    "a": 2,
+   "yc": 0,
+   "rc": 0
+  },
+  "Brian Brobbey": {
+   "g": 3,
+   "a": 0,
    "yc": 0,
    "rc": 0
   },
@@ -396,6 +432,12 @@ window.WC = {
    "g": 1,
    "a": 0,
    "yc": 0,
+   "rc": 0
+  },
+  "Romelu Lukaku": {
+   "g": 2,
+   "a": 1,
+   "yc": 1,
    "rc": 0
   },
   "Rodrigo Bentancur": {
@@ -602,6 +644,12 @@ window.WC = {
    "yc": 0,
    "rc": 0
   },
+  "Leandro Trossard": {
+   "g": 2,
+   "a": 1,
+   "yc": 0,
+   "rc": 0
+  },
   "Alexis Saelemaekers": {
    "g": 1,
    "a": 0,
@@ -738,5 +786,490 @@ window.WC = {
   "tr": "out",
   "ma": "active",
   "ge": "nq"
+ },
+ "bench": {
+  "us": [
+   {
+    "name": "Alex Freeman",
+    "g": 1,
+    "a": 1,
+    "yc": 0,
+    "rc": 0
+   },
+   {
+    "name": "Sebastian Berhalter",
+    "g": 1,
+    "a": 1,
+    "yc": 1,
+    "rc": 0
+   },
+   {
+    "name": "Giovanni Reyna",
+    "g": 1,
+    "a": 0,
+    "yc": 0,
+    "rc": 0
+   },
+   {
+    "name": "Auston Trusty",
+    "g": 1,
+    "a": 0,
+    "yc": 0,
+    "rc": 0
+   }
+  ],
+  "de": [
+   {
+    "name": "Kai Havertz",
+    "g": 3,
+    "a": 0,
+    "yc": 1,
+    "rc": 0
+   },
+   {
+    "name": "Nathaniel Brown",
+    "g": 1,
+    "a": 1,
+    "yc": 0,
+    "rc": 0
+   },
+   {
+    "name": "Felix Nmecha",
+    "g": 1,
+    "a": 1,
+    "yc": 0,
+    "rc": 0
+   },
+   {
+    "name": "Jamal Musiala",
+    "g": 1,
+    "a": 0,
+    "yc": 1,
+    "rc": 0
+   },
+   {
+    "name": "Nadiem Amiri",
+    "g": 0,
+    "a": 1,
+    "yc": 0,
+    "rc": 0
+   }
+  ],
+  "nl": [
+   {
+    "name": "Memphis Depay",
+    "g": 0,
+    "a": 1,
+    "yc": 1,
+    "rc": 0
+   },
+   {
+    "name": "Jan Paul van Hecke",
+    "g": 1,
+    "a": 0,
+    "yc": 0,
+    "rc": 0
+   }
+  ],
+  "se": [
+   {
+    "name": "Mattias Svanberg",
+    "g": 1,
+    "a": 0,
+    "yc": 0,
+    "rc": 0
+   }
+  ],
+  "fr": [
+   {
+    "name": "Bradley Barcola",
+    "g": 2,
+    "a": 1,
+    "yc": 0,
+    "rc": 0
+   },
+   {
+    "name": "Désiré Doué",
+    "g": 1,
+    "a": 0,
+    "yc": 0,
+    "rc": 0
+   }
+  ],
+  "ar": [
+   {
+    "name": "Lisandro Martínez",
+    "g": 1,
+    "a": 1,
+    "yc": 0,
+    "rc": 0
+   },
+   {
+    "name": "Nico González",
+    "g": 0,
+    "a": 1,
+    "yc": 0,
+    "rc": 0
+   },
+   {
+    "name": "Facundo Medina",
+    "g": 0,
+    "a": 1,
+    "yc": 1,
+    "rc": 0
+   },
+   {
+    "name": "Giovani Lo Celso",
+    "g": 1,
+    "a": 0,
+    "yc": 0,
+    "rc": 0
+   },
+   {
+    "name": "Lautaro Martínez",
+    "g": 1,
+    "a": 0,
+    "yc": 0,
+    "rc": 0
+   }
+  ],
+  "at": [
+   {
+    "name": "Romano Schmid",
+    "g": 1,
+    "a": 0,
+    "yc": 0,
+    "rc": 0
+   },
+   {
+    "name": "David Alaba",
+    "g": 0,
+    "a": 1,
+    "yc": 0,
+    "rc": 0
+   },
+   {
+    "name": "Sasa Kalajdzic",
+    "g": 1,
+    "a": 0,
+    "yc": 0,
+    "rc": 0
+   },
+   {
+    "name": "Michael Gregoritsch",
+    "g": 0,
+    "a": 1,
+    "yc": 0,
+    "rc": 0
+   }
+  ],
+  "gb-eng": [
+   {
+    "name": "Marcus Rashford",
+    "g": 1,
+    "a": 0,
+    "yc": 0,
+    "rc": 0
+   }
+  ],
+  "hr": [
+   {
+    "name": "Petar Musa",
+    "g": 1,
+    "a": 0,
+    "yc": 0,
+    "rc": 0
+   },
+   {
+    "name": "Martin Baturina",
+    "g": 1,
+    "a": 0,
+    "yc": 0,
+    "rc": 0
+   },
+   {
+    "name": "Nikola Vlasic",
+    "g": 1,
+    "a": 0,
+    "yc": 0,
+    "rc": 0
+   }
+  ],
+  "gh": [
+   {
+    "name": "Caleb Yirenkyi",
+    "g": 1,
+    "a": 0,
+    "yc": 2,
+    "rc": 0
+   },
+   {
+    "name": "Brandon Thomas-Asante",
+    "g": 0,
+    "a": 1,
+    "yc": 0,
+    "rc": 0
+   },
+   {
+    "name": "Derrick Luckassen",
+    "g": 1,
+    "a": 0,
+    "yc": 0,
+    "rc": 0
+   },
+   {
+    "name": "Ernest Nuamah",
+    "g": 0,
+    "a": 1,
+    "yc": 0,
+    "rc": 0
+   }
+  ],
+  "co": [
+   {
+    "name": "Gustavo Puerta",
+    "g": 0,
+    "a": 1,
+    "yc": 1,
+    "rc": 0
+   },
+   {
+    "name": "Jáminton Campaz",
+    "g": 1,
+    "a": 0,
+    "yc": 0,
+    "rc": 0
+   },
+   {
+    "name": "Cucho Hernández",
+    "g": 0,
+    "a": 1,
+    "yc": 0,
+    "rc": 0
+   },
+   {
+    "name": "Juan Fernando Quintero",
+    "g": 0,
+    "a": 1,
+    "yc": 0,
+    "rc": 0
+   },
+   {
+    "name": "Luis Suárez",
+    "g": 0,
+    "a": 1,
+    "yc": 0,
+    "rc": 0
+   }
+  ],
+  "ma": [
+   {
+    "name": "Soufiane Rahimi",
+    "g": 1,
+    "a": 1,
+    "yc": 0,
+    "rc": 0
+   },
+   {
+    "name": "Issa Diop",
+    "g": 1,
+    "a": 0,
+    "yc": 2,
+    "rc": 0
+   },
+   {
+    "name": "Chadi Riad",
+    "g": 0,
+    "a": 1,
+    "yc": 0,
+    "rc": 0
+   },
+   {
+    "name": "Gessime Yassine",
+    "g": 1,
+    "a": 0,
+    "yc": 0,
+    "rc": 0
+   },
+   {
+    "name": "Chemsdine Talbi",
+    "g": 0,
+    "a": 1,
+    "yc": 0,
+    "rc": 0
+   }
+  ],
+  "br": [
+   {
+    "name": "Lucas Paquetá",
+    "g": 0,
+    "a": 1,
+    "yc": 0,
+    "rc": 0
+   },
+   {
+    "name": "Rayan",
+    "g": 0,
+    "a": 1,
+    "yc": 0,
+    "rc": 0
+   },
+   {
+    "name": "Gabriel Martinelli",
+    "g": 1,
+    "a": 0,
+    "yc": 0,
+    "rc": 0
+   }
+  ],
+  "es": [
+   {
+    "name": "Álex Baena",
+    "g": 1,
+    "a": 1,
+    "yc": 1,
+    "rc": 0
+   },
+   {
+    "name": "Aymeric Laporte",
+    "g": 0,
+    "a": 1,
+    "yc": 0,
+    "rc": 0
+   },
+   {
+    "name": "Dani Olmo",
+    "g": 0,
+    "a": 1,
+    "yc": 0,
+    "rc": 0
+   },
+   {
+    "name": "Marcos Llorente",
+    "g": 0,
+    "a": 1,
+    "yc": 0,
+    "rc": 0
+   }
+  ],
+  "uy": [
+   {
+    "name": "Agustín Canobbio",
+    "g": 1,
+    "a": 0,
+    "yc": 0,
+    "rc": 1
+   }
+  ],
+  "eg": [
+   {
+    "name": "Mostafa Zico",
+    "g": 1,
+    "a": 1,
+    "yc": 0,
+    "rc": 0
+   },
+   {
+    "name": "Mahmoud Saber",
+    "g": 1,
+    "a": 0,
+    "yc": 1,
+    "rc": 0
+   },
+   {
+    "name": "Karim Hafez",
+    "g": 0,
+    "a": 1,
+    "yc": 0,
+    "rc": 0
+   }
+  ],
+  "no": [
+   {
+    "name": "Patrick Berg",
+    "g": 0,
+    "a": 2,
+    "yc": 1,
+    "rc": 0
+   },
+   {
+    "name": "Marcus Holmgren Pedersen",
+    "g": 1,
+    "a": 0,
+    "yc": 0,
+    "rc": 0
+   },
+   {
+    "name": "Andreas Schjelderup",
+    "g": 0,
+    "a": 1,
+    "yc": 0,
+    "rc": 0
+   }
+  ],
+  "pt": [
+   {
+    "name": "Rafael Leão",
+    "g": 1,
+    "a": 1,
+    "yc": 0,
+    "rc": 0
+   },
+   {
+    "name": "Gonçalo Ramos",
+    "g": 1,
+    "a": 0,
+    "yc": 0,
+    "rc": 0
+   }
+  ],
+  "ec": [
+   {
+    "name": "Kevin Rodríguez",
+    "g": 0,
+    "a": 1,
+    "yc": 0,
+    "rc": 0
+   }
+  ],
+  "tr": [
+   {
+    "name": "Kaan Ayhan",
+    "g": 1,
+    "a": 0,
+    "yc": 0,
+    "rc": 0
+   }
+  ],
+  "be": [
+   {
+    "name": "Hans Vanaken",
+    "g": 0,
+    "a": 1,
+    "yc": 0,
+    "rc": 0
+   },
+   {
+    "name": "Alexis Saelemaekers",
+    "g": 1,
+    "a": 0,
+    "yc": 0,
+    "rc": 0
+   },
+   {
+    "name": "Nicolas Raskin",
+    "g": 0,
+    "a": 1,
+    "yc": 0,
+    "rc": 0
+   },
+   {
+    "name": "Thomas Meunier",
+    "g": 0,
+    "a": 1,
+    "yc": 0,
+    "rc": 0
+   }
+  ]
  }
 };

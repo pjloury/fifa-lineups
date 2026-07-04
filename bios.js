@@ -2004,5 +2004,295 @@ window.PLAYER_BIOS = {
   "d": "Ivorian footballer",
   "born": null,
   "b": "Ibrahim Sangaré is an Ivorian professional footballer who plays as a defensive midfielder for Premier League club Nottingham Forest and the Ivory Coast national team."
+ },
+ "Brian Brobbey": {
+  "d": "Dutch footballer (born 2002)",
+  "born": "2002",
+  "b": "Brian Ebenezer Adjei Brobbey is a Dutch professional footballer who plays as a striker for Premier League club Sunderland and the Netherlands national team."
+ },
+ "Crysencio Summerville": {
+  "d": "Dutch footballer",
+  "born": null,
+  "b": "Crysencio Jilbert Sylverio Cirro Summerville is a Dutch professional footballer who plays as a winger for EFL Championship football club West Ham United and the Netherlands national team."
+ },
+ "Leandro Trossard": {
+  "d": "Belgian footballer (born 1994)",
+  "born": "1994",
+  "b": "Leandro Trossard is a Belgian professional footballer who plays as a forward or left winger for Premier League club Arsenal and the Belgium national team."
+ },
+ "Romelu Lukaku": {
+  "d": "Belgian footballer (born 1993)",
+  "born": "1993",
+  "b": "Romelu Lukaku Bolingoli is a Belgian professional footballer who plays as a striker for Serie A club Napoli and the Belgium national team. Lukaku ranks second for the all-time European men's top goalscorers in international football, with 92 goals."
+ },
+ "Deniz Undav": {
+  "d": "German footballer (born 1996)",
+  "born": "1996",
+  "b": "Deniz Undav is a German professional footballer who plays as a forward for Bundesliga club VfB Stuttgart and the Germany national team."
+ },
+ "Emam Ashour": {
+  "d": "Egyptian footballer (born 1998)",
+  "born": "1998",
+  "b": "Emam Ashour Metwally Abdel Ghany is an Egyptian professional footballer who plays as a midfielder for Egyptian Premier League club Al Ahly and the Egypt national team."
+ },
+ "Johan Manzambi": {
+  "d": "Swiss footballer (born 2005)",
+  "born": "2005",
+  "b": "Johan Manzambi is a Swiss professional footballer who plays as a midfielder for Bundesliga club SC Freiburg and the Switzerland national team."
+ },
+ "Ismael Saibari": {
+  "d": "Moroccan footballer (born 2001)",
+  "born": "2001",
+  "b": "Ismael Saibari Ben El Basra is a professional footballer who plays as an attacking midfielder for Bundesliga club Bayern Munich. Born in Spain and raised in Belgium, he represents the Morocco national team."
+ },
+ "Alex Freeman": {
+  "d": "American soccer player (born 2004)",
+  "born": "2004",
+  "b": "Alexander Michael Freeman is an American professional soccer player who plays as a right-back, right winger, or center back for La Liga club Villarreal and the United States national team."
+ },
+ "Sebastian Berhalter": {
+  "d": "English soccer player (born 2001)",
+  "born": "2001",
+  "b": "Sebastian Matthew Berhalter is an American professional soccer player who plays as a midfielder for Major League Soccer club Vancouver Whitecaps and the United States national team."
+ },
+ "Giovanni Reyna": {
+  "d": "American soccer player (born 2002)",
+  "born": "2002",
+  "b": "Giovanni Alejandro Reyna is an American professional soccer player who plays for Bundesliga club Borussia Mönchengladbach and the United States national team."
+ },
+ "Auston Trusty": {
+  "d": "American soccer player",
+  "born": null,
+  "b": "Auston Levi-Jesaiah Trusty is an American professional soccer player who plays as a center-back for Scottish Premiership club Celtic and the United States national team."
+ },
+ "Kai Havertz": {
+  "d": "German footballer (born 1999)",
+  "born": "1999",
+  "b": "Kai Lukas Havertz is a German professional footballer who plays as a forward or attacking midfielder for Premier League club Arsenal and the Germany national team."
+ },
+ "Nathaniel Brown": {
+  "d": "German footballer (born 2003)",
+  "born": "2003",
+  "b": "Nathaniel Christopher Brown is a German professional footballer who plays as a left-back for Bundesliga club Bayern Munich and the Germany national team."
+ },
+ "Felix Nmecha": {
+  "d": "German footballer (born 2000)",
+  "born": "2000",
+  "b": "Felix Kalu Nmecha is a German professional footballer who plays as a midfielder for Bundesliga club Borussia Dortmund and the Germany national team."
+ },
+ "Jamal Musiala": {
+  "d": "German footballer (born 2003)",
+  "born": "2003",
+  "b": "Jamal Musiala is a German professional footballer who plays as an attacking midfielder for Bundesliga club Bayern Munich and the Germany national team. Widely regarded as one of the best attacking midfielders in the world, Musiala is known for his dribbling, passing, goal threat, and technical skills."
+ },
+ "Nadiem Amiri": {
+  "d": "German association football player",
+  "born": null,
+  "b": "Nadiem Amiri is a German professional footballer who plays as an attacking midfielder for Bundesliga club Mainz 05 and the Germany national team."
+ },
+ "Jan Paul van Hecke": {
+  "d": "Dutch footballer (born 2000)",
+  "born": "2000",
+  "b": "Jan Paul van Hecke is a Dutch professional footballer who plays as a centre-back for Premier League club Tottenham Hotspur and the Netherlands national team."
+ },
+ "Mattias Svanberg": {
+  "d": "Swedish footballer (born 1999)",
+  "born": "1999",
+  "b": "Mattias Olof Svanberg is a Swedish professional footballer who plays as a midfielder for 2. Bundesliga club VfL Wolfsburg and the Sweden national team."
+ },
+ "Bradley Barcola": {
+  "d": "French footballer (born 2002)",
+  "born": "2002",
+  "b": "Bradley Jean-Manuel Essolisam Addo Barcola is a French professional footballer who plays as a forward for Ligue 1 club Paris Saint-Germain and the France national team. He is known for his speed and dribbling."
+ },
+ "Lisandro Martínez": {
+  "d": "Argentine footballer (born 1998)",
+  "born": "1998",
+  "b": "Lisandro Martínez is an Argentine professional footballer who plays as a centre-back for Premier League club Manchester United and the Argentina national team. Nicknamed \"The Butcher\", he is known for his aggressive style of play."
+ },
+ "Facundo Medina": {
+  "d": "Argentine footballer (born 1999)",
+  "born": "1999",
+  "b": "Facundo Axel Medina is an Argentine professional footballer who plays as a centre-back or left-back for Ligue 1 club Marseille and the Argentina national team."
+ },
+ "Giovani Lo Celso": {
+  "d": "Argentine footballer (born 1996)",
+  "born": "1996",
+  "b": "Giovani Lo Celso is an Argentine professional footballer who plays as an attacking midfielder for La Liga club Real Betis and the Argentina national team."
+ },
+ "Romano Schmid": {
+  "d": "Austrian footballer (born 2000)",
+  "born": "2000",
+  "b": "Romano Christian Schmid is an Austrian professional footballer who plays as an attacking midfielder for Bundesliga club Werder Bremen and the Austria national team."
+ },
+ "David Alaba": {
+  "d": "Austrian footballer (born 1992)",
+  "born": "1992",
+  "b": "David Alaba is an Austrian professional footballer who plays as a centre-back for, and captains the Austria national team. He was previously primarily a left-back, and was considered one of the best in the world at this position."
+ },
+ "Sasa Kalajdzic": {
+  "d": "Austrian footballer (born 1997)",
+  "born": "1997",
+  "b": "Saša Kalajdžić is an Austrian professional footballer who plays as a striker for Austrian Bundesliga club LASK on loan from EFL Championship club Wolverhampton Wanderers and the Austria national team."
+ },
+ "Michael Gregoritsch": {
+  "d": "Austrian footballer (born 1994)",
+  "born": "1994",
+  "b": "Michael Gregoritsch is an Austrian professional footballer who plays as a forward for Bundesliga club FC Augsburg, and the Austria national team."
+ },
+ "Marcus Rashford": {
+  "d": "English footballer (born 1997)",
+  "born": "1997",
+  "b": "Marcus Rashford is an English professional footballer who plays as a forward for Premier League club Manchester United and the England national team."
+ },
+ "Petar Musa": {
+  "d": "Croatian footballer (born 1998)",
+  "born": "1998",
+  "b": "Petar Musa is a Croatian professional footballer who plays as a striker for Major League Soccer club FC Dallas and the Croatia national team."
+ },
+ "Martin Baturina": {
+  "d": "Croatian footballer (born 2003)",
+  "born": "2003",
+  "b": "Martin Baturina is a professional footballer who plays as an attacking midfielder for Serie A club Como. Born in Switzerland, he plays for the Croatia national team."
+ },
+ "Nikola Vlasic": {
+  "d": "Croatian association football player (born 1997)",
+  "born": "1997",
+  "b": "Nikola Vlašić is a Croatian professional footballer who plays as an attacking midfielder for Serie A club Torino and the Croatia national team."
+ },
+ "Caleb Yirenkyi": {
+  "d": "Ghanaian footballer (born 2006)",
+  "born": "2006",
+  "b": "Caleb Marfo Yirenkyi is a Ghanaian footballer who plays as a midfielder for Danish Superliga club Nordsjælland and the Ghana national team."
+ },
+ "Brandon Thomas-Asante": {
+  "d": "Ghanaian association football player",
+  "born": null,
+  "b": "Solomon Brandon Michael Clarke Thomas-Asante is a professional footballer who plays as a centre forward for Premier League club Coventry City. Born in England, he plays for the Ghana national team."
+ },
+ "Derrick Luckassen": {
+  "d": "Ghanaian footballer (born 1995)",
+  "born": "1995",
+  "b": "Derrick Luckassen is a professional footballer who plays as a centre-back for Cypriot club Pafos. Born in the Netherlands, he plays for the Ghana national team."
+ },
+ "Ernest Nuamah": {
+  "d": "Ghanaian footballer (born 2003)",
+  "born": "2003",
+  "b": "Ernest Nuamah Appiah is a Ghanaian professional footballer who plays as a winger for Ligue 1 club Lyon and the Ghana national team."
+ },
+ "Gustavo Puerta": {
+  "d": "Colombian footballer (born 2003)",
+  "born": "2003",
+  "b": "Gustavo Adolfo Puerta Molano is a Colombian professional footballer who plays as a midfielder for Segunda División club Racing de Santander and the Colombia national team."
+ },
+ "Cucho Hernández": {
+  "d": "Colombian footballer (born 1999)",
+  "born": "1999",
+  "b": "Juan Camilo Hernández Suárez, known simply as Cucho Hernández, is a Colombian professional footballer who plays as a striker or winger for La Liga club Real Betis and the Colombia national team."
+ },
+ "Juan Fernando Quintero": {
+  "d": "Colombian footballer (born 1993)",
+  "born": "1993",
+  "b": "Juan Fernando Quintero Paniagua, better known as Juanfer Quintero, is a Colombian professional footballer who plays as attacking midfielder or winger for Argentine Primera División club River Plate and the Colombia national team."
+ },
+ "Luis Suárez": {
+  "d": "Uruguayan footballer (born 1987)",
+  "born": "1987",
+  "b": "Luis Alberto Suárez Díaz is a Uruguayan professional footballer who plays as a striker for Major League Soccer club Inter Miami. He is regarded as one of the best players of his generation and one of the greatest strikers of all time."
+ },
+ "Soufiane Rahimi": {
+  "d": "Moroccan footballer (born 1996)",
+  "born": "1996",
+  "b": "Soufiane Rahimi is a Moroccan professional footballer who plays as a striker for UAE Pro League club Al Ain and the Morocco national team."
+ },
+ "Issa Diop": {
+  "d": "Moroccan footballer (born 1997)",
+  "born": "1997",
+  "b": "Issa Laye Lucas Jean Diop is a professional footballer who plays as a centre-back for Premier League club Fulham. Born in France, and a former France youth international, he plays for the Morocco national team."
+ },
+ "Chadi Riad": {
+  "d": "Moroccan footballer (born 2003)",
+  "born": "2003",
+  "b": "Chadi Riad Dnanou is a professional footballer who plays as a centre-back for Premier League club Crystal Palace. Born in Spain, he plays for the Morocco national team."
+ },
+ "Gessime Yassine": {
+  "d": "Footballer (born 2005)",
+  "born": "2005",
+  "b": "Gessime Ben Youssef Mustapha Yassine is a professional footballer who plays as a winger for Ligue 1 club Strasbourg. Born in France, he represents the Morocco national team."
+ },
+ "Chemsdine Talbi": {
+  "d": "Footballer (born 2005)",
+  "born": "2005",
+  "b": "Chemsdine Talbi is a professional footballer who plays as a winger for Premier League club Sunderland. Born in Belgium, he plays for the Morocco national team."
+ },
+ "Lucas Paquetá": {
+  "d": "Brazilian footballer (born 1997)",
+  "born": "1997",
+  "b": "Lucas Tolentino Coelho de Lima, better known as Lucas Paquetá, is a Brazilian professional footballer who plays as an attacking midfielder for Campeonato Brasileiro Série A club Flamengo and the Brazil national team."
+ },
+ "Gabriel Martinelli": {
+  "d": "Brazilian footballer (born 2001)",
+  "born": "2001",
+  "b": "Gabriel Teodoro Martinelli Silva is a Brazilian professional footballer who plays as a forward or left winger for Premier League club Arsenal and the Brazil national team."
+ },
+ "Aymeric Laporte": {
+  "d": "Footballer (born 1994)",
+  "born": "1994",
+  "b": "Aymeric Jean Louis Gérard Alphonse Laporte is a professional footballer who plays as a centre-back for La Liga club Athletic Bilbao. Born in France, he plays for the Spain national team."
+ },
+ "Marcos Llorente": {
+  "d": "Spanish footballer (born 1995)",
+  "born": "1995",
+  "b": "Marcos Llorente Moreno is a Spanish professional footballer who plays as a midfielder or right-back for La Liga club Atlético Madrid and the Spain national team."
+ },
+ "Agustín Canobbio": {
+  "d": "Uruguayan footballer (born 1998)",
+  "born": "1998",
+  "b": "Agustín Canobbio Graviz is a Uruguayan professional footballer who plays as an attacking midfielder or winger for Campeonato Brasileiro Série A club Fluminense and the Uruguay national team."
+ },
+ "Mahmoud Saber": {
+  "d": "Egyptian footballer (born 2001)",
+  "born": "2001",
+  "b": "Mahmoud Saber Abdelmohsen Hassan Abdelmohsen is an Egyptian professional footballer who plays as a central midfielder for Egyptian Premier League club ZED on loan from Pyramids and the Egypt national team."
+ },
+ "Karim Hafez": {
+  "d": "Egyptian footballer (born 1996)",
+  "born": "1996",
+  "b": "Karim Hafez Ramadan Seifeldin is an Egyptian professional footballer who plays for Egyptian Premier League club Pyramids and the Egypt national team as a left-back."
+ },
+ "Patrick Berg": {
+  "d": "Norwegian footballer (born 1997)",
+  "born": "1997",
+  "b": "Patrick Berg is a Norwegian professional footballer who plays as a defensive midfielder for Eliteserien club Bodø/Glimt and the Norway national team."
+ },
+ "Marcus Holmgren Pedersen": {
+  "d": "Norwegian footballer (born 2000)",
+  "born": "2000",
+  "b": "Marcus Holmgren Pedersen is a Norwegian professional footballer who plays as a right-back for Serie A club Torino and the Norway national team."
+ },
+ "Andreas Schjelderup": {
+  "d": "Norwegian footballer (born 2004)",
+  "born": "2004",
+  "b": "Andreas Rædergård Schjelderup is a Norwegian professional footballer who plays as a left winger or forward for Primeira Liga club Benfica and the Norway national team."
+ },
+ "Gonçalo Ramos": {
+  "d": "Portuguese footballer (born 2001)",
+  "born": "2001",
+  "b": "Gonçalo Matias Ramos is a Portuguese professional footballer who plays as a striker for Serie A club AC Milan and the Portugal national team."
+ },
+ "Kaan Ayhan": {
+  "d": "Turkish footballer (born 1994)",
+  "born": "1994",
+  "b": "Kaan Ayhan is a professional footballer who plays as a defender for Süper Lig club Galatasaray. Born in Germany, he plays for the Turkey national team."
+ },
+ "Hans Vanaken": {
+  "d": "Belgian footballer (born 1992)",
+  "born": "1992",
+  "b": "Hans Vanaken is a Belgian professional footballer who plays as an attacking midfielder for Belgian Pro League club Club Brugge and the Belgium national team."
+ },
+ "Thomas Meunier": {
+  "d": "Belgian footballer (born 1991)",
+  "born": "1991",
+  "b": "Thomas André A. Meunier is a Belgian professional footballer who plays as a right-back for the Belgium national team."
  }
 };
