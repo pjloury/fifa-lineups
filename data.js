@@ -1,0 +1,694 @@
+// Typical starting XIs, 2025-26 season (club) and recent internationals (national teams).
+// rows are ordered goalkeeper-first; each row is laid out left-to-right on the pitch.
+window.APP_DATA = {
+  clubs: [
+    {
+      id: "arsenal",
+      name: "Arsenal",
+      badge: "https://resources.premierleague.com/premierleague/badges/100/t3@x2.png",
+      color: "#EF0107",
+      formation: "4-3-3",
+      rows: [
+        [{ name: "David Raya", pos: "GK", nation: "es" }],
+        [
+          { name: "Riccardo Calafiori", pos: "LB", nation: "it" },
+          { name: "Gabriel Magalhães", pos: "CB", nation: "br" },
+          { name: "William Saliba", pos: "CB", nation: "fr" },
+          { name: "Jurriën Timber", pos: "RB", nation: "nl" },
+        ],
+        [
+          { name: "Declan Rice", pos: "CM", nation: "gb-eng" },
+          { name: "Martín Zubimendi", pos: "DM", nation: "es" },
+          { name: "Martin Ødegaard", pos: "CM", nation: "no" },
+        ],
+        [
+          { name: "Eberechi Eze", pos: "LW", nation: "gb-eng" },
+          { name: "Viktor Gyökeres", pos: "ST", nation: "se" },
+          { name: "Bukayo Saka", pos: "RW", nation: "gb-eng" },
+        ],
+      ],
+    },
+    {
+      id: "man-city",
+      name: "Manchester City",
+      badge: "https://resources.premierleague.com/premierleague/badges/100/t43@x2.png",
+      color: "#6CABDD",
+      formation: "4-3-3",
+      rows: [
+        [{ name: "Gianluigi Donnarumma", pos: "GK", nation: "it" }],
+        [
+          { name: "Nico O'Reilly", pos: "LB", nation: "gb-eng" },
+          { name: "Josko Gvardiol", pos: "CB", nation: "hr" },
+          { name: "Rúben Dias", pos: "CB", nation: "pt" },
+          { name: "Matheus Nunes", pos: "RB", nation: "pt" },
+        ],
+        [
+          { name: "Tijjani Reijnders", pos: "CM", nation: "nl" },
+          { name: "Rodri", pos: "DM", nation: "es" },
+          { name: "Bernardo Silva", pos: "CM", nation: "pt" },
+        ],
+        [
+          { name: "Jérémy Doku", pos: "LW", nation: "be" },
+          { name: "Erling Haaland", pos: "ST", nation: "no" },
+          { name: "Phil Foden", pos: "RW", nation: "gb-eng" },
+        ],
+      ],
+    },
+    {
+      id: "liverpool",
+      name: "Liverpool",
+      badge: "https://resources.premierleague.com/premierleague/badges/100/t14@x2.png",
+      color: "#C8102E",
+      formation: "4-2-3-1",
+      rows: [
+        [{ name: "Alisson Becker", pos: "GK", nation: "br" }],
+        [
+          { name: "Milos Kerkez", pos: "LB", nation: "hu" },
+          { name: "Virgil van Dijk", pos: "CB", nation: "nl" },
+          { name: "Ibrahima Konaté", pos: "CB", nation: "fr" },
+          { name: "Conor Bradley", pos: "RB", nation: "gb-nir" },
+        ],
+        [
+          { name: "Ryan Gravenberch", pos: "DM", nation: "nl" },
+          { name: "Alexis Mac Allister", pos: "CM", nation: "ar" },
+        ],
+        [
+          { name: "Florian Wirtz", pos: "LW", nation: "de" },
+          { name: "Dominik Szoboszlai", pos: "AM", nation: "hu" },
+          { name: "Mohamed Salah", pos: "RW", nation: "eg" },
+        ],
+        [{ name: "Alexander Isak", pos: "ST", nation: "se" }],
+      ],
+    },
+    {
+      id: "chelsea",
+      name: "Chelsea",
+      badge: "https://resources.premierleague.com/premierleague/badges/100/t8@x2.png",
+      color: "#034694",
+      formation: "4-2-3-1",
+      rows: [
+        [{ name: "Robert Sánchez", pos: "GK", nation: "es" }],
+        [
+          { name: "Marc Cucurella", pos: "LB", nation: "es" },
+          { name: "Trevoh Chalobah", pos: "CB", nation: "gb-eng" },
+          { name: "Wesley Fofana", pos: "CB", nation: "fr" },
+          { name: "Reece James", pos: "RB", nation: "gb-eng" },
+        ],
+        [
+          { name: "Moisés Caicedo", pos: "DM", nation: "ec" },
+          { name: "Enzo Fernández", pos: "CM", nation: "ar" },
+        ],
+        [
+          { name: "Alejandro Garnacho", pos: "LW", nation: "ar" },
+          { name: "Cole Palmer", pos: "AM", nation: "gb-eng" },
+          { name: "Pedro Neto", pos: "RW", nation: "pt" },
+        ],
+        [{ name: "João Pedro", pos: "ST", nation: "br" }],
+      ],
+    },
+    {
+      id: "man-united",
+      name: "Manchester United",
+      badge: "https://resources.premierleague.com/premierleague/badges/100/t1@x2.png",
+      color: "#DA291C",
+      formation: "3-4-2-1",
+      rows: [
+        [{ name: "Senne Lammens", pos: "GK", nation: "be" }],
+        [
+          { name: "Luke Shaw", pos: "CB", nation: "gb-eng" },
+          { name: "Matthijs de Ligt", pos: "CB", nation: "nl" },
+          { name: "Leny Yoro", pos: "CB", nation: "fr" },
+        ],
+        [
+          { name: "Patrick Dorgu", pos: "LWB", nation: "dk" },
+          { name: "Casemiro", pos: "CM", nation: "br" },
+          { name: "Bruno Fernandes", pos: "CM", nation: "pt" },
+          { name: "Amad Diallo", pos: "RWB", nation: "ci" },
+        ],
+        [
+          { name: "Matheus Cunha", pos: "AM", nation: "br" },
+          { name: "Bryan Mbeumo", pos: "AM", nation: "cm" },
+        ],
+        [{ name: "Benjamin Šeško", pos: "ST", nation: "si" }],
+      ],
+    },
+    {
+      id: "tottenham",
+      name: "Tottenham Hotspur",
+      badge: "https://resources.premierleague.com/premierleague/badges/100/t6@x2.png",
+      color: "#132257",
+      formation: "4-2-3-1",
+      rows: [
+        [{ name: "Guglielmo Vicario", pos: "GK", nation: "it" }],
+        [
+          { name: "Destiny Udogie", pos: "LB", nation: "it" },
+          { name: "Micky van de Ven", pos: "CB", nation: "nl" },
+          { name: "Cristian Romero", pos: "CB", nation: "ar" },
+          { name: "Pedro Porro", pos: "RB", nation: "es" },
+        ],
+        [
+          { name: "João Palhinha", pos: "DM", nation: "pt" },
+          { name: "Rodrigo Bentancur", pos: "CM", nation: "uy" },
+        ],
+        [
+          { name: "Wilson Odobert", pos: "LW", nation: "fr" },
+          { name: "Xavi Simons", pos: "AM", nation: "nl" },
+          { name: "Mohammed Kudus", pos: "RW", nation: "gh" },
+        ],
+        [{ name: "Richarlison", pos: "ST", nation: "br" }],
+      ],
+    },
+  ],
+
+  nations: {
+    "gb-eng": {
+      name: "England",
+      formation: "4-2-3-1",
+      rows: [
+        [{ name: "Jordan Pickford", pos: "GK", club: "Everton" }],
+        [
+          { name: "Myles Lewis-Skelly", pos: "LB", club: "Arsenal" },
+          { name: "Marc Guéhi", pos: "CB", club: "Crystal Palace" },
+          { name: "John Stones", pos: "CB", club: "Manchester City" },
+          { name: "Reece James", pos: "RB", club: "Chelsea" },
+        ],
+        [
+          { name: "Declan Rice", pos: "DM", club: "Arsenal" },
+          { name: "Elliot Anderson", pos: "CM", club: "Nottingham Forest" },
+        ],
+        [
+          { name: "Anthony Gordon", pos: "LW", club: "Newcastle United" },
+          { name: "Jude Bellingham", pos: "AM", club: "Real Madrid" },
+          { name: "Bukayo Saka", pos: "RW", club: "Arsenal" },
+        ],
+        [{ name: "Harry Kane", pos: "ST", club: "Bayern Munich" }],
+      ],
+    },
+    fr: {
+      name: "France",
+      formation: "4-3-3",
+      rows: [
+        [{ name: "Mike Maignan", pos: "GK", club: "AC Milan" }],
+        [
+          { name: "Théo Hernandez", pos: "LB", club: "Al-Hilal" },
+          { name: "Ibrahima Konaté", pos: "CB", club: "Liverpool" },
+          { name: "William Saliba", pos: "CB", club: "Arsenal" },
+          { name: "Jules Koundé", pos: "RB", club: "Barcelona" },
+        ],
+        [
+          { name: "Manu Koné", pos: "CM", club: "Roma" },
+          { name: "Aurélien Tchouaméni", pos: "DM", club: "Real Madrid" },
+          { name: "Adrien Rabiot", pos: "CM", club: "AC Milan" },
+        ],
+        [
+          { name: "Ousmane Dembélé", pos: "LW", club: "Paris Saint-Germain" },
+          { name: "Kylian Mbappé", pos: "ST", club: "Real Madrid" },
+          { name: "Michael Olise", pos: "RW", club: "Bayern Munich" },
+        ],
+      ],
+    },
+    br: {
+      name: "Brazil",
+      formation: "4-2-3-1",
+      rows: [
+        [{ name: "Alisson Becker", pos: "GK", club: "Liverpool" }],
+        [
+          { name: "Alex Sandro", pos: "LB", club: "Flamengo" },
+          { name: "Gabriel Magalhães", pos: "CB", club: "Arsenal" },
+          { name: "Marquinhos", pos: "CB", club: "Paris Saint-Germain" },
+          { name: "Wesley França", pos: "RB", club: "Roma" },
+        ],
+        [
+          { name: "Casemiro", pos: "DM", club: "Manchester United" },
+          { name: "Bruno Guimarães", pos: "CM", club: "Newcastle United" },
+        ],
+        [
+          { name: "Vinícius Júnior", pos: "LW", club: "Real Madrid" },
+          { name: "Matheus Cunha", pos: "AM", club: "Manchester United" },
+          { name: "Estêvão", pos: "RW", club: "Chelsea" },
+        ],
+        [{ name: "João Pedro", pos: "ST", club: "Chelsea" }],
+      ],
+    },
+    es: {
+      name: "Spain",
+      formation: "4-3-3",
+      rows: [
+        [{ name: "Unai Simón", pos: "GK", club: "Athletic Club" }],
+        [
+          { name: "Marc Cucurella", pos: "LB", club: "Chelsea" },
+          { name: "Dean Huijsen", pos: "CB", club: "Real Madrid" },
+          { name: "Robin Le Normand", pos: "CB", club: "Atlético Madrid" },
+          { name: "Pedro Porro", pos: "RB", club: "Tottenham Hotspur" },
+        ],
+        [
+          { name: "Pedri", pos: "CM", club: "Barcelona" },
+          { name: "Martín Zubimendi", pos: "DM", club: "Arsenal" },
+          { name: "Mikel Merino", pos: "CM", club: "Arsenal" },
+        ],
+        [
+          { name: "Nico Williams", pos: "LW", club: "Athletic Club" },
+          { name: "Mikel Oyarzabal", pos: "ST", club: "Real Sociedad" },
+          { name: "Lamine Yamal", pos: "RW", club: "Barcelona" },
+        ],
+      ],
+    },
+    nl: {
+      name: "Netherlands",
+      formation: "4-3-3",
+      rows: [
+        [{ name: "Bart Verbruggen", pos: "GK", club: "Brighton & Hove Albion" }],
+        [
+          { name: "Micky van de Ven", pos: "LB", club: "Tottenham Hotspur" },
+          { name: "Virgil van Dijk", pos: "CB", club: "Liverpool" },
+          { name: "Matthijs de Ligt", pos: "CB", club: "Manchester United" },
+          { name: "Denzel Dumfries", pos: "RB", club: "Inter Milan" },
+        ],
+        [
+          { name: "Tijjani Reijnders", pos: "CM", club: "Manchester City" },
+          { name: "Ryan Gravenberch", pos: "DM", club: "Liverpool" },
+          { name: "Frenkie de Jong", pos: "CM", club: "Barcelona" },
+        ],
+        [
+          { name: "Cody Gakpo", pos: "LW", club: "Liverpool" },
+          { name: "Memphis Depay", pos: "ST", club: "Corinthians" },
+          { name: "Xavi Simons", pos: "RW", club: "Tottenham Hotspur" },
+        ],
+      ],
+    },
+    pt: {
+      name: "Portugal",
+      formation: "4-3-3",
+      rows: [
+        [{ name: "Diogo Costa", pos: "GK", club: "Porto" }],
+        [
+          { name: "Nuno Mendes", pos: "LB", club: "Paris Saint-Germain" },
+          { name: "Gonçalo Inácio", pos: "CB", club: "Sporting CP" },
+          { name: "Rúben Dias", pos: "CB", club: "Manchester City" },
+          { name: "João Cancelo", pos: "RB", club: "Al-Hilal" },
+        ],
+        [
+          { name: "Vitinha", pos: "CM", club: "Paris Saint-Germain" },
+          { name: "João Neves", pos: "CM", club: "Paris Saint-Germain" },
+          { name: "Bruno Fernandes", pos: "CM", club: "Manchester United" },
+        ],
+        [
+          { name: "Pedro Neto", pos: "LW", club: "Chelsea" },
+          { name: "Cristiano Ronaldo", pos: "ST", club: "Al-Nassr" },
+          { name: "Bernardo Silva", pos: "RW", club: "Manchester City" },
+        ],
+      ],
+    },
+    ar: {
+      name: "Argentina",
+      formation: "4-3-3",
+      rows: [
+        [{ name: "Emiliano Martínez", pos: "GK", club: "Aston Villa" }],
+        [
+          { name: "Nicolás Tagliafico", pos: "LB", club: "Lyon" },
+          { name: "Cristian Romero", pos: "CB", club: "Tottenham Hotspur" },
+          { name: "Nicolás Otamendi", pos: "CB", club: "Benfica" },
+          { name: "Nahuel Molina", pos: "RB", club: "Atlético Madrid" },
+        ],
+        [
+          { name: "Alexis Mac Allister", pos: "CM", club: "Liverpool" },
+          { name: "Rodrigo De Paul", pos: "CM", club: "Inter Miami" },
+          { name: "Enzo Fernández", pos: "CM", club: "Chelsea" },
+        ],
+        [
+          { name: "Thiago Almada", pos: "LW", club: "Atlético Madrid" },
+          { name: "Julián Álvarez", pos: "ST", club: "Atlético Madrid" },
+          { name: "Lionel Messi", pos: "RW", club: "Inter Miami" },
+        ],
+      ],
+    },
+    be: {
+      name: "Belgium",
+      formation: "4-2-3-1",
+      rows: [
+        [{ name: "Thibaut Courtois", pos: "GK", club: "Real Madrid" }],
+        [
+          { name: "Arthur Theate", pos: "LB", club: "Eintracht Frankfurt" },
+          { name: "Wout Faes", pos: "CB", club: "Leicester City" },
+          { name: "Zeno Debast", pos: "CB", club: "Sporting CP" },
+          { name: "Timothy Castagne", pos: "RB", club: "Fulham" },
+        ],
+        [
+          { name: "Amadou Onana", pos: "DM", club: "Aston Villa" },
+          { name: "Youri Tielemans", pos: "CM", club: "Aston Villa" },
+        ],
+        [
+          { name: "Jérémy Doku", pos: "LW", club: "Manchester City" },
+          { name: "Kevin De Bruyne", pos: "AM", club: "Napoli" },
+          { name: "Charles De Ketelaere", pos: "RW", club: "Atalanta" },
+        ],
+        [{ name: "Loïs Openda", pos: "ST", club: "Juventus" }],
+      ],
+    },
+    it: {
+      name: "Italy",
+      formation: "4-3-3",
+      rows: [
+        [{ name: "Gianluigi Donnarumma", pos: "GK", club: "Manchester City" }],
+        [
+          { name: "Federico Dimarco", pos: "LB", club: "Inter Milan" },
+          { name: "Riccardo Calafiori", pos: "CB", club: "Arsenal" },
+          { name: "Alessandro Bastoni", pos: "CB", club: "Inter Milan" },
+          { name: "Giovanni Di Lorenzo", pos: "RB", club: "Napoli" },
+        ],
+        [
+          { name: "Sandro Tonali", pos: "DM", club: "Newcastle United" },
+          { name: "Nicolò Barella", pos: "CM", club: "Inter Milan" },
+          { name: "Davide Frattesi", pos: "CM", club: "Inter Milan" },
+        ],
+        [
+          { name: "Mattia Zaccagni", pos: "LW", club: "Lazio" },
+          { name: "Mateo Retegui", pos: "ST", club: "Al-Qadsiah" },
+          { name: "Matteo Politano", pos: "RW", club: "Napoli" },
+        ],
+      ],
+    },
+    no: {
+      name: "Norway",
+      formation: "4-3-3",
+      rows: [
+        [{ name: "Ørjan Nyland", pos: "GK", club: "Sevilla" }],
+        [
+          { name: "David Møller Wolfe", pos: "LB", club: "AZ Alkmaar" },
+          { name: "Kristoffer Ajer", pos: "CB", club: "Brentford" },
+          { name: "Leo Østigård", pos: "CB", club: "Genoa" },
+          { name: "Julian Ryerson", pos: "RB", club: "Borussia Dortmund" },
+        ],
+        [
+          { name: "Sander Berge", pos: "CM", club: "Fulham" },
+          { name: "Martin Ødegaard", pos: "CM", club: "Arsenal" },
+          { name: "Thelo Aasgaard", pos: "CM", club: "Rangers" },
+        ],
+        [
+          { name: "Antonio Nusa", pos: "LW", club: "RB Leipzig" },
+          { name: "Erling Haaland", pos: "ST", club: "Manchester City" },
+          { name: "Oscar Bobb", pos: "RW", club: "Manchester City" },
+        ],
+      ],
+    },
+    se: {
+      name: "Sweden",
+      formation: "4-4-2",
+      rows: [
+        [{ name: "Viktor Johansson", pos: "GK", club: "Stoke City" }],
+        [
+          { name: "Gabriel Gudmundsson", pos: "LB", club: "Leeds United" },
+          { name: "Isak Hien", pos: "CB", club: "Atalanta" },
+          { name: "Victor Lindelöf", pos: "CB", club: "Aston Villa" },
+          { name: "Emil Holm", pos: "RB", club: "Bologna" },
+        ],
+        [
+          { name: "Lucas Bergvall", pos: "LM", club: "Tottenham Hotspur" },
+          { name: "Yasin Ayari", pos: "CM", club: "Brighton & Hove Albion" },
+          { name: "Jesper Karlström", pos: "CM", club: "Lech Poznań" },
+          { name: "Anthony Elanga", pos: "RM", club: "Newcastle United" },
+        ],
+        [
+          { name: "Viktor Gyökeres", pos: "ST", club: "Arsenal" },
+          { name: "Alexander Isak", pos: "ST", club: "Liverpool" },
+        ],
+      ],
+    },
+    hr: {
+      name: "Croatia",
+      formation: "4-3-3",
+      rows: [
+        [{ name: "Dominik Livaković", pos: "GK", club: "Fenerbahçe" }],
+        [
+          { name: "Josko Gvardiol", pos: "LB", club: "Manchester City" },
+          { name: "Marin Pongračić", pos: "CB", club: "Fiorentina" },
+          { name: "Josip Šutalo", pos: "CB", club: "Ajax" },
+          { name: "Josip Stanišić", pos: "RB", club: "Bayern Munich" },
+        ],
+        [
+          { name: "Mateo Kovačić", pos: "CM", club: "Manchester City" },
+          { name: "Luka Modrić", pos: "CM", club: "AC Milan" },
+          { name: "Petar Sučić", pos: "CM", club: "Inter Milan" },
+        ],
+        [
+          { name: "Ivan Perišić", pos: "LW", club: "PSV Eindhoven" },
+          { name: "Ante Budimir", pos: "ST", club: "Osasuna" },
+          { name: "Andrej Kramarić", pos: "RW", club: "Hoffenheim" },
+        ],
+      ],
+    },
+    hu: {
+      name: "Hungary",
+      formation: "3-4-2-1",
+      rows: [
+        [{ name: "Dénes Dibusz", pos: "GK", club: "Ferencváros" }],
+        [
+          { name: "Botond Balogh", pos: "CB", club: "Parma" },
+          { name: "Willi Orbán", pos: "CB", club: "RB Leipzig" },
+          { name: "Attila Szalai", pos: "CB", club: "Kasımpaşa" },
+        ],
+        [
+          { name: "Milos Kerkez", pos: "LWB", club: "Liverpool" },
+          { name: "András Schäfer", pos: "CM", club: "Union Berlin" },
+          { name: "Callum Styles", pos: "CM", club: "West Bromwich Albion" },
+          { name: "Loïc Négo", pos: "RWB", club: "Le Havre" },
+        ],
+        [
+          { name: "Dominik Szoboszlai", pos: "AM", club: "Liverpool" },
+          { name: "Roland Sallai", pos: "AM", club: "Galatasaray" },
+        ],
+        [{ name: "Barnabás Varga", pos: "ST", club: "Ferencváros" }],
+      ],
+    },
+    "gb-nir": {
+      name: "Northern Ireland",
+      formation: "3-5-2",
+      rows: [
+        [{ name: "Bailey Peacock-Farrell", pos: "GK", club: "Birmingham City" }],
+        [
+          { name: "Trai Hume", pos: "CB", club: "Sunderland" },
+          { name: "Daniel Ballard", pos: "CB", club: "Sunderland" },
+          { name: "Paddy McNair", pos: "CB", club: "San Diego FC" },
+        ],
+        [
+          { name: "Jamal Lewis", pos: "LWB", club: "São Paulo" },
+          { name: "Isaac Price", pos: "CM", club: "West Bromwich Albion" },
+          { name: "Shea Charles", pos: "CM", club: "Southampton" },
+          { name: "Ali McCann", pos: "CM", club: "Preston North End" },
+          { name: "Conor Bradley", pos: "RWB", club: "Liverpool" },
+        ],
+        [
+          { name: "Dion Charles", pos: "ST", club: "Bolton Wanderers" },
+          { name: "Josh Magennis", pos: "ST", club: "Exeter City" },
+        ],
+      ],
+    },
+    de: {
+      name: "Germany",
+      formation: "4-2-3-1",
+      rows: [
+        [{ name: "Oliver Baumann", pos: "GK", club: "Hoffenheim" }],
+        [
+          { name: "David Raum", pos: "LB", club: "RB Leipzig" },
+          { name: "Nico Schlotterbeck", pos: "CB", club: "Borussia Dortmund" },
+          { name: "Jonathan Tah", pos: "CB", club: "Bayern Munich" },
+          { name: "Joshua Kimmich", pos: "RB", club: "Bayern Munich" },
+        ],
+        [
+          { name: "Aleksandar Pavlović", pos: "CM", club: "Bayern Munich" },
+          { name: "Leon Goretzka", pos: "CM", club: "Bayern Munich" },
+        ],
+        [
+          { name: "Leroy Sané", pos: "LW", club: "Galatasaray" },
+          { name: "Florian Wirtz", pos: "AM", club: "Liverpool" },
+          { name: "Serge Gnabry", pos: "RW", club: "Bayern Munich" },
+        ],
+        [{ name: "Nick Woltemade", pos: "ST", club: "Newcastle United" }],
+      ],
+    },
+    eg: {
+      name: "Egypt",
+      formation: "4-2-3-1",
+      rows: [
+        [{ name: "Mohamed El Shenawy", pos: "GK", club: "Al Ahly" }],
+        [
+          { name: "Ahmed Fatouh", pos: "LB", club: "Zamalek" },
+          { name: "Mohamed Abdelmonem", pos: "CB", club: "Nice" },
+          { name: "Ahmed Hegazi", pos: "CB", club: "Neom SC" },
+          { name: "Mohamed Hany", pos: "RB", club: "Al Ahly" },
+        ],
+        [
+          { name: "Marwan Attia", pos: "DM", club: "Al Ahly" },
+          { name: "Hamdy Fathy", pos: "CM", club: "AEK Athens" },
+        ],
+        [
+          { name: "Trezeguet", pos: "LW", club: "Trabzonspor" },
+          { name: "Zizo", pos: "AM", club: "Al Ahly" },
+          { name: "Mohamed Salah", pos: "RW", club: "Liverpool" },
+        ],
+        [{ name: "Omar Marmoush", pos: "ST", club: "Manchester City" }],
+      ],
+    },
+    ec: {
+      name: "Ecuador",
+      formation: "4-2-3-1",
+      rows: [
+        [{ name: "Hernán Galíndez", pos: "GK", club: "Huracán" }],
+        [
+          { name: "Pervis Estupiñán", pos: "LB", club: "AC Milan" },
+          { name: "Willian Pacho", pos: "CB", club: "Paris Saint-Germain" },
+          { name: "Piero Hincapié", pos: "CB", club: "Arsenal" },
+          { name: "Angelo Preciado", pos: "RB", club: "Sparta Prague" },
+        ],
+        [
+          { name: "Moisés Caicedo", pos: "DM", club: "Chelsea" },
+          { name: "Pedro Vite", pos: "CM", club: "Pumas UNAM" },
+        ],
+        [
+          { name: "Nilson Angulo", pos: "LW", club: "Anderlecht" },
+          { name: "Kendry Páez", pos: "AM", club: "Strasbourg" },
+          { name: "Gonzalo Plata", pos: "RW", club: "Flamengo" },
+        ],
+        [{ name: "Enner Valencia", pos: "ST", club: "Pachuca" }],
+      ],
+    },
+    ci: {
+      name: "Ivory Coast",
+      formation: "4-3-3",
+      rows: [
+        [{ name: "Yahia Fofana", pos: "GK", club: "Angers" }],
+        [
+          { name: "Ghislain Konan", pos: "LB", club: "Al-Fayha" },
+          { name: "Evan Ndicka", pos: "CB", club: "Roma" },
+          { name: "Ousmane Diomandé", pos: "CB", club: "Sporting CP" },
+          { name: "Wilfried Singo", pos: "RB", club: "Galatasaray" },
+        ],
+        [
+          { name: "Franck Kessié", pos: "CM", club: "Al-Ahli" },
+          { name: "Ibrahim Sangaré", pos: "DM", club: "Nottingham Forest" },
+          { name: "Seko Fofana", pos: "CM", club: "Rennes" },
+        ],
+        [
+          { name: "Simon Adingra", pos: "LW", club: "Sunderland" },
+          { name: "Sébastien Haller", pos: "ST", club: "Utrecht" },
+          { name: "Amad Diallo", pos: "RW", club: "Manchester United" },
+        ],
+      ],
+    },
+    dk: {
+      name: "Denmark",
+      formation: "4-3-3",
+      rows: [
+        [{ name: "Kasper Schmeichel", pos: "GK", club: "Celtic" }],
+        [
+          { name: "Patrick Dorgu", pos: "LB", club: "Manchester United" },
+          { name: "Andreas Christensen", pos: "CB", club: "Barcelona" },
+          { name: "Joachim Andersen", pos: "CB", club: "Fulham" },
+          { name: "Rasmus Kristensen", pos: "RB", club: "Eintracht Frankfurt" },
+        ],
+        [
+          { name: "Pierre-Emile Højbjerg", pos: "CM", club: "Marseille" },
+          { name: "Morten Hjulmand", pos: "DM", club: "Sporting CP" },
+          { name: "Christian Eriksen", pos: "CM", club: "Wolfsburg" },
+        ],
+        [
+          { name: "Mikkel Damsgaard", pos: "LW", club: "Brentford" },
+          { name: "Rasmus Højlund", pos: "ST", club: "Napoli" },
+          { name: "Gustav Isaksen", pos: "RW", club: "Lazio" },
+        ],
+      ],
+    },
+    cm: {
+      name: "Cameroon",
+      formation: "4-3-3",
+      rows: [
+        [{ name: "André Onana", pos: "GK", club: "Trabzonspor" }],
+        [
+          { name: "Nouhou Tolo", pos: "LB", club: "Seattle Sounders" },
+          { name: "Jean-Charles Castelletto", pos: "CB", club: "Nantes" },
+          { name: "Christopher Wooh", pos: "CB", club: "Rennes" },
+          { name: "Junior Tchamadeu", pos: "RB", club: "Stoke City" },
+        ],
+        [
+          { name: "Carlos Baleba", pos: "CM", club: "Brighton & Hove Albion" },
+          { name: "André-Frank Zambo Anguissa", pos: "DM", club: "Napoli" },
+          { name: "Martin Hongla", pos: "CM", club: "Espanyol" },
+        ],
+        [
+          { name: "Moumi Ngamaleu", pos: "LW", club: "Dynamo Moscow" },
+          { name: "Karl Etta Eyong", pos: "ST", club: "Levante" },
+          { name: "Bryan Mbeumo", pos: "RW", club: "Manchester United" },
+        ],
+      ],
+    },
+    si: {
+      name: "Slovenia",
+      formation: "4-4-2",
+      rows: [
+        [{ name: "Jan Oblak", pos: "GK", club: "Atlético Madrid" }],
+        [
+          { name: "Erik Janža", pos: "LB", club: "Górnik Zabrze" },
+          { name: "Jaka Bijol", pos: "CB", club: "Leeds United" },
+          { name: "David Brekalo", pos: "CB", club: "Orlando City" },
+          { name: "Žan Karničnik", pos: "RB", club: "Celje" },
+        ],
+        [
+          { name: "Jan Mlakar", pos: "LM", club: "Pisa" },
+          { name: "Timi Max Elšnik", pos: "CM", club: "Legia Warsaw" },
+          { name: "Adam Gnezda Čerin", pos: "CM", club: "Panathinaikos" },
+          { name: "Sandi Lovrić", pos: "RM", club: "Udinese" },
+        ],
+        [
+          { name: "Benjamin Šeško", pos: "ST", club: "Manchester United" },
+          { name: "Andraž Šporar", pos: "ST", club: "Slovan Bratislava" },
+        ],
+      ],
+    },
+    uy: {
+      name: "Uruguay",
+      formation: "4-3-3",
+      rows: [
+        [{ name: "Sergio Rochet", pos: "GK", club: "Internacional" }],
+        [
+          { name: "Matías Viña", pos: "LB", club: "Flamengo" },
+          { name: "José María Giménez", pos: "CB", club: "Atlético Madrid" },
+          { name: "Ronald Araújo", pos: "CB", club: "Barcelona" },
+          { name: "Nahitan Nández", pos: "RB", club: "Al-Qadsiah" },
+        ],
+        [
+          { name: "Rodrigo Bentancur", pos: "CM", club: "Tottenham Hotspur" },
+          { name: "Manuel Ugarte", pos: "DM", club: "Manchester United" },
+          { name: "Federico Valverde", pos: "CM", club: "Real Madrid" },
+        ],
+        [
+          { name: "Maximiliano Araújo", pos: "LW", club: "Sporting CP" },
+          { name: "Darwin Núñez", pos: "ST", club: "Al-Hilal" },
+          { name: "Facundo Pellistri", pos: "RW", club: "Panathinaikos" },
+        ],
+      ],
+    },
+    gh: {
+      name: "Ghana",
+      formation: "4-2-3-1",
+      rows: [
+        [{ name: "Lawrence Ati-Zigi", pos: "GK", club: "St. Gallen" }],
+        [
+          { name: "Gideon Mensah", pos: "LB", club: "Auxerre" },
+          { name: "Mohammed Salisu", pos: "CB", club: "Monaco" },
+          { name: "Alexander Djiku", pos: "CB", club: "Spartak Moscow" },
+          { name: "Tariq Lamptey", pos: "RB", club: "Fiorentina" },
+        ],
+        [
+          { name: "Thomas Partey", pos: "DM", club: "Villarreal" },
+          { name: "Salis Abdul Samed", pos: "CM", club: "Sunderland" },
+        ],
+        [
+          { name: "Antoine Semenyo", pos: "LW", club: "Bournemouth" },
+          { name: "Mohammed Kudus", pos: "AM", club: "Tottenham Hotspur" },
+          { name: "Iñaki Williams", pos: "RW", club: "Athletic Club" },
+        ],
+        [{ name: "Jordan Ayew", pos: "ST", club: "Leicester City" }],
+      ],
+    },
+  },
+};
