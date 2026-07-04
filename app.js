@@ -743,6 +743,12 @@ function route() {
   } else {
     renderHome(); // default view: how-to-use landing page
   }
+  // keep the address bar on the canonical path URL so shared links get dynamic previews
+  const canonical =
+    parts[0] === "club" ? `/club/${lastClubId}` :
+    parts[0] === "nation" && parts[1] ? `/nation/${parts[1]}` :
+    parts[0] === "top" ? "/top" : "/";
+  if (location.protocol !== "file:") history.replaceState(null, "", canonical);
   window.scrollTo(0, 0);
 }
 
