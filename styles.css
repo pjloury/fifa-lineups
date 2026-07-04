@@ -418,11 +418,6 @@ main {
 .yc-ico { background: #f4d03f; }
 .rc-ico { background: #ff6b5e; }
 
-@media (max-width: 860px) {
-  .top-row { grid-template-columns: 22px auto 1fr 120px; }
-  .top-row .cell:last-child span { display: none; }
-  .top-row .who-note { display: none; }
-}
 
 /* ---------- pitch ---------- */
 #pitch-wrap {
@@ -709,6 +704,92 @@ main {
   .rail-btn span { display: none; }
 }
 
+
+/* ================= mobile (phones) ================= */
+html, body { overflow-x: hidden; }
+
 @media (max-width: 700px) {
+  :root {
+    --face: clamp(30px, 10vw, 44px);
+    --card-w: 19vw;
+    --name-fs: 8.5px;
+    --chip: 13px;
+  }
+
+  /* stacked layout: club strip / pitch / nation strip */
+  main { flex-direction: column; }
+  #rail, #nrail {
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 5px 8px;
+    gap: 5px;
+    border-right: none;
+    border-left: none;
+  }
+  #rail { order: 0; border-bottom: 1px solid rgba(255,255,255,.07); }
+  #stage { order: 1; padding: 6px 8px 8px; }
+  #nrail { order: 2; border-top: 1px solid rgba(255,255,255,.07); }
+  .rail-btn { width: auto; padding: 5px 7px; flex: none; }
+  .rail-btn span { display: none; }
+  .rail-btn .status-tag { display: none; }
+  .top-players-btn { margin-bottom: 0; }
+  .top-players-btn .star { display: inline; }
+
+  /* compact header, no explainer text */
+  header { min-height: 44px; padding: 5px 10px; gap: 8px; }
+  header .sub { display: none; }
+  header h1 { font-size: 15px; }
+  header img.badge { height: 26px; width: 26px; }
+  header img.flag { height: 18px; }
+  #logo { font-size: 14px; gap: 5px; padding-right: 7px; }
+  #logo .ball { font-size: 16px; }
+  .back-btn { padding: 4px 9px; font-size: 11px; }
+  .info-dot { display: none; }
+  .team-facts {
+    margin-left: 0;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    min-width: 0;
+  }
+  .team-facts::-webkit-scrollbar { display: none; }
+  .fact { font-size: 9.5px; padding: 3px 8px; }
+
+  /* player cards: tighter, single-line names, no meta */
+  /* width-driven pitch: never wider than the phone */
+  #pitch { height: auto; width: 100%; max-height: 100%; }
+
+  .pname { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 21vw; padding: 2px 6px; }
   .pmeta { display: none; }
+  .pitch-label { font-size: clamp(16px, 8vw, 40px); }
+  .pitch-mark { width: 24%; }
+
+  /* bench and banner stay out of the way */
+  #bench { display: none; }
+  #banner { width: 100%; }
+  .banner-inner { font-size: 10px; padding: 4px 9px; }
+  .banner-inner img { height: 22px; width: 22px; }
+
+  /* bio card: never off-screen, scroll if tall */
+  #bio-pop { width: min(300px, 92vw); max-height: 64vh; overflow-y: auto; }
+
+  /* top players: rank / photo / name / stats only */
+  #list { padding: 2px 2px 10px; }
+  .top-row { grid-template-columns: 18px 36px 1fr 84px; gap: 8px; padding: 5px 8px; }
+  .top-row .cell { display: none; }
+  .top-row .headshot, .top-row .headshot img.face, .top-row .headshot .initials { width: 34px; height: 34px; }
+  .top-row .who-name { font-size: 12.5px; }
+  .top-row .who-note { display: none; }
+  .top-row .who-pos { font-size: 9.5px; }
+  .top-bio { padding: 10px 12px; }
+
+  /* home page */
+  #home { padding: 8px 4px 14px; }
+  .home-hero h2 { font-size: 21px; }
+  .home-hero p { font-size: 12.5px; }
+  .home-ctas button { padding: 7px 13px; font-size: 12px; }
+  .home-card { font-size: 11.5px; padding: 11px 12px; }
 }
