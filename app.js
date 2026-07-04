@@ -69,6 +69,34 @@ const flagUrl = (code, w = 80) => `https://flagcdn.com/w${w}/${code}.png`;
 const clubById = (id) => DATA.clubs.find((c) => c.id === id);
 const clubByName = (name) => DATA.clubs.find((c) => c.name === name);
 
+// captain lookups: player name -> team he captains
+const CAPTAIN_OF_CLUB = Object.fromEntries(
+  Object.entries(DATA.captains?.clubs ?? {}).map(([club, player]) => [player, club])
+);
+const CAPTAIN_OF_NATION = Object.fromEntries(
+  Object.entries(DATA.captains?.nations ?? {}).map(([code, player]) => [player, code])
+);
+
+// "C" armband badges (club: white, national team: gold) — shown in every view
+function captainBadges(name) {
+  const club = CAPTAIN_OF_CLUB[name];
+  const natCode = CAPTAIN_OF_NATION[name];
+  if (!club && !natCode) return null;
+  const wrap = document.createElement("div");
+  wrap.className = "cap-badges";
+  if (club) wrap.innerHTML += `<span class="cap-badge club" title="${club} captain">C</span>`;
+  if (natCode)
+    wrap.innerHTML += `<span class="cap-badge nat" title="${DATA.nations[natCode]?.name ?? ""} captain">C</span>`;
+  return wrap;
+}
+
+function captainLine(name) {
+  const bits = [];
+  if (CAPTAIN_OF_CLUB[name]) bits.push(`captain of ${CAPTAIN_OF_CLUB[name]}`);
+  if (CAPTAIN_OF_NATION[name]) bits.push(`captains ${DATA.nations[CAPTAIN_OF_NATION[name]]?.name}`);
+  return bits.length ? `Ⓒ ${bits.join(" · ")}` : "";
+}
+
 // "Benfica (Portugal)" — add the club's country when it isn't one of the 13 headline clubs
 const clubLabel = (name) =>
   DATA.clubCountries?.[name] && !clubByName(name) ? `${name} (${DATA.clubCountries[name]})` : name;
@@ -165,9 +193,11 @@ function bioHTML(name, teamLine, extraNote, natLine) {
   const bio = BIOS[name] ?? {};
   const age = ageFrom(bio.born);
   const wcLine = wcStatLine(name);
+  const capLine = captainLine(name);
   return `
     <div class="bio-head">${name}${age != null ? ` <span class="bio-age">· ${age} yrs</span>` : ""}</div>
     <div class="bio-meta">${teamLine}</div>
+    ${capLine ? `<div class="bio-cap">${capLine}</div>` : ""}
     ${natLine ? `<div class="bio-nat ${natLine.cls}">${natLine.text}</div>` : ""}
     ${extraNote ? `<div class="bio-note">${extraNote}</div>` : ""}
     ${wcLine ? `<div class="bio-wc">${wcLine}</div>` : ""}
@@ -237,6 +267,8 @@ function playerCard({ name, pos, meta, bioMeta, chipUrl, chipRound, featured, na
   el.className =
     "player" + (featured ? " featured" : "") + (natStarter ? " nat-starter" : "");
   const head = headshot(name);
+  const caps = captainBadges(name);
+  if (caps) head.appendChild(caps);
   const wc = WC.players[name];
   if (wc && (wc.g || wc.a)) {
     const badges = document.createElement("div");
@@ -485,7 +517,10 @@ function renderClubBench(club) {
   for (const b of entries) {
     const card = document.createElement("button");
     card.className = "bench-card";
-    card.appendChild(headshot(b.name));
+    const bh = headshot(b.name);
+    const bc = captainBadges(b.name);
+    if (bc) bh.appendChild(bc);
+    card.appendChild(bh);
     const s = WC.players[b.name];
     const badges =
       (s?.g ? `<span class="wc-badge goals">⚽${s.g}</span>` : "") +
@@ -517,7 +552,10 @@ function renderBench(code, nationName) {
   for (const b of listData) {
     const card = document.createElement("button");
     card.className = "bench-card";
-    card.appendChild(headshot(b.name));
+    const bh = headshot(b.name);
+    const bc = captainBadges(b.name);
+    if (bc) bh.appendChild(bc);
+    card.appendChild(bh);
     const info = document.createElement("div");
     info.className = "bench-info";
     const badges =
