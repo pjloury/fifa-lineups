@@ -1,8 +1,8 @@
 // Typical starting XIs, 2025-26 season (club) and recent internationals (national teams).
 // rows are ordered goalkeeper-first; each row is laid out left-to-right on the pitch.
 window.APP_DATA = {
-  // shown in the right-edge rail, in this order
-  featuredNations: ["fr", "de", "es", "pt", "br", "us", "ar", "gb-eng", "nl", "it", "be", "hr", "ma", "co", "uy", "no"],
+  // shown in the right-edge rail, ordered by World Cup seeding (FIFA ranking at the Dec 2025 draw)
+  featuredNations: ["es", "ar", "fr", "gb-eng", "br", "pt", "nl", "be", "de", "hr", "ma", "it", "co", "us", "uy", "no"],
 
   // the marquee names of the 2026 World Cup: club + country at a glance
   topPlayers: [

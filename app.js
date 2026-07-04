@@ -1,6 +1,18 @@
 const DATA = window.APP_DATA;
 const IMAGES = window.PLAYER_IMAGES || {};
 const BIOS = window.PLAYER_BIOS || {};
+const WC = window.WC || { players: {}, nations: {} };
+
+function wcStatLine(name) {
+  const s = WC.players[name];
+  if (!s) return "";
+  const bits = [];
+  if (s.g) bits.push(`⚽ ${s.g} goal${s.g > 1 ? "s" : ""}`);
+  if (s.a) bits.push(`${s.a} assist${s.a > 1 ? "s" : ""}`);
+  if (s.yc) bits.push(`${s.yc} yellow`);
+  if (s.rc) bits.push(`${s.rc} red`);
+  return bits.length ? `World Cup 2026: ${bits.join(" · ")}` : "";
+}
 
 const $header = document.getElementById("header");
 const $rail = document.getElementById("rail");
@@ -91,9 +103,11 @@ function attachBio(el, { name, teamLine }) {
     clearTimeout(bioTimer);
     bioTimer = setTimeout(() => {
       const age = ageFrom(bio.born);
+      const wcLine = wcStatLine(name);
       $bio.innerHTML = `
         <div class="bio-head">${name}${age != null ? ` <span class="bio-age">· ${age} yrs</span>` : ""}</div>
         <div class="bio-meta">${teamLine}</div>
+        ${wcLine ? `<div class="bio-wc">${wcLine}</div>` : ""}
         ${bio.b ? `<div class="bio-text">${bio.b}</div>` : ""}`;
       const r = el.getBoundingClientRect();
       $bio.style.visibility = "hidden";
@@ -127,6 +141,14 @@ function playerCard({ name, pos, meta, chipUrl, chipRound, featured, natStarter,
     (natStarter ? " nat-starter" : "") +
     (onClick ? "" : " static");
   const head = headshot(name);
+  const wc = WC.players[name];
+  if (wc && (wc.g || wc.a)) {
+    const badges = document.createElement("div");
+    badges.className = "wc-badges";
+    if (wc.g) badges.innerHTML += `<span class="wc-badge goals">⚽${wc.g}</span>`;
+    if (wc.a) badges.innerHTML += `<span class="wc-badge assists">A${wc.a}</span>`;
+    head.appendChild(badges);
+  }
   if (chipUrl) {
     const chip = document.createElement("img");
     chip.className = "chip" + (chipRound ? " round" : "");
@@ -188,9 +210,12 @@ function renderNationRail(activeCode, topActive = false) {
   for (const code of DATA.featuredNations ?? []) {
     const n = DATA.nations[code];
     if (!n) continue;
+    const status = WC.nations?.[code] ?? "active";
     const btn = document.createElement("button");
-    btn.className = "rail-btn" + (code === activeCode ? " active" : "");
-    btn.innerHTML = `<img class="flag-ico" src="${flagUrl(code, 40)}" alt="" /><span>${NATION_SHORT[n.name] ?? n.name}</span>`;
+    btn.className =
+      "rail-btn" + (code === activeCode ? " active" : "") + (status !== "active" ? " dim" : "");
+    const tag = status === "out" ? `<span class="status-tag">OUT</span>` : status === "nq" ? `<span class="status-tag">DNQ</span>` : "";
+    btn.innerHTML = `<img class="flag-ico" src="${flagUrl(code, 40)}" alt="" /><span>${NATION_SHORT[n.name] ?? n.name}</span>${tag}`;
     btn.addEventListener("click", () => navigate(`#nation/${code}`));
     $nrail.appendChild(btn);
   }
@@ -314,8 +339,9 @@ function renderTop() {
 
   $header.innerHTML = "";
   const t = document.createElement("div");
+  const upd = WC.updated ? ` · stats through ${WC.updated.slice(0, 4)}-${WC.updated.slice(4, 6)}-${WC.updated.slice(6, 8)}` : "";
   t.innerHTML = `<h1>★ Top Players</h1>
-    <div class="sub">The biggest names of the 2026 World Cup · click a row for his national XI, a crest for his club</div>`;
+    <div class="sub">The biggest names of the 2026 World Cup · click a row for his national XI, a crest for his club${upd}</div>`;
   $header.appendChild(t);
   const spacer = document.createElement("div");
   spacer.className = "spacer";
@@ -323,6 +349,12 @@ function renderTop() {
   $header.appendChild(infoDot());
 
   $list.innerHTML = "";
+  const head = document.createElement("div");
+  head.className = "top-row top-head";
+  head.innerHTML = `<div></div><div></div><div class="who">Player</div>
+    <div class="cell">Club</div><div class="cell">Country</div>
+    <div class="stats"><span title="Goals">⚽</span><span title="Assists">A</span><span title="Yellow cards" class="yc-ico"></span><span title="Red cards" class="rc-ico"></span></div>`;
+  $list.appendChild(head);
   (DATA.topPlayers ?? []).forEach((p, i) => {
     const nation = DATA.nations[p.nation];
     const eplClub = clubByName(p.club);
@@ -359,6 +391,14 @@ function renderTop() {
     natCell.className = "cell";
     natCell.innerHTML = `<img class="flag-ico" src="${flagUrl(p.nation, 40)}" alt="" /><span>${nation?.name ?? ""}</span>`;
     row.appendChild(natCell);
+
+    const s = WC.players[p.name] ?? { g: 0, a: 0, yc: 0, rc: 0 };
+    const statCell = document.createElement("div");
+    statCell.className = "stats";
+    statCell.innerHTML = [s.g, s.a, s.yc, s.rc]
+      .map((v, j) => `<span class="${j === 2 && v ? "has-yc" : ""}${j === 3 && v ? "has-rc" : ""}${v ? "" : " zero"}">${v}</span>`)
+      .join("");
+    row.appendChild(statCell);
 
     attachBio(row, { name: p.name, teamLine: `${p.pos} · ${p.club} · ${nation?.name ?? ""}` });
     $list.appendChild(row);
