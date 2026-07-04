@@ -29,6 +29,10 @@ const flagUrl = (code, w = 80) => `https://flagcdn.com/w${w}/${code}.png`;
 const clubById = (id) => DATA.clubs.find((c) => c.id === id);
 const clubByName = (name) => DATA.clubs.find((c) => c.name === name);
 
+// "Benfica (Portugal)" — add the club's country when it isn't one of the 13 headline clubs
+const clubLabel = (name) =>
+  DATA.clubCountries?.[name] && !clubByName(name) ? `${name} (${DATA.clubCountries[name]})` : name;
+
 const initialsOf = (name) =>
   name
     .split(/\s+/)
@@ -96,50 +100,81 @@ function ageFrom(born) {
   return age;
 }
 
-function attachBio(el, { name, teamLine }) {
+let pinned = false;
+
+function hideBio() {
+  clearTimeout(bioTimer);
+  pinned = false;
+  $bio.classList.remove("show", "pinned");
+}
+
+function showBioFor(el, { name, teamLine, actions }, pin) {
+  const bio = BIOS[name] ?? {};
+  const age = ageFrom(bio.born);
+  const wcLine = wcStatLine(name);
+  $bio.innerHTML = `
+    <div class="bio-head">${name}${age != null ? ` <span class="bio-age">· ${age} yrs</span>` : ""}</div>
+    <div class="bio-meta">${teamLine}</div>
+    ${wcLine ? `<div class="bio-wc">${wcLine}</div>` : ""}
+    ${bio.b ? `<div class="bio-text">${bio.b}</div>` : ""}`;
+  if (pin && actions?.length) {
+    const row = document.createElement("div");
+    row.className = "bio-actions";
+    for (const a of actions) {
+      const btn = document.createElement("button");
+      btn.textContent = a.label;
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        hideBio();
+        navigate(a.hash);
+      });
+      row.appendChild(btn);
+    }
+    $bio.appendChild(row);
+  }
+  const r = el.getBoundingClientRect();
+  $bio.style.visibility = "hidden";
+  $bio.classList.add("show");
+  $bio.classList.toggle("pinned", pin);
+  const w = $bio.offsetWidth;
+  const h = $bio.offsetHeight;
+  let x = r.right + 12;
+  if (x + w > innerWidth - 8) x = r.left - w - 12;
+  if (x < 8) x = Math.min(Math.max(8, r.left), innerWidth - w - 8);
+  let y = Math.min(Math.max(8, r.top + r.height / 2 - h / 2), innerHeight - h - 8);
+  $bio.style.left = `${x}px`;
+  $bio.style.top = `${y}px`;
+  $bio.style.visibility = "";
+}
+
+function attachBio(el, info) {
+  if (!BIOS[info.name]) return;
   el.addEventListener("mouseenter", () => {
-    const bio = BIOS[name];
-    if (!bio) return;
+    if (pinned) return;
     clearTimeout(bioTimer);
-    bioTimer = setTimeout(() => {
-      const age = ageFrom(bio.born);
-      const wcLine = wcStatLine(name);
-      $bio.innerHTML = `
-        <div class="bio-head">${name}${age != null ? ` <span class="bio-age">· ${age} yrs</span>` : ""}</div>
-        <div class="bio-meta">${teamLine}</div>
-        ${wcLine ? `<div class="bio-wc">${wcLine}</div>` : ""}
-        ${bio.b ? `<div class="bio-text">${bio.b}</div>` : ""}`;
-      const r = el.getBoundingClientRect();
-      $bio.style.visibility = "hidden";
-      $bio.classList.add("show");
-      const w = $bio.offsetWidth;
-      const h = $bio.offsetHeight;
-      let x = r.right + 12;
-      if (x + w > innerWidth - 8) x = r.left - w - 12;
-      if (x < 8) x = Math.min(Math.max(8, r.left), innerWidth - w - 8);
-      let y = Math.min(Math.max(8, r.top + r.height / 2 - h / 2), innerHeight - h - 8);
-      $bio.style.left = `${x}px`;
-      $bio.style.top = `${y}px`;
-      $bio.style.visibility = "";
-    }, 180);
+    bioTimer = setTimeout(() => showBioFor(el, info, false), 180);
   });
   el.addEventListener("mouseleave", () => {
     clearTimeout(bioTimer);
-    $bio.classList.remove("show");
+    if (!pinned) $bio.classList.remove("show");
   });
-  el.addEventListener("click", () => {
+  el.addEventListener("click", (e) => {
+    e.stopPropagation();
     clearTimeout(bioTimer);
-    $bio.classList.remove("show");
+    pinned = true;
+    showBioFor(el, info, true);
   });
 }
 
-function playerCard({ name, pos, meta, chipUrl, chipRound, featured, natStarter, onClick }) {
-  const el = document.createElement(onClick ? "button" : "div");
+// click anywhere outside the pinned card dismisses it
+document.addEventListener("click", (e) => {
+  if (pinned && !$bio.contains(e.target)) hideBio();
+});
+
+function playerCard({ name, pos, meta, bioMeta, chipUrl, chipRound, featured, natStarter, actions }) {
+  const el = document.createElement("button");
   el.className =
-    "player" +
-    (featured ? " featured" : "") +
-    (natStarter ? " nat-starter" : "") +
-    (onClick ? "" : " static");
+    "player" + (featured ? " featured" : "") + (natStarter ? " nat-starter" : "");
   const head = headshot(name);
   const wc = WC.players[name];
   if (wc && (wc.g || wc.a)) {
@@ -166,13 +201,46 @@ function playerCard({ name, pos, meta, chipUrl, chipRound, featured, natStarter,
   metaEl.className = "pmeta";
   metaEl.textContent = pos + (meta ? ` · ${meta}` : "");
   el.appendChild(metaEl);
-  if (onClick) el.addEventListener("click", onClick);
-  attachBio(el, { name, teamLine: pos + (meta ? ` · ${meta}` : "") });
+  attachBio(el, { name, teamLine: pos + (bioMeta ?? (meta ? ` · ${meta}` : "")), actions });
   return el;
 }
 
-function renderPitch(rows, cardFor) {
+const $stage = document.getElementById("stage");
+
+// team identity: colored ambience behind the pitch, watermark crest/flag + giant label on it
+function setIdentity(identity) {
+  if (!identity) {
+    $stage.style.background = "";
+    $pitch.style.removeProperty("--team-glow");
+    $pitch.style.removeProperty("--team-frame");
+    document.querySelector("header").style.borderBottom = "";
+    return;
+  }
+  const [c1, c2 = c1] = identity.colors ?? [];
+  if (c1) {
+    $stage.style.background = `
+      radial-gradient(700px 560px at 6% -6%, ${c1}66, transparent 72%),
+      radial-gradient(700px 560px at 94% 106%, ${c2}59, transparent 72%)`;
+    $pitch.style.setProperty("--team-glow", `${c1}73`);
+    $pitch.style.setProperty("--team-frame", c1);
+    document.querySelector("header").style.borderBottom = `2px solid ${c1}aa`;
+  } else {
+    document.querySelector("header").style.borderBottom = "";
+  }
+  const mark = document.createElement("img");
+  mark.className = "pitch-mark" + (identity.flag ? " flag-mark" : "");
+  mark.src = identity.img;
+  mark.alt = "";
+  $pitch.appendChild(mark);
+  const label = document.createElement("div");
+  label.className = "pitch-label";
+  label.textContent = identity.label;
+  $pitch.appendChild(label);
+}
+
+function renderPitch(rows, cardFor, identity) {
   $pitch.innerHTML = '<div class="halfway"></div>';
+  setIdentity(identity);
   const n = rows.length;
   rows.forEach((row, i) => {
     const y = n > 1 ? 89 - (i * 77) / (n - 1) : 50; // GK at bottom, attack at top
@@ -244,7 +312,7 @@ function renderClub(clubId) {
   $header.appendChild(badge);
   const t = document.createElement("div");
   t.innerHTML = `<h1>${club.name}</h1>
-    <div class="sub">Typical starting XI · ${club.formation} · click a player to see his national team · <span class="legend-ring"></span> starts for his country</div>`;
+    <div class="sub">Typical starting XI · ${club.formation} · click a player for his bio &amp; national team · <span class="legend-ring"></span> starts for his country</div>`;
   $header.appendChild(t);
   const spacer = document.createElement("div");
   spacer.className = "spacer";
@@ -256,11 +324,15 @@ function renderClub(clubId) {
       name: p.name,
       pos: p.pos,
       meta: DATA.nations[p.nation]?.name ?? "",
+      bioMeta: ` · ${club.name} · ${DATA.nations[p.nation]?.name ?? ""}`,
       chipUrl: flagUrl(p.nation, 40),
       featured: false,
       natStarter: DATA.nations[p.nation]?.rows.flat().some((x) => x.name === p.name) ?? false,
-      onClick: () => navigate(`#nation/${p.nation}/${encodeURIComponent(p.name)}`),
-    })
+      actions: [
+        { label: `${DATA.nations[p.nation]?.name ?? "National"} XI →`, hash: `#nation/${p.nation}/${encodeURIComponent(p.name)}` },
+      ],
+    }),
+    { img: club.badge, label: club.short ?? club.name, colors: [club.color] }
   );
 }
 
@@ -314,12 +386,13 @@ function renderNation(code, featuredName, fromClubId) {
       name: p.name,
       pos: p.pos,
       meta: p.club,
+      bioMeta: ` · ${clubLabel(p.club)} · ${nation.name}`,
       chipUrl: eplClub ? eplClub.badge : null,
       chipRound: true,
       featured: p.name === featuredName,
-      onClick: eplClub ? () => navigate(`#club/${eplClub.id}`) : null,
+      actions: eplClub ? [{ label: `${eplClub.short ?? eplClub.name} XI →`, hash: `#club/${eplClub.id}` }] : [],
     });
-  });
+  }, { img: flagUrl(code, 320), label: nation.name, flag: true, colors: DATA.nationColors?.[code] });
 }
 
 /* ---------------- top players view ---------------- */
@@ -336,6 +409,7 @@ function renderTop() {
   renderNationRail(null, true);
   $banner.innerHTML = "";
   showList(true);
+  setIdentity(null);
 
   $header.innerHTML = "";
   const t = document.createElement("div");
@@ -355,17 +429,16 @@ function renderTop() {
     <div class="cell">Club</div><div class="cell">Country</div>
     <div class="stats"><span title="Goals">⚽</span><span title="Assists">A</span><span title="Yellow cards" class="yc-ico"></span><span title="Red cards" class="rc-ico"></span></div>`;
   $list.appendChild(head);
-  (DATA.topPlayers ?? []).forEach((p, i) => {
+  const makeRow = (p, rank) => {
     const nation = DATA.nations[p.nation];
     const eplClub = clubByName(p.club);
     const row = document.createElement("button");
     row.className = "top-row";
-    row.addEventListener("click", () => navigate(`#nation/${p.nation}/${encodeURIComponent(p.name)}`));
 
-    const rank = document.createElement("div");
-    rank.className = "rank";
-    rank.textContent = i + 1;
-    row.appendChild(rank);
+    const rankEl = document.createElement("div");
+    rankEl.className = "rank";
+    rankEl.textContent = rank;
+    row.appendChild(rankEl);
 
     row.appendChild(headshot(p.name));
 
@@ -400,9 +473,43 @@ function renderTop() {
       .join("");
     row.appendChild(statCell);
 
-    attachBio(row, { name: p.name, teamLine: `${p.pos} · ${p.club} · ${nation?.name ?? ""}` });
-    $list.appendChild(row);
-  });
+    const actions = [{ label: `${nation?.name ?? "National"} XI →`, hash: `#nation/${p.nation}/${encodeURIComponent(p.name)}` }];
+    if (eplClub) actions.push({ label: `${eplClub.short ?? eplClub.name} XI →`, hash: `#club/${eplClub.id}` });
+    attachBio(row, { name: p.name, teamLine: `${p.pos} · ${clubLabel(p.club)} · ${nation?.name ?? ""}`, actions });
+    return row;
+  };
+
+  const main = DATA.topPlayers ?? [];
+  main.forEach((p, i) => $list.appendChild(makeRow(p, i + 1)));
+
+  // guarantee each country's leading World Cup scorer appears
+  const nationOf = {};
+  for (const [code, n] of Object.entries(DATA.nations))
+    for (const p of n.rows.flat()) nationOf[p.name] ??= { code, pos: p.pos, club: p.club };
+  const listed = new Set(main.map((p) => p.name));
+  const leaders = {};
+  for (const [name, s] of Object.entries(WC.players ?? {})) {
+    const info = nationOf[name];
+    if (!info || !s.g) continue;
+    if (!leaders[info.code] || s.g > WC.players[leaders[info.code].name].g) leaders[info.code] = { name, ...info };
+  }
+  const extras = Object.values(leaders)
+    .filter((l) => !listed.has(l.name))
+    .sort((a, b) => WC.players[b.name].g - WC.players[a.name].g)
+    .map((l) => ({
+      name: l.name,
+      pos: l.pos,
+      club: l.club,
+      nation: l.code,
+      note: `${DATA.nations[l.code].name}'s leading scorer at the World Cup`,
+    }));
+  if (extras.length) {
+    const div = document.createElement("div");
+    div.className = "list-divider";
+    div.textContent = "Leading scorers by nation";
+    $list.appendChild(div);
+    extras.forEach((p, i) => $list.appendChild(makeRow(p, main.length + i + 1)));
+  }
 }
 
 /* ---------------- routing ---------------- */
@@ -414,6 +521,7 @@ function navigate(hash) {
 }
 
 function route() {
+  hideBio();
   const parts = location.hash.slice(1).split("/");
   if (parts[0] !== "top") showList(false);
   if (parts[0] === "top") {
