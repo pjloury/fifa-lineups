@@ -2294,5 +2294,20 @@ window.PLAYER_BIOS = {
   "d": "Belgian footballer (born 1991)",
   "born": "1991",
   "b": "Thomas André A. Meunier is a Belgian professional footballer who plays as a right-back for the Belgium national team."
+ },
+ "Nicolas Pépé": {
+  "d": "Ivory Coast international footballer (born 1995)",
+  "born": "1995",
+  "b": "Nicolas Pépé is a professional footballer who plays as a right winger or forward for La Liga club Villarreal. Born in France, he plays for the Ivory Coast national team."
+ },
+ "Yan Diomande": {
+  "d": "Ivorian footballer (born 2006)",
+  "born": "2006",
+  "b": "Yan Diomande is an Ivorian professional footballer who plays as a winger for Bundesliga club RB Leipzig and the Ivory Coast national team."
+ },
+ "Nicolas Raskin": {
+  "d": "Belgian footballer (born 2001)",
+  "born": "2001",
+  "b": "Nicolas Thierry Y. Raskin is a Belgian professional footballer who plays as a midfielder for Scottish Premiership club Rangers and the Belgium national team."
  }
 };

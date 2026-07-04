@@ -435,5 +435,13 @@ window.PLAYER_IMAGES = {
   "Andreas Schjelderup": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Andreas_Schjelderup_Morocco_v_Norway_7_June_2026-43_%28cropped%29.jpg/330px-Andreas_Schjelderup_Morocco_v_Norway_7_June_2026-43_%28cropped%29.jpg",
   "Gonçalo Ramos": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Gon%C3%A7alo_Ramos_USMNT_v_Portugal_Mar_31_2026-32_%28cropped%29.jpg/330px-Gon%C3%A7alo_Ramos_USMNT_v_Portugal_Mar_31_2026-32_%28cropped%29.jpg",
   "Hans Vanaken": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Hans_Vanaken_Lommel_United.jpg/330px-Hans_Vanaken_Lommel_United.jpg",
-  "Thomas Meunier": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Thomas_Meunier_USMNT_v_Belgium_Mar_28_2026-16_%28cropped%29.jpg/330px-Thomas_Meunier_USMNT_v_Belgium_Mar_28_2026-16_%28cropped%29.jpg"
+  "Thomas Meunier": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Thomas_Meunier_USMNT_v_Belgium_Mar_28_2026-16_%28cropped%29.jpg/330px-Thomas_Meunier_USMNT_v_Belgium_Mar_28_2026-16_%28cropped%29.jpg",
+  "Jan Paul van Hecke": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Jan_Paul_van_Hecke_24012026_%282%29_%28cropped%29.jpg/330px-Jan_Paul_van_Hecke_24012026_%282%29_%28cropped%29.jpg",
+  "Mattias Svanberg": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Sweden_-_Greece8_%28cropped%29.jpg/330px-Sweden_-_Greece8_%28cropped%29.jpg",
+  "Brandon Thomas-Asante": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Brandon_Thomas-Asante_England_v_Ghana_23_June_2026-109.jpg/330px-Brandon_Thomas-Asante_England_v_Ghana_23_June_2026-109.jpg",
+  "Derrick Luckassen": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Derrick_Luckassen_England_v_Ghana_23_June_2026-229_%28cropped%29.jpg/330px-Derrick_Luckassen_England_v_Ghana_23_June_2026-229_%28cropped%29.jpg",
+  "Chemsdine Talbi": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Chemsdine_Talbi_Brazil_V_Morocco_13_June_2026-203.jpg/330px-Chemsdine_Talbi_Brazil_V_Morocco_13_June_2026-203.jpg",
+  "Yan Diomande": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Yan_Diomande_Cote_D%27Ivoire_v_Ecuador_14_June_2026-17_%28cropped%29.jpg/330px-Yan_Diomande_Cote_D%27Ivoire_v_Ecuador_14_June_2026-17_%28cropped%29.jpg",
+  "Kaan Ayhan": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Kaan-Ayhan-08-2019.jpg/330px-Kaan-Ayhan-08-2019.jpg",
+  "Nicolas Raskin": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Nicolas_Raskin_USMNT_v_Belgium_Mar_28_2026-14_%28cropped%29.jpg/330px-Nicolas_Raskin_USMNT_v_Belgium_Mar_28_2026-14_%28cropped%29.jpg"
 };

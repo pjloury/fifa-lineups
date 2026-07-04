@@ -771,7 +771,7 @@ window.WC = {
   "de": "out",
   "eg": "active",
   "ec": "out",
-  "ci": "nq",
+  "ci": "out",
   "dk": "nq",
   "cm": "nq",
   "si": "nq",
@@ -1219,6 +1219,22 @@ window.WC = {
     "name": "Gonçalo Ramos",
     "g": 1,
     "a": 0,
+    "yc": 0,
+    "rc": 0
+   }
+  ],
+  "ci": [
+   {
+    "name": "Nicolas Pépé",
+    "g": 2,
+    "a": 1,
+    "yc": 1,
+    "rc": 0
+   },
+   {
+    "name": "Yan Diomande",
+    "g": 0,
+    "a": 1,
     "yc": 0,
     "rc": 0
    }

@@ -41,7 +41,7 @@ const NATION_TO_ESPN = {
   de: "Germany",
   eg: "Egypt",
   ec: "Ecuador",
-  ci: "Côte d'Ivoire",
+  ci: "Ivory Coast",
   dk: "Denmark",
   cm: "Cameroon",
   si: "Slovenia",
