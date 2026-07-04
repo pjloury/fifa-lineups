@@ -104,15 +104,29 @@ function renderPitch(rows, cardFor) {
 }
 
 /* ---------------- club rail ---------------- */
+const $railTip = document.createElement("div");
+$railTip.id = "rail-tip";
+document.body.appendChild($railTip);
+
 function renderRail(activeClubId) {
   $rail.innerHTML = "";
   for (const c of DATA.clubs) {
     const btn = document.createElement("button");
     btn.className = "rail-btn" + (c.id === activeClubId ? " active" : "");
     btn.style.setProperty("--club-color", c.color);
-    btn.title = c.name;
     btn.innerHTML = `<img src="${c.badge}" alt="${c.name}" />`;
-    btn.addEventListener("click", () => navigate(`#club/${c.id}`));
+    btn.addEventListener("mouseenter", () => {
+      const r = btn.getBoundingClientRect();
+      $railTip.textContent = c.name;
+      $railTip.style.left = `${r.right + 10}px`;
+      $railTip.style.top = `${r.top + r.height / 2}px`;
+      $railTip.classList.add("show");
+    });
+    btn.addEventListener("mouseleave", () => $railTip.classList.remove("show"));
+    btn.addEventListener("click", () => {
+      $railTip.classList.remove("show");
+      navigate(`#club/${c.id}`);
+    });
     $rail.appendChild(btn);
   }
 }
