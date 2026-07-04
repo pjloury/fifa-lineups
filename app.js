@@ -109,13 +109,27 @@ function hideBio() {
   $bio.classList.remove("show", "pinned");
 }
 
-function bioHTML(name, teamLine, extraNote) {
+// national-team standing for a player: starter / in squad / not in squad / country absent
+function natStatus(name, code) {
+  const nation = DATA.nations[code];
+  if (!nation) return null;
+  if (nation.rows.flat().some((p) => p.name === name))
+    return { cls: "starter", text: `★ Starts for ${nation.name}` };
+  const wcStatus = WC.nations?.[code];
+  if (wcStatus === "nq") return { cls: "none", text: `${nation.name} didn't qualify for World Cup 2026` };
+  if (WC.squads?.[code]?.includes(name))
+    return { cls: "squad", text: `In ${nation.name}'s World Cup squad · not in the typical XI` };
+  return { cls: "none", text: `Not in ${nation.name}'s World Cup squad` };
+}
+
+function bioHTML(name, teamLine, extraNote, natLine) {
   const bio = BIOS[name] ?? {};
   const age = ageFrom(bio.born);
   const wcLine = wcStatLine(name);
   return `
     <div class="bio-head">${name}${age != null ? ` <span class="bio-age">· ${age} yrs</span>` : ""}</div>
     <div class="bio-meta">${teamLine}</div>
+    ${natLine ? `<div class="bio-nat ${natLine.cls}">${natLine.text}</div>` : ""}
     ${extraNote ? `<div class="bio-note">${extraNote}</div>` : ""}
     ${wcLine ? `<div class="bio-wc">${wcLine}</div>` : ""}
     ${bio.b ? `<div class="bio-text">${bio.b}</div>` : ""}`;
@@ -137,8 +151,8 @@ function actionButtons(actions, onNavigate) {
   return row;
 }
 
-function showBioFor(el, { name, teamLine, actions }, pin) {
-  $bio.innerHTML = bioHTML(name, teamLine);
+function showBioFor(el, { name, teamLine, actions, natLine }, pin) {
+  $bio.innerHTML = bioHTML(name, teamLine, null, natLine);
   if (pin && actions?.length) $bio.appendChild(actionButtons(actions, hideBio));
   const r = el.getBoundingClientRect();
   $bio.style.visibility = "hidden";
@@ -179,7 +193,7 @@ document.addEventListener("click", (e) => {
   if (pinned && !$bio.contains(e.target)) hideBio();
 });
 
-function playerCard({ name, pos, meta, bioMeta, chipUrl, chipRound, featured, natStarter, actions }) {
+function playerCard({ name, pos, meta, bioMeta, chipUrl, chipRound, featured, natStarter, actions, natLine }) {
   const el = document.createElement("button");
   el.className =
     "player" + (featured ? " featured" : "") + (natStarter ? " nat-starter" : "");
@@ -209,7 +223,7 @@ function playerCard({ name, pos, meta, bioMeta, chipUrl, chipRound, featured, na
   metaEl.className = "pmeta";
   metaEl.textContent = pos + (meta ? ` · ${meta}` : "");
   el.appendChild(metaEl);
-  attachBio(el, { name, teamLine: pos + (bioMeta ?? (meta ? ` · ${meta}` : "")), actions });
+  attachBio(el, { name, teamLine: pos + (bioMeta ?? (meta ? ` · ${meta}` : "")), actions, natLine });
   return el;
 }
 
@@ -337,6 +351,7 @@ function renderClub(clubId) {
       chipUrl: flagUrl(p.nation, 40),
       featured: false,
       natStarter: DATA.nations[p.nation]?.rows.flat().some((x) => x.name === p.name) ?? false,
+      natLine: natStatus(p.name, p.nation),
       actions: [
         { label: `${DATA.nations[p.nation]?.name ?? "National"} XI →`, hash: `#nation/${p.nation}/${encodeURIComponent(p.name)}` },
       ],
@@ -442,6 +457,7 @@ function renderClubBench(club) {
     attachBio(card, {
       name: b.name,
       teamLine: `${b.pos} · ${club.name} · ${b.natName}`,
+      natLine: natStatus(b.name, b.code),
       actions: [{ label: `${b.natName} XI →`, hash: `#nation/${b.code}/${encodeURIComponent(b.name)}` }],
     });
     $bench.appendChild(card);
@@ -470,7 +486,7 @@ function renderBench(code, nationName) {
     card.appendChild(info);
     const club = DATA.clubs.find((c) => c.rows.flat().some((x) => x.name === b.name));
     const actions = club ? [{ label: `${club.short ?? club.name} XI →`, hash: `#club/${club.id}` }] : [];
-    attachBio(card, { name: b.name, teamLine: `${nationName} squad${club ? ` · ${club.name}` : ""}`, actions });
+    attachBio(card, { name: b.name, teamLine: `${nationName} squad${club ? ` · ${club.name}` : ""}`, natLine: natStatus(b.name, code), actions });
     $bench.appendChild(card);
   }
 }
@@ -613,7 +629,7 @@ function renderTop() {
       }
       const opening = expand.hidden;
       if (opening && !expand.innerHTML) {
-        expand.innerHTML = bioHTML(p.name, `${p.pos} · ${clubLabel(p.club)} · ${nation?.name ?? ""}`, p.note);
+        expand.innerHTML = bioHTML(p.name, `${p.pos} · ${clubLabel(p.club)} · ${nation?.name ?? ""}`, p.note, natStatus(p.name, p.nation));
         const actions = [{ label: `${nation?.name ?? "National"} XI →`, hash: `#nation/${p.nation}/${encodeURIComponent(p.name)}` }];
         if (eplClub) actions.push({ label: `${eplClub.short ?? eplClub.name} XI →`, hash: `#club/${eplClub.id}` });
         expand.appendChild(actionButtons(actions));
