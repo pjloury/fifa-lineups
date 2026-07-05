@@ -777,7 +777,7 @@ html, body { overflow-x: hidden; }
     border-left: none;
   }
   #rail { order: 0; border-bottom: 1px solid rgba(255,255,255,.07); }
-  #stage { order: 1; padding: 6px 8px 8px; }
+  #stage { order: 1; padding: 6px 8px 8px; min-height: 0; }
   #nrail { order: 2; border-top: 1px solid rgba(255,255,255,.07); }
   .rail-btn { width: auto; padding: 5px 7px; flex: none; }
   .rail-btn span { display: none; }

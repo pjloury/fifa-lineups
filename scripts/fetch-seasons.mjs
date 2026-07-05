@@ -15,6 +15,9 @@ const LEAGUES = {
       Chelsea: "Chelsea",
       "Manchester United": "Manchester United",
       "Tottenham Hotspur": "Tottenham Hotspur",
+      "Aston Villa": "Aston Villa",
+      Sunderland: "Sunderland",
+      "Newcastle United": "Newcastle United",
     },
   },
   "esp.1": {

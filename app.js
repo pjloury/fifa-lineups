@@ -37,6 +37,7 @@ function nationFacts(code) {
   if (!t) return [];
   const facts = [{ text: `WC 2026: W${t.w} D${t.d} L${t.l} · GF ${t.gf} · GA ${t.ga}` }];
   if (t.out) facts.push({ text: `Eliminated in ${t.out.round.replace("the ", "")} by ${t.out.by}`, cls: "bad" });
+  else if (status === "out") facts.push({ text: "Eliminated in the group stage", cls: "bad" });
   else if (t.next)
     facts.push({ text: `Next: ${t.next.round.replace("the ", "")} vs ${t.next.opp} · ${fmtDate(t.next.date)}`, cls: "gold" });
   return facts;

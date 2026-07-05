@@ -56,6 +56,8 @@ const NATION_TO_ESPN = {
   tr: "Türkiye",
   ma: "Morocco",
   ge: "Georgia",
+  "gb-sct": "Scotland",
+  sn: "Senegal",
 };
 
 const ourPlayers = new Map(); // norm -> canonical name

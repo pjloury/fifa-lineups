@@ -60,6 +60,36 @@ window.CLUB_SEASONS = {
   "l": 17,
   "gd": -9
  },
+ "Aston Villa": {
+  "league": "Premier League",
+  "season": "2025-26",
+  "pos": 4,
+  "pts": 65,
+  "w": 19,
+  "d": 8,
+  "l": 11,
+  "gd": 7
+ },
+ "Sunderland": {
+  "league": "Premier League",
+  "season": "2025-26",
+  "pos": 7,
+  "pts": 54,
+  "w": 14,
+  "d": 12,
+  "l": 12,
+  "gd": -6
+ },
+ "Newcastle United": {
+  "league": "Premier League",
+  "season": "2025-26",
+  "pos": 12,
+  "pts": 49,
+  "w": 14,
+  "d": 7,
+  "l": 17,
+  "gd": -2
+ },
  "Real Madrid": {
   "league": "LaLiga",
   "season": "2025-26",

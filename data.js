@@ -63,6 +63,9 @@ window.APP_DATA = {
       "Inter Milan": "Lautaro Martínez",
       "AC Milan": "Mike Maignan",
       "Atlético Madrid": "Jan Oblak",
+      "Aston Villa": "John McGinn",
+      Sunderland: "Granit Xhaka",
+      "Newcastle United": "Bruno Guimarães",
     },
     nations: {
       "gb-eng": "Harry Kane",
@@ -97,6 +100,8 @@ window.APP_DATA = {
       tr: "Hakan Çalhanoğlu",
       ma: "Achraf Hakimi",
       ge: "Khvicha Kvaratskhelia",
+      "gb-sct": "Andy Robertson",
+      sn: "Kalidou Koulibaly",
     },
   },
 
@@ -134,6 +139,8 @@ window.APP_DATA = {
     tr: ["#E30A17", "#FFFFFF"],
     ma: ["#C1272D", "#006233"],
     ge: ["#DA291C", "#FFFFFF"],
+    "gb-sct": ["#005EB8", "#FFFFFF"],
+    sn: ["#00853F", "#FDEF42"],
   },
 
   // shown in the right-edge rail, ordered by World Cup seeding (FIFA ranking at the Dec 2025 draw)
@@ -516,6 +523,87 @@ window.APP_DATA = {
         [
           { name: "Julián Álvarez", pos: "ST", nation: "ar" },
           { name: "Antoine Griezmann", pos: "ST", nation: "fr" },
+        ],
+      ],
+    },
+    {
+      id: "aston-villa",
+      name: "Aston Villa",
+      short: "Aston Villa",
+      badge: "https://resources.premierleague.com/premierleague/badges/100/t7@x2.png",
+      color: "#670E36",
+      formation: "4-2-3-1",
+      rows: [
+        [{ name: "Emiliano Martínez", pos: "GK", nation: "ar" }],
+        [
+          { name: "Lucas Digne", pos: "LB", nation: "fr" },
+          { name: "Pau Torres", pos: "CB", nation: "es" },
+          { name: "Ezri Konsa", pos: "CB", nation: "gb-eng" },
+          { name: "Matty Cash", pos: "RB", nation: "pl" },
+        ],
+        [
+          { name: "Boubacar Kamara", pos: "DM", nation: "fr" },
+          { name: "Amadou Onana", pos: "DM", nation: "be" },
+        ],
+        [
+          { name: "John McGinn", pos: "LW", nation: "gb-sct" },
+          { name: "Morgan Rogers", pos: "AM", nation: "gb-eng" },
+          { name: "Donyell Malen", pos: "RW", nation: "nl" },
+        ],
+        [{ name: "Ollie Watkins", pos: "ST", nation: "gb-eng" }],
+      ],
+    },
+    {
+      id: "sunderland",
+      name: "Sunderland",
+      short: "Sunderland",
+      badge: "https://resources.premierleague.com/premierleague/badges/100/t56@x2.png",
+      color: "#EB172B",
+      formation: "4-3-3",
+      rows: [
+        [{ name: "Robin Roefs", pos: "GK", nation: "nl" }],
+        [
+          { name: "Dennis Cirkin", pos: "LB", nation: "gb-eng" },
+          { name: "Daniel Ballard", pos: "CB", nation: "gb-nir" },
+          { name: "Nordi Mukiele", pos: "CB", nation: "fr" },
+          { name: "Trai Hume", pos: "RB", nation: "gb-nir" },
+        ],
+        [
+          { name: "Habib Diarra", pos: "CM", nation: "sn" },
+          { name: "Granit Xhaka", pos: "DM", nation: "ch" },
+          { name: "Enzo Le Fée", pos: "CM", nation: "fr" },
+        ],
+        [
+          { name: "Simon Adingra", pos: "LW", nation: "ci" },
+          { name: "Brian Brobbey", pos: "ST", nation: "nl" },
+          { name: "Chemsdine Talbi", pos: "RW", nation: "ma" },
+        ],
+      ],
+    },
+    {
+      id: "newcastle",
+      name: "Newcastle United",
+      short: "Newcastle",
+      badge: "https://resources.premierleague.com/premierleague/badges/100/t4@x2.png",
+      color: "#8f979c",
+      formation: "4-3-3",
+      rows: [
+        [{ name: "Nick Pope", pos: "GK", nation: "gb-eng" }],
+        [
+          { name: "Lewis Hall", pos: "LB", nation: "gb-eng" },
+          { name: "Sven Botman", pos: "CB", nation: "nl" },
+          { name: "Malick Thiaw", pos: "CB", nation: "de" },
+          { name: "Tino Livramento", pos: "RB", nation: "gb-eng" },
+        ],
+        [
+          { name: "Joelinton", pos: "CM", nation: "br" },
+          { name: "Bruno Guimarães", pos: "DM", nation: "br" },
+          { name: "Sandro Tonali", pos: "CM", nation: "it" },
+        ],
+        [
+          { name: "Anthony Gordon", pos: "LW", nation: "gb-eng" },
+          { name: "Nick Woltemade", pos: "ST", nation: "de" },
+          { name: "Anthony Elanga", pos: "RW", nation: "se" },
         ],
       ],
     },
@@ -1256,6 +1344,52 @@ window.APP_DATA = {
           { name: "Zuriko Davitashvili", pos: "RW", club: "Saint-Étienne" },
         ],
         [{ name: "Georges Mikautadze", pos: "ST", club: "Villarreal" }],
+      ],
+    },
+    "gb-sct": {
+      name: "Scotland",
+      formation: "3-5-2",
+      rows: [
+        [{ name: "Angus Gunn", pos: "GK", club: "Nottingham Forest" }],
+        [
+          { name: "Kieran Tierney", pos: "CB", club: "Celtic" },
+          { name: "Grant Hanley", pos: "CB", club: "Birmingham City" },
+          { name: "John Souttar", pos: "CB", club: "Rangers" },
+        ],
+        [
+          { name: "Andy Robertson", pos: "LWB", club: "Liverpool" },
+          { name: "Billy Gilmour", pos: "CM", club: "Napoli" },
+          { name: "Scott McTominay", pos: "CM", club: "Napoli" },
+          { name: "John McGinn", pos: "CM", club: "Aston Villa" },
+          { name: "Aaron Hickey", pos: "RWB", club: "Brentford" },
+        ],
+        [
+          { name: "Che Adams", pos: "ST", club: "Torino" },
+          { name: "Ben Doak", pos: "ST", club: "Bournemouth" },
+        ],
+      ],
+    },
+    sn: {
+      name: "Senegal",
+      formation: "4-3-3",
+      rows: [
+        [{ name: "Édouard Mendy", pos: "GK", club: "Al-Ahli" }],
+        [
+          { name: "Ismail Jakobs", pos: "LB", club: "Galatasaray" },
+          { name: "Kalidou Koulibaly", pos: "CB", club: "Al-Hilal" },
+          { name: "Moussa Niakhaté", pos: "CB", club: "Lyon" },
+          { name: "Krépin Diatta", pos: "RB", club: "Monaco" },
+        ],
+        [
+          { name: "Pape Matar Sarr", pos: "CM", club: "Tottenham Hotspur" },
+          { name: "Idrissa Gueye", pos: "DM", club: "Everton" },
+          { name: "Habib Diarra", pos: "CM", club: "Sunderland" },
+        ],
+        [
+          { name: "Sadio Mané", pos: "LW", club: "Al-Nassr" },
+          { name: "Boulaye Dia", pos: "ST", club: "Lazio" },
+          { name: "Ismaïla Sarr", pos: "RW", club: "Crystal Palace" },
+        ],
       ],
     },
   },

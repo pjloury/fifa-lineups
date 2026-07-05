@@ -2309,5 +2309,235 @@ window.PLAYER_BIOS = {
   "d": "Belgian footballer (born 2001)",
   "born": "2001",
   "b": "Nicolas Thierry Y. Raskin is a Belgian professional footballer who plays as a midfielder for Scottish Premiership club Rangers and the Belgium national team."
+ },
+ "Lucas Digne": {
+  "d": "French footballer (born 1993)",
+  "born": "1993",
+  "b": "Lucas Digne is a French professional footballer who plays as a left-back for Premier League club Aston Villa and the France national team."
+ },
+ "Pau Torres": {
+  "d": "Spanish footballer (born 1997)",
+  "born": "1997",
+  "b": "Pau Francisco Torres is a Spanish professional footballer who plays as a centre-back for Premier League club Aston Villa."
+ },
+ "Boubacar Kamara": {
+  "d": "French footballer (born 1999)",
+  "born": "1999",
+  "b": "Boubacar Bernard Kamara is a French professional footballer who plays as a defensive midfielder for Premier League club Aston Villa and the France national team. Mainly a defensive midfielder, he can also play as a centre-back."
+ },
+ "John McGinn": {
+  "d": "Scottish footballer (born 1994)",
+  "born": "1994",
+  "b": "John McGinn is a Scottish footballer who plays as a midfielder for Premier League club Aston Villa, which he captains, and the Scotland national team."
+ },
+ "Morgan Rogers": {
+  "d": "English footballer (born 2002)",
+  "born": "2002",
+  "b": "Morgan Elliot Rogers is an English professional footballer who plays as an attacking midfielder or winger for Premier League club Aston Villa and the England national team. A versatile player across attacking positions, Rogers is known for his strength, attacking runs, ability to score from a distance and ball control."
+ },
+ "Donyell Malen": {
+  "d": "Dutch footballer (born 1999)",
+  "born": "1999",
+  "b": "Donyell Malen is a Dutch professional footballer who plays as a winger or striker for Serie A club Roma and the Netherlands national team."
+ },
+ "Ollie Watkins": {
+  "d": "English footballer (born 1995)",
+  "born": "1995",
+  "b": "Oliver George Arthur Watkins is an English professional footballer who plays as a forward for Premier League club Aston Villa and the England national team. Described as a complete forward, Watkins is known for his finishing ability and work ethic."
+ },
+ "Robin Roefs": {
+  "d": "Dutch footballer (born 2003)",
+  "born": "2003",
+  "b": "Robin Gerardus Petrus Roefs is a Dutch professional footballer who plays as a goalkeeper for Premier League club Sunderland and the Netherlands national team."
+ },
+ "Dennis Cirkin": {
+  "d": "English footballer (born 2002)",
+  "born": "2002",
+  "b": "Dennis Cirkin is a professional footballer who plays as a left-back. Born in Ireland, he has represented England at youth level."
+ },
+ "Nordi Mukiele": {
+  "d": "French footballer (born 1997)",
+  "born": "1997",
+  "b": "Nordi Mukiele Mulere is a French professional footballer who plays as a right-back or centre-back for Premier League club Sunderland."
+ },
+ "Habib Diarra": {
+  "d": "Senegalese footballer (born 2004)",
+  "born": "2004",
+  "b": "Mouhamadou Habib Mbacke Diarra is a French-Senegalese professional footballer who plays as a midfielder for Premier League club Sunderland and the Senegal national team."
+ },
+ "Enzo Le Fée": {
+  "d": "Breton footballer (born 2000)",
+  "born": "2000",
+  "b": "Enzo Jérémy Le Fée is a French professional footballer who plays as a midfielder for Premier League club Sunderland."
+ },
+ "Lewis Hall": {
+  "d": "English footballer (born 2004)",
+  "born": "2004",
+  "b": "Lewis Kieran Hall is an English professional footballer who plays as a left-back or midfielder for Premier League club Newcastle United and the England national team."
+ },
+ "Sven Botman": {
+  "d": "Dutch footballer (born 2000)",
+  "born": "2000",
+  "b": "Sven Adriaan Botman is a Dutch professional footballer who plays primarily as a centre-back for Premier League club Newcastle United. He has represented the Netherlands at youth levels under-15 through under-21."
+ },
+ "Malick Thiaw": {
+  "d": "German footballer (born 2001)",
+  "born": "2001",
+  "b": "Malick Laye Thiaw is a German professional footballer who plays as a defender for Premier League club Newcastle United and the Germany national team. Mainly a centre-back, he can also play as a right-back or defensive midfielder."
+ },
+ "Tino Livramento": {
+  "d": "English footballer (born 2002)",
+  "born": "2002",
+  "b": "Valentino Francisco Livramento is an English professional footballer who plays as a full-back for Premier League club Newcastle United and the England national team."
+ },
+ "Joelinton": {
+  "d": "Brazilian footballer (born 1996)",
+  "born": "1996",
+  "b": "Joelinton Cássio Apolinário de Lira, known mononymously as Joelinton, as is a Brazilian professional footballer who plays as a midfielder or winger for Premier League club Newcastle United and the Brazil national team."
+ },
+ "Angus Gunn": {
+  "d": "Footballer (born 1996)",
+  "born": "1996",
+  "b": "Angus Fraser James Gunn is a professional footballer who plays as a goalkeeper, most recently for Premier League club Nottingham Forest. Born in England, he represents the Scotland national team."
+ },
+ "Kieran Tierney": {
+  "d": "Scottish footballer (born 1997)",
+  "born": "1997",
+  "b": "Kieran Tierney is a Scottish professional footballer who plays as a left-back for Scottish Premiership club Celtic and the Scotland national team."
+ },
+ "Grant Hanley": {
+  "d": "Scottish footballer (born 1991)",
+  "born": "1991",
+  "b": "Grant Campbell Hanley is a Scottish professional footballer who plays as a centre-back for Scottish Premiership club Hibernian and the Scotland national team."
+ },
+ "John Souttar": {
+  "d": "Scottish footballer (born 1996)",
+  "born": "1996",
+  "b": "John Francis Souttar is a Scottish professional footballer who plays for Scottish Premiership club Rangers and the Scotland national team. He previously played for Dundee United and Heart of Midlothian before joining Rangers in 2022."
+ },
+ "Andy Robertson": {
+  "d": "Scottish footballer (born 1994)",
+  "born": "1994",
+  "b": "Andrew Henry Robertson is a Scottish professional footballer who plays as a left-back for Premier League club Tottenham Hotspur and captains the Scotland national team."
+ },
+ "Billy Gilmour": {
+  "d": "Scottish footballer (born 2001)",
+  "born": "2001",
+  "b": "Billy Clifford Gilmour is a Scottish professional footballer who plays as a defensive midfielder for Serie A club Napoli and the Scotland national team. He is considered one of Scotland's best players, particularly in relation to his passing skills and his style of midfield play."
+ },
+ "Scott McTominay": {
+  "d": "Scotland international footballer (born 1996)",
+  "born": "1996",
+  "b": "Scott Francis McTominay is a professional footballer who plays as a midfielder for Serie A club Napoli. Born in England, he plays for the Scotland national team."
+ },
+ "Lewis Ferguson": {
+  "d": "Scottish footballer (born 1999)",
+  "born": "1999",
+  "b": "Lewis Ferguson is a Scottish professional footballer who plays as an attacking midfielder for Serie A club Bologna, whom he captains, and the Scotland national team."
+ },
+ "Aaron Hickey": {
+  "d": "Scottish footballer (born 2002)",
+  "born": "2002",
+  "b": "Aaron Buchanan Hickey is a Scottish professional footballer who plays as a full-back for Premier League club Brentford and the Scotland national team."
+ },
+ "Che Adams": {
+  "d": "Scotland international footballer (born 1996)",
+  "born": "1996",
+  "b": "Che Sac Everton Fred Adams, known as Ché Adams, is a professional footballer who plays as a forward for Serie A club Torino and the Scotland national team."
+ },
+ "Ben Doak": {
+  "d": "Scottish footballer (born 2005)",
+  "born": "2005",
+  "b": "Ben Gannon-Doak is a Scottish professional footballer who plays as a right winger or attacking midfielder for Premier League club Bournemouth and the Scotland national team."
+ },
+ "Édouard Mendy": {
+  "d": "Senegal international footballer (born 1992)",
+  "born": "1992",
+  "b": "Édouard Osoque Mendy is a professional footballer who plays as a goalkeeper for and captains Saudi Pro League club Al-Ahli. Born in France, he plays for the Senegal national team."
+ },
+ "Kalidou Koulibaly": {
+  "d": "Senegalese footballer (born 1991)",
+  "born": "1991",
+  "b": "Kalidou Koulibaly is a professional footballer who plays as a centre-back for Saudi Pro League club Al-Hilal. Born in France, he plays for and captains the Senegal national team."
+ },
+ "Moussa Niakhaté": {
+  "d": "Footballer (born 1996)",
+  "born": "1996",
+  "b": "Moussa Niakhaté is a professional footballer who plays as a centre-back for Ligue 1 club Lyon. Born in France, he plays for the Senegal national team."
+ },
+ "Krépin Diatta": {
+  "d": "Senegalese footballer (born 1999)",
+  "born": "1999",
+  "b": "Krépin Diatta is a Senegalese professional footballer who plays as a wing-back for the Senegal national team."
+ },
+ "Idrissa Gueye": {
+  "d": "Senegalese footballer (born 1989)",
+  "born": "1989",
+  "b": "Idrissa Gana Gueye is a Senegalese professional footballer who plays as a defensive midfielder for the Senegal national team."
+ },
+ "Sadio Mané": {
+  "d": "Senegalese footballer (born 1992)",
+  "born": "1992",
+  "b": "Sadio Mané is a Senegalese professional footballer who plays as a left winger for Saudi Pro League club Al-Nassr and the Senegal national team. He is widely regarded as one of the best wingers of his generation and one of the greatest African players of all time."
+ },
+ "Boulaye Dia": {
+  "d": "Footballer (born 1996)",
+  "born": "1996",
+  "b": "Boulaye Dia is a professional footballer who plays as a forward for Serie A club Lazio, on loan from Salernitana. Born in France, he plays for the Senegal national team."
+ },
+ "Ismaïla Sarr": {
+  "d": "Senegalese footballer (born 1998)",
+  "born": "1998",
+  "b": "Ismaïla Sarr is a Senegalese professional footballer who plays as a forward or winger for Premier League club Crystal Palace and the Senegal national team."
+ },
+ "Iliman Ndiaye": {
+  "d": "Senegalese footballer (born 2000)",
+  "born": "2000",
+  "b": "Iliman Cheikh Baroy Ndiaye is a professional footballer who plays as a wide midfielder for Premier League club Everton. Born in France, he plays for the Senegal national team."
+ },
+ "Pape Gueye": {
+  "d": "Footballer (born 1999)",
+  "born": "1999",
+  "b": "Pape Alassane Gueye is a professional footballer who plays as a defensive midfielder for La Liga club Villarreal. Born in France, he plays for the Senegal national team."
+ },
+ "Ibrahim Mbaye": {
+  "d": "Footballer (born 2008)",
+  "born": "2008",
+  "b": "Ibrahim Mbaye is a professional footballer who plays as a forward for Ligue 1 club Paris Saint-Germain. Born in France, he plays for the Senegal national team."
+ },
+ "Nicolas Jackson": {
+  "d": "Senegalese footballer (born 2001)",
+  "born": "2001",
+  "b": "Nicolas Jackson is a Senegalese professional footballer who plays as a striker for Premier League club Chelsea and the Senegal national team."
+ },
+ "Lamine Camara": {
+  "d": "Senegalese footballer (born 2004)",
+  "born": "2004",
+  "b": "Lamine Camara is a Senegalese professional footballer who plays as a midfielder for Ligue 1 club Monaco and the Senegal national team."
+ },
+ "Ezri Konsa": {
+  "d": "English footballer (born 1997)",
+  "born": "1997",
+  "b": "Ezri Ngoyo Konsa is an English professional footballer who plays as a centre-back or right-back for Premier League club Aston Villa and the England national team."
+ },
+ "Matty Cash": {
+  "d": "Footballer (born 1997)",
+  "born": "1997",
+  "b": "Matthew Stuart Cash is a professional footballer who plays as a right-back for Premier League club Aston Villa. Born in England, he represents the Poland national team."
+ },
+ "Nick Pope": {
+  "d": "English footballer (born 1992)",
+  "born": "1992",
+  "b": "Nicholas David Pope is an English professional footballer who plays as a goalkeeper for Premier League club Newcastle United and the England national team."
+ },
+ "Ismail Jakobs": {
+  "d": "Senegal international footballer (born 1999)",
+  "born": "1999",
+  "b": "Ismail Joshua Jakobs is a professional footballer who plays as a left-back for Süper Lig club Galatasaray. Born in Germany, he plays for the Senegal national team."
+ },
+ "Pape Matar Sarr": {
+  "d": "Senegalese footballer (born 2002)",
+  "born": "2002",
+  "b": "Pape Matar Sarr is a Senegalese professional footballer who plays as a midfielder for Premier League club Tottenham Hotspur and the Senegal national team."
  }
 };
