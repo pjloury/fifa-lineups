@@ -132,7 +132,7 @@ function headshot(name) {
     img.className = "face";
     img.src = candidates[i];
     img.alt = name;
-    img.loading = "lazy";
+    img.decoding = "async";
     img.onerror = () => {
       i += 1;
       if (i < candidates.length) img.src = candidates[i];
@@ -793,3 +793,20 @@ function route() {
 
 window.addEventListener("hashchange", route);
 route();
+
+// warm the photo cache in the background so switching teams renders instantly
+setTimeout(() => {
+  const urls = [...Object.values(IMAGES), ...DATA.clubs.map((c) => c.badge)];
+  let i = 0;
+  const next = () => {
+    if (i >= urls.length) return;
+    let done = 0;
+    const batch = urls.slice(i, (i += 6));
+    for (const u of batch) {
+      const im = new Image();
+      im.onload = im.onerror = () => ++done === batch.length && setTimeout(next, 50);
+      im.src = u;
+    }
+  };
+  next();
+}, 1500);
