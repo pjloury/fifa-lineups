@@ -326,6 +326,7 @@ function setIdentity(identity) {
   }
   const mark = document.createElement("img");
   mark.className = "pitch-mark" + (identity.flag ? " flag-mark" : "");
+  if (identity.markScale) mark.style.width = `${(identity.flag ? 23 : 20) * identity.markScale}%`;
   mark.src = identity.img;
   mark.alt = "";
   $pitch.appendChild(mark);
@@ -438,7 +439,7 @@ function renderClub(clubId) {
         { label: `${DATA.nations[p.nation]?.name ?? "National"} XI →`, hash: `#nation/${p.nation}/${encodeURIComponent(p.name)}` },
       ],
     }),
-    { img: club.badge, label: club.short ?? club.name, colors: [club.color] }
+    { img: club.badge, label: club.short ?? club.name, colors: [club.color], markScale: club.markScale }
   );
 }
 

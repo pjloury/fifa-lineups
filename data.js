@@ -468,6 +468,7 @@ window.APP_DATA = {
       id: "ac-milan",
       name: "AC Milan",
       short: "AC Milan",
+      markScale: 0.72,
       badge: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Logo_of_AC_Milan.svg/330px-Logo_of_AC_Milan.svg.png",
       color: "#FB090B",
       formation: "3-5-2",
