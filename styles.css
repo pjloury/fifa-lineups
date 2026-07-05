@@ -829,3 +829,9 @@ html, body { overflow-x: hidden; }
   .home-ctas button { padding: 7px 13px; font-size: 12px; }
   .home-card { font-size: 11.5px; padding: 11px 12px; }
 }
+
+/* condensed rails (tablet + phone): Top Players collapses to just the star */
+@media (max-width: 900px) {
+  .top-players-btn { justify-content: center; padding: 6px; }
+  .top-players-btn .star { display: inline; }
+}
