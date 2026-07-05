@@ -287,14 +287,17 @@ function playerCard({ name, pos, meta, bioMeta, chipUrl, chipRound, featured, na
     head.appendChild(chip);
   }
   el.appendChild(head);
+  const label = document.createElement("div");
+  label.className = "plabel";
   const nameEl = document.createElement("div");
   nameEl.className = "pname";
   nameEl.textContent = name;
-  el.appendChild(nameEl);
+  label.appendChild(nameEl);
   const metaEl = document.createElement("div");
   metaEl.className = "pmeta";
   metaEl.textContent = pos + (meta ? ` · ${meta}` : "");
-  el.appendChild(metaEl);
+  label.appendChild(metaEl);
+  el.appendChild(label);
   attachBio(el, { name, teamLine: pos + (bioMeta ?? (meta ? ` · ${meta}` : "")), actions, natLine });
   return el;
 }
