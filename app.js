@@ -347,9 +347,13 @@ function renderPitch(rows, cardFor, identity) {
     const y = n > 1 ? 89 - (i * 77) / (n - 1) : 50; // GK at bottom, attack at top
     row.forEach((p, j) => {
       const x = ((j + 1) / (row.length + 1)) * 100;
+      // keep the crest in the center circle visible: a player landing on it is
+      // nudged by role (AM floats higher, DM/CM sits deeper) — pitch lines never move
+      let py = y;
+      if (Math.abs(x - 50) < 1 && y > 28 && y < 47) py = p.pos.includes("AM") ? 26 : 51.5;
       const card = cardFor(p);
       card.style.left = `${x}%`;
-      card.style.top = `${y}%`;
+      card.style.top = `${py}%`;
       $pitch.appendChild(card);
     });
   });
