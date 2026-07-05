@@ -263,10 +263,12 @@ document.addEventListener("click", (e) => {
   if (pinned && !$bio.contains(e.target)) hideBio();
 });
 
-function playerCard({ name, pos, meta, bioMeta, chipUrl, chipRound, featured, natStarter, actions, natLine }) {
+function playerCard({ name, pos, meta, bioMeta, chipUrl, chipRound, featured, natTier, actions, natLine }) {
   const el = document.createElement("button");
   el.className =
-    "player" + (featured ? " featured" : "") + (natStarter ? " nat-starter" : "");
+    "player" +
+    (featured ? " featured" : "") +
+    (natTier === "starter" ? " nat-starter" : natTier === "squad" ? " nat-squad" : "");
   const head = headshot(name);
   const caps = captainBadges(name);
   if (caps) head.appendChild(caps);
@@ -353,15 +355,17 @@ function renderPitch(rows, cardFor, identity) {
 }
 
 /* ---------------- club rail ---------------- */
-function renderRail(activeClubId) {
-  $rail.innerHTML = "";
-  // ordered by league finish (champions first), points as the cross-league tiebreak
-  const clubs = [...DATA.clubs].sort(
+// ordered by league finish (champions first), points as the cross-league tiebreak
+const sortedClubs = () =>
+  [...DATA.clubs].sort(
     (a, b) =>
       (SEASONS[a.name]?.pos ?? 99) - (SEASONS[b.name]?.pos ?? 99) ||
       (SEASONS[b.name]?.pts ?? 0) - (SEASONS[a.name]?.pts ?? 0)
   );
-  for (const c of clubs) {
+
+function renderRail(activeClubId) {
+  $rail.innerHTML = "";
+  for (const c of sortedClubs()) {
     const btn = document.createElement("button");
     btn.className = "rail-btn" + (c.id === activeClubId ? " active" : "");
     btn.style.setProperty("--club-color", c.color);
@@ -417,7 +421,7 @@ function renderClub(clubId) {
   $header.appendChild(badge);
   const t = document.createElement("div");
   t.innerHTML = `<h1>${club.name}</h1>
-    <div class="sub">Typical starting XI · ${club.formation} · click a player for his bio &amp; national team · <span class="legend-ring"></span> starts for his country</div>`;
+    <div class="sub">Typical starting XI · ${club.formation} · click a player for his bio &amp; national team · <span class="legend-ring"></span> national starter · <span class="legend-ring squad"></span> in squad</div>`;
   $header.appendChild(t);
   $header.appendChild(factsChips(clubFacts(club)));
   const spacer = document.createElement("div");
@@ -433,7 +437,7 @@ function renderClub(clubId) {
       bioMeta: ` · ${club.name} · ${DATA.nations[p.nation]?.name ?? ""}`,
       chipUrl: flagUrl(p.nation, 40),
       featured: false,
-      natStarter: DATA.nations[p.nation]?.rows.flat().some((x) => x.name === p.name) ?? false,
+      natTier: natStatus(p.name, p.nation)?.cls,
       natLine: natStatus(p.name, p.nation),
       actions: [
         { label: `${DATA.nations[p.nation]?.name ?? "National"} XI →`, hash: `#nation/${p.nation}/${encodeURIComponent(p.name)}` },
@@ -777,9 +781,17 @@ function navigate(hash) {
   else location.hash = hash;
 }
 
+let currentView = { type: "home", id: null };
+
 function route() {
   hideBio();
   const parts = location.hash.slice(1).split("/");
+  currentView =
+    parts[0] === "club"
+      ? { type: "club", id: parts[1] && clubById(parts[1]) ? parts[1] : lastClubId }
+      : parts[0] === "nation" && parts[1]
+        ? { type: "nation", id: parts[1] }
+        : { type: parts[0] === "top" ? "top" : "home", id: null };
   if (parts[0] === "top") {
     renderTop();
   } else if (parts[0] === "nation" && parts[1]) {
@@ -800,6 +812,23 @@ function route() {
   if (location.protocol !== "file:") history.replaceState(null, "", canonical);
   window.scrollTo(0, 0);
 }
+
+// arrow up/down steps through the club rail (club view) or nation rail (nation view)
+document.addEventListener("keydown", (e) => {
+  if (e.key !== "ArrowUp" && e.key !== "ArrowDown") return;
+  const dir = e.key === "ArrowDown" ? 1 : -1;
+  if (currentView.type === "club") {
+    const list = sortedClubs();
+    const i = list.findIndex((c) => c.id === currentView.id);
+    e.preventDefault();
+    navigate(`#club/${list[(i + dir + list.length) % list.length].id}`);
+  } else if (currentView.type === "nation") {
+    const list = DATA.featuredNations ?? [];
+    const i = list.indexOf(currentView.id);
+    e.preventDefault();
+    navigate(`#nation/${list[(i + dir + list.length) % list.length]}`);
+  }
+});
 
 window.addEventListener("hashchange", route);
 route();

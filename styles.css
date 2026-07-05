@@ -704,6 +704,13 @@ main {
   text-overflow: ellipsis;
 }
 
+/* in national squad but not a starter (club view): green ring */
+.player.nat-squad .headshot img.face,
+.player.nat-squad .headshot .initials {
+  box-shadow: 0 0 0 2.5px #7fd6a0, 0 5px 12px rgba(0,0,0,.45);
+}
+.legend-ring.squad { border-color: #7fd6a0; }
+
 /* national-team starters (club view): gold ring */
 .player.nat-starter .headshot img.face,
 .player.nat-starter .headshot .initials {
