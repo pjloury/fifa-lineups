@@ -351,7 +351,13 @@ function renderPitch(rows, cardFor, identity) {
 /* ---------------- club rail ---------------- */
 function renderRail(activeClubId) {
   $rail.innerHTML = "";
-  for (const c of DATA.clubs) {
+  // ordered by league finish (champions first), points as the cross-league tiebreak
+  const clubs = [...DATA.clubs].sort(
+    (a, b) =>
+      (SEASONS[a.name]?.pos ?? 99) - (SEASONS[b.name]?.pos ?? 99) ||
+      (SEASONS[b.name]?.pts ?? 0) - (SEASONS[a.name]?.pts ?? 0)
+  );
+  for (const c of clubs) {
     const btn = document.createElement("button");
     btn.className = "rail-btn" + (c.id === activeClubId ? " active" : "");
     btn.style.setProperty("--club-color", c.color);
