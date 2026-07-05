@@ -84,9 +84,10 @@ function captainBadges(name) {
   if (!club && !natCode) return null;
   const wrap = document.createElement("div");
   wrap.className = "cap-badges";
-  if (club) wrap.innerHTML += `<span class="cap-badge club" title="${club} captain">C</span>`;
-  if (natCode)
-    wrap.innerHTML += `<span class="cap-badge nat" title="${DATA.nations[natCode]?.name ?? ""} captain">C</span>`;
+  if (club && natCode)
+    wrap.innerHTML = `<span class="cap-badge both" title="${club} & ${DATA.nations[natCode]?.name ?? ""} captain">C</span>`;
+  else if (club) wrap.innerHTML = `<span class="cap-badge club" title="${club} captain">C</span>`;
+  else wrap.innerHTML = `<span class="cap-badge nat" title="${DATA.nations[natCode]?.name ?? ""} captain">C</span>`;
   return wrap;
 }
 
