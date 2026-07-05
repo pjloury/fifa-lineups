@@ -508,15 +508,15 @@ main {
 /* team identity watermark + giant label behind the players */
 .pitch-mark {
   position: absolute;
-  left: 50%; top: 50.5%;
+  left: 50%; top: 38%; /* centered in the drawn center circle */
   transform: translate(-50%, -50%);
   width: 20%;
-  opacity: .3;
+  opacity: .48;
   filter: saturate(.9) drop-shadow(0 2px 10px rgba(0,0,0,.4));
   pointer-events: none;
   z-index: 0;
 }
-.pitch-mark.flag-mark { width: 23%; border-radius: 10px; opacity: .38; box-shadow: 0 0 0 2px rgba(255,255,255,.35), 0 4px 18px rgba(0,0,0,.3); }
+.pitch-mark.flag-mark { width: 23%; border-radius: 10px; opacity: .55; box-shadow: 0 0 0 2px rgba(255,255,255,.4), 0 4px 18px rgba(0,0,0,.3); }
 
 .pitch-label {
   position: absolute;
