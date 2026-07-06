@@ -80,6 +80,8 @@ header .spacer { flex: 1; }
   white-space: nowrap;
 }
 .fact.gold { color: var(--accent); border-color: rgba(255,210,77,.5); }
+button.fact.link { font: inherit; font-size: 11.5px; font-weight: 700; cursor: pointer; }
+.fact.link:hover { border-color: var(--accent); color: var(--accent); }
 .fact.bad { color: #ff8f85; border-color: rgba(255,110,95,.4); }
 
 .info-dot {
