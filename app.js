@@ -368,8 +368,13 @@ const sortedClubs = () =>
       (SEASONS[b.name]?.pts ?? 0) - (SEASONS[a.name]?.pts ?? 0)
   );
 
-function renderRail(activeClubId) {
+function renderRail(activeClubId, formationsActive = false) {
   $rail.innerHTML = "";
+  const fbtn = document.createElement("button");
+  fbtn.className = "rail-btn formations-btn" + (formationsActive ? " active" : "");
+  fbtn.innerHTML = `<span class="star">▦</span><span>Formations</span>`;
+  fbtn.addEventListener("click", () => navigate("#formations"));
+  $rail.appendChild(fbtn);
   for (const c of sortedClubs()) {
     const btn = document.createElement("button");
     btn.className = "rail-btn" + (c.id === activeClubId ? " active" : "");
@@ -513,6 +518,220 @@ function renderNation(code, featuredName, fromClubId) {
   renderBench(code, nation.name);
 }
 
+
+/* ---------------- formations ---------------- */
+const FORMATION_INFO = {
+  "4-3-3": {
+    tag: "The possession classic",
+    blurb: "A back four, one holding midfielder flanked by two carriers, and a front three stretched across the pitch.",
+    pros: [
+      "Natural passing triangles everywhere — the shape modern possession football is built on",
+      "Front three presses the opponent's back line high, winning the ball in dangerous areas",
+      "Wingers stay high and wide, isolating their full-back one-v-one",
+      "The lone pivot creates clean lanes to progress the ball through midfield",
+    ],
+    cons: [
+      "A single holding midfielder can be overrun on counters",
+      "Full-backs are exposed if wingers don't track back",
+      "Demands elite technical quality in midfield — poor passers break the machine",
+    ],
+  },
+  "4-2-3-1": {
+    tag: "The balanced default",
+    blurb: "A double pivot protects the back four while a dedicated #10 floats between the lines behind a lone striker.",
+    pros: [
+      "Double pivot gives real protection in front of the defense",
+      "The #10 lives in the pocket between the opponent's lines — hardest space to defend",
+      "Collapses into a compact 4-4-2 block without the ball",
+      "Wingers, the 10 and the striker can rotate freely without breaking structure",
+    ],
+    cons: [
+      "The striker gets isolated when the 10 is marked out of the game",
+      "If the #10 doesn't defend, the pivot gets stretched side to side",
+      "One fewer central midfielder than a three — can lose the possession battle",
+    ],
+  },
+  "4-4-2": {
+    tag: "Two banks of four",
+    blurb: "The traditional shape: two flat lines of four with a strike partnership up top.",
+    pros: [
+      "Compact, disciplined defensive block that's easy to coach and hard to play through",
+      "Two strikers occupy both center-backs — no spare man at the back",
+      "Direct routes to goal: win it, hit the front two, attack crosses",
+      "Perfect platform for counter-attacking football",
+    ],
+    cons: [
+      "The midfield two is outnumbered against any midfield three",
+      "Wide midfielders must attack and defend — brutal physical load",
+      "Space between the lines for a good #10 to exploit",
+    ],
+  },
+  "3-5-2": {
+    tag: "The wingback system",
+    blurb: "Three center-backs, a packed midfield five with flying wingbacks, and a strike duo.",
+    pros: [
+      "A spare center-back for build-up and defending crosses",
+      "Wingbacks provide all the width alone, freeing three central midfielders",
+      "Numerical superiority in the middle of the pitch",
+      "Two strikers keep both opposing center-backs pinned",
+    ],
+    cons: [
+      "Wingbacks need extraordinary stamina — 12km of sprinting both ways",
+      "When wingbacks get pinned deep, it collapses into a passive 5-3-2",
+      "Fast wingers can attack the space behind advanced wingbacks",
+    ],
+  },
+  "3-4-2-1": {
+    tag: "The dual-ten",
+    blurb: "A back three and wingbacks, with two free #10s floating behind a lone striker.",
+    pros: [
+      "Two 10s between the lines are almost impossible to mark man-to-man",
+      "Back three plus wingbacks gives both defensive security and width",
+      "Central overloads around the striker create quick combination play",
+      "Ball-playing center-backs can step into midfield and create extra numbers",
+    ],
+    cons: [
+      "The lone striker starves if the two 10s get tracked",
+      "Only two true central midfielders — can be outrun in midfield duels",
+      "Needs technically excellent center-backs comfortable on the ball",
+    ],
+  },
+};
+
+function formationTeams(shape) {
+  return {
+    clubs: DATA.clubs.filter((c) => c.formation === shape),
+    nations: Object.entries(DATA.nations).filter(([, n]) => n.formation === shape),
+  };
+}
+
+// tiny pitch with dots in the given shape
+function formationDiagram(shape) {
+  const el = document.createElement("div");
+  el.className = "form-mini";
+  const lines = [1, ...shape.split("-").map(Number)];
+  const n = lines.length;
+  lines.forEach((count, i) => {
+    const y = 88 - (i * 74) / (n - 1);
+    for (let j = 0; j < count; j++) {
+      const dot = document.createElement("span");
+      dot.className = "form-dot" + (i === 0 ? " gk" : "");
+      dot.style.left = `${((j + 1) / (count + 1)) * 100}%`;
+      dot.style.top = `${y}%`;
+      el.appendChild(dot);
+    }
+  });
+  return el;
+}
+
+function teamChips(shape) {
+  const { clubs, nations } = formationTeams(shape);
+  const wrap = document.createElement("div");
+  wrap.className = "team-chips";
+  for (const c of clubs) {
+    const chip = document.createElement("button");
+    chip.className = "team-chip";
+    chip.innerHTML = `<img src="${c.badge}" alt="" /><span>${c.short ?? c.name}</span>`;
+    chip.addEventListener("click", () => navigate(`#club/${c.id}`));
+    wrap.appendChild(chip);
+  }
+  for (const [code, n] of nations) {
+    const chip = document.createElement("button");
+    chip.className = "team-chip";
+    chip.innerHTML = `<img class="flag-ico" src="${flagUrl(code, 40)}" alt="" /><span>${NATION_SHORT[n.name] ?? n.name}</span>`;
+    chip.addEventListener("click", () => navigate(`#nation/${code}`));
+    wrap.appendChild(chip);
+  }
+  return wrap;
+}
+
+function renderFormations() {
+  renderRail(null, true);
+  renderNationRail(null);
+  $banner.innerHTML = "";
+  $bench.innerHTML = "";
+  setIdentity(null);
+  showView("list");
+
+  $header.innerHTML = `<div><h1>▦ Formations</h1>
+    <div class="sub">The five shapes behind every lineup in the app · click one for the full breakdown</div></div>`;
+  const spacer = document.createElement("div");
+  spacer.className = "spacer";
+  $header.appendChild(spacer);
+  $header.appendChild(infoDot());
+
+  $list.innerHTML = "";
+  const shapes = Object.keys(FORMATION_INFO).sort((a, b) => {
+    const ta = formationTeams(a), tb = formationTeams(b);
+    return tb.clubs.length + tb.nations.length - (ta.clubs.length + ta.nations.length);
+  });
+  const grid = document.createElement("div");
+  grid.className = "form-grid";
+  for (const shape of shapes) {
+    const { clubs, nations } = formationTeams(shape);
+    const info = FORMATION_INFO[shape];
+    const card = document.createElement("button");
+    card.className = "form-card";
+    card.appendChild(formationDiagram(shape));
+    const body = document.createElement("div");
+    body.className = "form-card-body";
+    body.innerHTML = `<div class="form-name">${shape}</div>
+      <div class="form-tag">${info.tag}</div>
+      <div class="form-count">${clubs.length + nations.length} teams · ${clubs.length} clubs, ${nations.length} nations</div>`;
+    card.appendChild(body);
+    card.addEventListener("click", () => navigate(`#formations/${shape}`));
+    grid.appendChild(card);
+  }
+  $list.appendChild(grid);
+}
+
+function renderFormationDetail(shape) {
+  const info = FORMATION_INFO[shape];
+  if (!info) return renderFormations();
+  renderRail(null, true);
+  renderNationRail(null);
+  $banner.innerHTML = "";
+  $bench.innerHTML = "";
+  setIdentity(null);
+  showView("list");
+
+  $header.innerHTML = "";
+  const back = document.createElement("button");
+  back.className = "back-btn";
+  back.textContent = "← Formations";
+  back.addEventListener("click", () => navigate("#formations"));
+  $header.appendChild(back);
+  const t = document.createElement("div");
+  t.innerHTML = `<h1>${shape}</h1><div class="sub">${info.tag}</div>`;
+  $header.appendChild(t);
+  const spacer = document.createElement("div");
+  spacer.className = "spacer";
+  $header.appendChild(spacer);
+  $header.appendChild(infoDot());
+
+  $list.innerHTML = "";
+  const top = document.createElement("div");
+  top.className = "form-detail-top";
+  const dia = formationDiagram(shape);
+  dia.classList.add("big");
+  top.appendChild(dia);
+  const intro = document.createElement("div");
+  intro.className = "form-intro";
+  intro.innerHTML = `<p>${info.blurb}</p>
+    <div class="form-cols">
+      <div class="form-col pros"><h3>Strengths</h3><ul>${info.pros.map((p) => `<li>${p}</li>`).join("")}</ul></div>
+      <div class="form-col cons"><h3>Weaknesses</h3><ul>${info.cons.map((c) => `<li>${c}</li>`).join("")}</ul></div>
+    </div>`;
+  top.appendChild(intro);
+  $list.appendChild(top);
+
+  const h = document.createElement("div");
+  h.className = "list-divider";
+  h.textContent = "Teams playing it";
+  $list.appendChild(h);
+  $list.appendChild(teamChips(shape));
+}
+
 /* ---------------- top players view ---------------- */
 const $list = document.getElementById("list");
 const $pitchWrap = document.getElementById("pitch-wrap");
@@ -620,6 +839,7 @@ function renderHome() {
         <button data-hash="#club/arsenal">Browse clubs →</button>
         <button data-hash="#nation/fr">France XI →</button>
         <button data-hash="#top">★ Top Players →</button>
+        <button data-hash="#formations">▦ Formations →</button>
       </div>
     </div>
     <div class="home-grid">
@@ -796,9 +1016,12 @@ function route() {
       ? { type: "club", id: parts[1] && clubById(parts[1]) ? parts[1] : lastClubId }
       : parts[0] === "nation" && parts[1]
         ? { type: "nation", id: parts[1] }
-        : { type: parts[0] === "top" ? "top" : "home", id: null };
+        : { type: parts[0] === "top" ? "top" : parts[0] === "formations" ? "formations" : "home", id: parts[1] ?? null };
   if (parts[0] === "top") {
     renderTop();
+  } else if (parts[0] === "formations") {
+    if (parts[1] && decodeURIComponent(parts[1]) in FORMATION_INFO) renderFormationDetail(decodeURIComponent(parts[1]));
+    else renderFormations();
   } else if (parts[0] === "nation" && parts[1]) {
     showView("pitch");
     renderNation(parts[1], decodeURIComponent(parts[2] || ""), lastClubId);
@@ -813,7 +1036,8 @@ function route() {
   const canonical =
     parts[0] === "club" ? `/club/${lastClubId}` :
     parts[0] === "nation" && parts[1] ? `/nation/${parts[1]}` :
-    parts[0] === "top" ? "/top" : "/";
+    parts[0] === "top" ? "/top" :
+    parts[0] === "formations" ? (parts[1] ? `/formations/${parts[1]}` : "/formations") : "/";
   if (location.protocol !== "file:") history.replaceState(null, "", canonical);
   window.scrollTo(0, 0);
 }

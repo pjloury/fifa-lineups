@@ -70,6 +70,25 @@ stub("top", {
   hash: "#top",
 });
 
+// formations
+shot("#formations", "previews/formations.png");
+stub("formations", {
+  title: "Formations — the shapes behind the lineups · FIFA Lineups",
+  desc: "4-3-3, 4-2-3-1, 4-4-2, 3-5-2, 3-4-2-1 — strengths, weaknesses, and who plays them.",
+  image: "previews/formations.png",
+  hash: "#formations",
+});
+for (const shape of ["4-3-3", "4-2-3-1", "4-4-2", "3-5-2", "3-4-2-1"]) {
+  const png = `previews/formation-${shape}.png`;
+  shot(`#formations/${shape}`, png);
+  stub(`formations/${shape}`, {
+    title: `${shape} formation — strengths, weaknesses, who plays it · FIFA Lineups`,
+    desc: `The ${shape} explained, with every club and national team using it.`,
+    image: png,
+    hash: `#formations/${shape}`,
+  });
+}
+
 // clubs
 for (const c of DATA.clubs) {
   const png = `previews/club-${c.id}.png`;
