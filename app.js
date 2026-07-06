@@ -678,6 +678,23 @@ function renderFormations() {
     body.innerHTML = `<div class="form-name">${shape}</div>
       <div class="form-tag">${info.tag}</div>
       <div class="form-count">${clubs.length + nations.length} teams · ${clubs.length} clubs, ${nations.length} nations</div>`;
+    // teaser: the three most notable users of the shape (best-placed clubs, then top-seeded nations)
+    const notable = [
+      ...sortedClubs().filter((c) => c.formation === shape).map((c) => ({ img: c.badge, name: c.short ?? c.name })),
+      ...(DATA.featuredNations ?? [])
+        .filter((code) => DATA.nations[code]?.formation === shape)
+        .map((code) => ({ img: flagUrl(code, 40), name: DATA.nations[code].name, flag: true })),
+      ...nations
+        .filter(([code]) => !(DATA.featuredNations ?? []).includes(code))
+        .map(([code, n]) => ({ img: flagUrl(code, 40), name: n.name, flag: true })),
+    ];
+    const teaser = document.createElement("div");
+    teaser.className = "form-teams";
+    for (const t of notable.slice(0, 3))
+      teaser.innerHTML += `<img class="${t.flag ? "flag-ico" : ""}" src="${t.img}" alt="" title="${t.name}" />`;
+    const more = clubs.length + nations.length - Math.min(3, notable.length);
+    if (more > 0) teaser.innerHTML += `<span>+${more} more</span>`;
+    body.appendChild(teaser);
     card.appendChild(body);
     card.addEventListener("click", () => navigate(`#formations/${shape}`));
     grid.appendChild(card);
