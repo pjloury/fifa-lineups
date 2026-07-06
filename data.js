@@ -36,6 +36,8 @@ window.APP_DATA = {
     "New York City FC": "USA", "Seattle Sounders": "USA", "Orlando City": "USA",
     "Atlanta United": "USA",
     Atlas: "Mexico", "Club León": "Mexico", "Pumas UNAM": "Mexico", Pachuca: "Mexico",
+    "Club América": "Mexico", Toluca: "Mexico", "Cruz Azul": "Mexico", Tijuana: "Mexico",
+    "Lokomotiv Moscow": "Russia",
     Ferencváros: "Hungary", "Lech Poznań": "Poland", "Górnik Zabrze": "Poland",
     "Legia Warsaw": "Poland", Cracovia: "Poland",
     Brøndby: "Denmark", "Red Star Belgrade": "Serbia", Krasnodar: "Russia",
@@ -102,6 +104,7 @@ window.APP_DATA = {
       ge: "Khvicha Kvaratskhelia",
       "gb-sct": "Andy Robertson",
       sn: "Kalidou Koulibaly",
+      mx: "Edson Álvarez",
     },
   },
 
@@ -140,11 +143,12 @@ window.APP_DATA = {
     ma: ["#C1272D", "#006233"],
     ge: ["#DA291C", "#FFFFFF"],
     "gb-sct": ["#005EB8", "#FFFFFF"],
+    mx: ["#006847", "#CE1126"],
     sn: ["#00853F", "#FDEF42"],
   },
 
   // shown in the right-edge rail, ordered by World Cup seeding (FIFA ranking at the Dec 2025 draw)
-  featuredNations: ["es", "ar", "fr", "gb-eng", "br", "pt", "nl", "be", "de", "hr", "ma", "it", "co", "us", "uy", "no"],
+  featuredNations: ["es", "ar", "fr", "gb-eng", "br", "pt", "nl", "be", "de", "hr", "ma", "it", "co", "us", "mx", "uy", "no"],
 
   // the marquee names of the 2026 World Cup: club + country at a glance
   topPlayers: [
@@ -1366,6 +1370,29 @@ window.APP_DATA = {
         [
           { name: "Che Adams", pos: "ST", club: "Torino" },
           { name: "Ben Doak", pos: "ST", club: "Bournemouth" },
+        ],
+      ],
+    },
+    mx: {
+      name: "Mexico",
+      formation: "4-3-3",
+      rows: [
+        [{ name: "Luis Malagón", pos: "GK", club: "Club América" }],
+        [
+          { name: "Jesús Gallardo", pos: "LB", club: "Toluca" },
+          { name: "Johan Vásquez", pos: "CB", club: "Genoa" },
+          { name: "César Montes", pos: "CB", club: "Lokomotiv Moscow" },
+          { name: "Jorge Sánchez", pos: "RB", club: "Cruz Azul" },
+        ],
+        [
+          { name: "Orbelín Pineda", pos: "CM", club: "AEK Athens" },
+          { name: "Edson Álvarez", pos: "DM", club: "Fenerbahçe" },
+          { name: "Marcel Ruiz", pos: "CM", club: "Toluca" },
+        ],
+        [
+          { name: "Alexis Vega", pos: "LW", club: "Toluca" },
+          { name: "Raúl Jiménez", pos: "ST", club: "Fulham" },
+          { name: "Gilberto Mora", pos: "RW", club: "Tijuana" },
         ],
       ],
     },

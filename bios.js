@@ -2539,5 +2539,75 @@ window.PLAYER_BIOS = {
   "d": "Senegalese footballer (born 2002)",
   "born": "2002",
   "b": "Pape Matar Sarr is a Senegalese professional footballer who plays as a midfielder for Premier League club Tottenham Hotspur and the Senegal national team."
+ },
+ "Luis Malagón": {
+  "d": "Mexican footballer (born 1997)",
+  "born": "1997",
+  "b": "Luis Ángel Malagón Velázquez is a Mexican professional footballer who plays as a goalkeeper for Liga MX club América and the Mexico national team."
+ },
+ "Jesús Gallardo": {
+  "d": "Mexican footballer (born 1994)",
+  "born": "1994",
+  "b": "Jesús Daniel Gallardo Vasconcelos is a Mexican professional footballer who plays as a left-back or left-winger for Liga MX club Toluca and the Mexico national team."
+ },
+ "César Montes": {
+  "d": "Mexican footballer (born 1997)",
+  "born": "1997",
+  "b": "César Jasib Montes Castro is a Mexican professional footballer who plays as a centre-back for Russian Premier League club Lokomotiv Moscow and the Mexico national team."
+ },
+ "Orbelín Pineda": {
+  "d": "Mexican footballer (born 1996)",
+  "born": "1996",
+  "b": "Orbelín Pineda Alvarado is a Mexican professional footballer who plays as a midfielder for Super League Greece club AEK Athens and the Mexico national team."
+ },
+ "Edson Álvarez": {
+  "d": "Mexican footballer (born 1997)",
+  "born": "1997",
+  "b": "Edson Omar Álvarez Velázquez is a Mexican professional footballer who plays as a defensive midfielder or centre-back for EFL Championship club West Ham United, and captains the Mexico national team."
+ },
+ "Marcel Ruiz": {
+  "d": "Mexican footballer (born 2000)",
+  "born": "2000",
+  "b": "Marcel Alejandro Ruiz Suárez is a Mexican professional footballer who plays as a midfielder for Liga MX club Toluca and the Mexico national team."
+ },
+ "Raúl Jiménez": {
+  "d": "Mexican footballer (born 1991)",
+  "born": "1991",
+  "b": "Raúl Alonso Jiménez Rodríguez is a Mexican professional footballer who plays as a striker for EFL Championship club Wolverhampton Wanderers and the Mexico national team."
+ },
+ "Julián Quiñones": {
+  "d": "Mexican footballer (born 1997)",
+  "born": "1997",
+  "b": "Julián Andrés Quiñones Quiñones is a professional footballer who plays as a forward or winger for Saudi Pro League club Al-Qadsiah. Born in Colombia, he represents the Mexico national team."
+ },
+ "Roberto Alvarado": {
+  "d": "Mexican footballer (born 1998)",
+  "born": "1998",
+  "b": "Roberto Carlos “Piojo” Alvarado Hernández is a Mexican professional footballer who plays as a winger for Liga MX club Guadalajara and the Mexico national team."
+ },
+ "Luis Romo": {
+  "d": "Mexican footballer (born 1995)",
+  "born": "1995",
+  "b": "Luis Francisco Romo Barrón is a Mexican professional footballer who plays as a defensive midfielder or centre-back for Liga MX club Guadalajara and the Mexico national team."
+ },
+ "Érik Lira": {
+  "d": "Mexican footballer (born 2000)",
+  "born": "2000",
+  "b": "Érik Antonio Lira Méndez is a Mexican professional footballer who plays as a defensive midfielder for Liga MX club Cruz Azul, which he captains, and the Mexico national team."
+ },
+ "Mateo Chávez": {
+  "d": "Mexican footballer (born 2004)",
+  "born": "2004",
+  "b": "Mateo Chávez García is a Mexican professional footballer who plays as a left-back for Eredivisie club AZ Alkmaar and the Mexico national team."
+ },
+ "Álvaro Fidalgo": {
+  "d": "Mexican footballer (born 1997)",
+  "born": "1997",
+  "b": "Álvaro Fidalgo Fernández, also known as “Maguito”, is a professional footballer who plays as a midfielder for La Liga club Real Betis. Born in Spain, he represents the Mexico national team."
+ },
+ "Neymar": {
+  "d": "Brazilian footballer (born 1992)",
+  "born": "1992",
+  "b": "Neymar da Silva Santos Júnior, simply known as Neymar Júnior or mononymously as Neymar, is a Brazilian professional footballer who plays as an attacking midfielder or a forward for Campeonato Brasileiro Série A club Santos."
  }
 };

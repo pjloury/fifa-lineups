@@ -490,5 +490,20 @@ window.PLAYER_IMAGES = {
   "Lamine Camara": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Lamine_Camara_France_v_Senegal_16_June_2026-239_%28cropped%29.jpg/330px-Lamine_Camara_France_v_Senegal_16_June_2026-239_%28cropped%29.jpg",
   "Nicolas Pépé": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Nicolas_Pepe_Cote_D%27Ivoire_v_Ecuador_14_June_2026-30.jpg/330px-Nicolas_Pepe_Cote_D%27Ivoire_v_Ecuador_14_June_2026-30.jpg",
   "Billy Gilmour": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Billy_Gilmour_2021-08-07_1_%28cropped%29_%28cropped%29.jpg/330px-Billy_Gilmour_2021-08-07_1_%28cropped%29_%28cropped%29.jpg",
-  "Lewis Ferguson": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Lewis_Ferguson_Scotland_v_Bolivia_6_June_2026-52.jpg/330px-Lewis_Ferguson_Scotland_v_Bolivia_6_June_2026-52.jpg"
+  "Lewis Ferguson": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Lewis_Ferguson_Scotland_v_Bolivia_6_June_2026-52.jpg/330px-Lewis_Ferguson_Scotland_v_Bolivia_6_June_2026-52.jpg",
+  "Luis Malagón": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/%C3%81ngel_Malag%C3%B3n_2.png/330px-%C3%81ngel_Malag%C3%B3n_2.png",
+  "Jesús Gallardo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Jes%C3%BAs_Gallardo.png/330px-Jes%C3%BAs_Gallardo.png",
+  "César Montes": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/C%C3%A9sar_Montes.png/330px-C%C3%A9sar_Montes.png",
+  "Orbelín Pineda": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Orbel%C3%ADn_Pineda.png/330px-Orbel%C3%ADn_Pineda.png",
+  "Edson Álvarez": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Edson_%C3%81lvarez.png/330px-Edson_%C3%81lvarez.png",
+  "Raúl Jiménez": "https://resources.premierleague.com/premierleague/photos/players/250x250/p102057.png",
+  "Julián Quiñones": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Juli%C3%A1n_Qui%C3%B1ones.png",
+  "Roberto Alvarado": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Roberto_Alvarado.png/330px-Roberto_Alvarado.png",
+  "Luis Romo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Luis_Romo.png/330px-Luis_Romo.png",
+  "Érik Lira": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Erik_Lira_2.png/330px-Erik_Lira_2.png",
+  "Mateo Chávez": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Mateo_Ch%C3%A1vez.png/330px-Mateo_Ch%C3%A1vez.png",
+  "Álvaro Fidalgo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/%C3%81lvaro_Fidalgo.png/330px-%C3%81lvaro_Fidalgo.png",
+  "Neymar": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Neymar_Junior_Brazil_V_Morocco_13_June_2026-40.jpg/330px-Neymar_Junior_Brazil_V_Morocco_13_June_2026-40.jpg",
+  "Jorge Sánchez": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Jorge_S%C3%A1nchez.png/330px-Jorge_S%C3%A1nchez.png",
+  "Marcel Ruiz": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Marcel_Ruiz.png/330px-Marcel_Ruiz.png"
 };

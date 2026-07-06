@@ -32,4 +32,7 @@ export const WIKI_OVERRIDES = {
   "Isaac Price": ["Isaac Price", "Isaac Price (footballer)"],
   "Shea Charles": ["Shea Charles", "Shea Charles (footballer)"],
   "Ali McCann": ["Ali McCann", "Ali McCann (footballer)"],
+  "Jorge Sánchez": ["Jorge Sánchez (Mexican footballer)", "Jorge Sánchez (footballer, born 1997)"],
+  "Alexis Vega": ["Alexis Vega", "Alexis Vega (footballer)"],
+  "Marcel Ruiz": ["Marcel Ruiz", "Marcel Ruiz (footballer)"],
 };

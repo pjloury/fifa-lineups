@@ -58,6 +58,7 @@ const NATION_TO_ESPN = {
   ge: "Georgia",
   "gb-sct": "Scotland",
   sn: "Senegal",
+  mx: "Mexico",
 };
 
 const ourPlayers = new Map(); // norm -> canonical name
