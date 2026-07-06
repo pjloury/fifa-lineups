@@ -24,22 +24,19 @@ function factsChips(items) {
 
 function clubFacts(club) {
   const s = SEASONS[club.name];
-  const formation = { text: `▦ ${club.formation}`, hash: `#formations/${club.formation}` };
-  if (!s) return [formation];
+  if (!s) return [];
   return [
-    formation,
     { text: `${s.league} ${s.season} · ${ordinal(s.pos)}${s.pos === 1 ? " 🏆" : ""}`, cls: s.pos === 1 ? "gold" : "" },
     { text: `${s.pts} pts · W${s.w} D${s.d} L${s.l} · GD ${s.gd > 0 ? "+" : ""}${s.gd}` },
   ];
 }
 
 function nationFacts(code) {
-  const formation = { text: `▦ ${DATA.nations[code]?.formation ?? ""}`, hash: `#formations/${DATA.nations[code]?.formation}` };
   const status = WC.nations?.[code];
-  if (status === "nq") return [formation, { text: "Did not qualify for World Cup 2026", cls: "bad" }];
+  if (status === "nq") return [{ text: "Did not qualify for World Cup 2026", cls: "bad" }];
   const t = WC.nationsInfo?.[code];
-  if (!t) return [formation];
-  const facts = [formation, { text: `WC 2026: W${t.w} D${t.d} L${t.l} · GF ${t.gf} · GA ${t.ga}` }];
+  if (!t) return [];
+  const facts = [{ text: `WC 2026: W${t.w} D${t.d} L${t.l} · GF ${t.gf} · GA ${t.ga}` }];
   if (t.out) facts.push({ text: `Eliminated in ${t.out.round.replace("the ", "")} by ${t.out.by}`, cls: "bad" });
   else if (status === "out") facts.push({ text: "Eliminated in the group stage", cls: "bad" });
   else if (t.next)
@@ -65,6 +62,7 @@ const $nrail = document.getElementById("nrail");
 
 const NATION_SHORT = { "United States": "USA" };
 const $banner = document.getElementById("banner");
+const $formbar = document.getElementById("formbar");
 const $pitch = document.getElementById("pitch");
 
 const CREDITS =
@@ -363,6 +361,20 @@ function renderPitch(rows, cardFor, identity) {
   });
 }
 
+
+// prominent formation strip above the pitch, linking to the explainer
+function renderFormBar(shape) {
+  $formbar.innerHTML = "";
+  if (!shape) return;
+  const info = FORMATION_INFO[shape];
+  const btn = document.createElement("button");
+  btn.className = "formbar-btn";
+  btn.innerHTML = `<span class="fb-icon">▦</span><b>${shape}</b>${info ? `<span class="fb-tag">${info.tag}</span>` : ""}<span class="fb-arrow">→</span>`;
+  btn.title = "How this formation works";
+  btn.addEventListener("click", () => navigate(`#formations/${shape}`));
+  $formbar.appendChild(btn);
+}
+
 /* ---------------- club rail ---------------- */
 // ordered by league finish (champions first), points as the cross-league tiebreak
 const sortedClubs = () =>
@@ -423,6 +435,7 @@ function infoDot() {
 function renderClub(clubId) {
   const club = clubById(clubId) || DATA.clubs[0];
   $banner.innerHTML = "";
+  renderFormBar(club.formation);
   renderClubBench(club);
   renderRail(club.id);
   renderNationRail(null);
@@ -465,6 +478,7 @@ function renderClub(clubId) {
 function renderNation(code, featuredName, fromClubId) {
   const nation = DATA.nations[code];
   if (!nation) return renderClub(DATA.clubs[0].id);
+  renderFormBar(nation.formation);
   renderRail(null);
   renderNationRail(code);
 
@@ -653,6 +667,7 @@ function renderFormations() {
   renderRail(null, true);
   renderNationRail(null);
   $banner.innerHTML = "";
+  $formbar.innerHTML = "";
   $bench.innerHTML = "";
   setIdentity(null);
   showView("list");
@@ -712,14 +727,26 @@ function renderFormationDetail(shape) {
   renderRail(null, true);
   renderNationRail(null);
   $banner.innerHTML = "";
+  $formbar.innerHTML = "";
   $bench.innerHTML = "";
   setIdentity(null);
   showView("list");
 
   $header.innerHTML = "";
+  if (lastTeamView) {
+    const teamBack = document.createElement("button");
+    teamBack.className = "back-btn";
+    const label =
+      lastTeamView.type === "club"
+        ? clubById(lastTeamView.id)?.short ?? "Team"
+        : NATION_SHORT[DATA.nations[lastTeamView.id]?.name] ?? DATA.nations[lastTeamView.id]?.name ?? "Team";
+    teamBack.textContent = `← ${label}`;
+    teamBack.addEventListener("click", () => navigate(`#${lastTeamView.type}/${lastTeamView.id}`));
+    $header.appendChild(teamBack);
+  }
   const back = document.createElement("button");
   back.className = "back-btn";
-  back.textContent = "← Formations";
+  back.textContent = "← All formations";
   back.addEventListener("click", () => navigate("#formations"));
   $header.appendChild(back);
   const t = document.createElement("div");
@@ -844,6 +871,7 @@ function renderHome() {
   renderRail(null);
   renderNationRail(null);
   $banner.innerHTML = "";
+  $formbar.innerHTML = "";
   $bench.innerHTML = "";
   setIdentity(null);
   showView("home");
@@ -893,6 +921,7 @@ function renderTop() {
   renderRail(null);
   renderNationRail(null, true);
   $banner.innerHTML = "";
+  $formbar.innerHTML = "";
   showList(true);
   setIdentity(null);
 
@@ -1028,6 +1057,7 @@ function navigate(hash) {
 }
 
 let currentView = { type: "home", id: null };
+let lastTeamView = null; // most recent club/nation visited — formation pages link back to it
 
 function route() {
   hideBio();
@@ -1053,6 +1083,7 @@ function route() {
   } else {
     renderHome(); // default view: how-to-use landing page
   }
+  if (currentView.type === "club" || currentView.type === "nation") lastTeamView = { ...currentView };
   // keep the address bar on the canonical path URL so shared links get dynamic previews
   const canonical =
     parts[0] === "club" ? `/club/${lastClubId}` :
