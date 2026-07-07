@@ -148,7 +148,7 @@ window.APP_DATA = {
   },
 
   // shown in the right-edge rail, ordered by World Cup seeding (FIFA ranking at the Dec 2025 draw)
-  featuredNations: ["es", "ar", "fr", "gb-eng", "br", "pt", "nl", "be", "de", "hr", "ma", "it", "co", "us", "mx", "uy", "no"],
+  featuredNations: ["es", "ar", "fr", "gb-eng", "br", "pt", "nl", "be", "de", "hr", "ma", "it", "co", "ch", "eg", "us", "mx", "uy", "no"],
 
   // the marquee names of the 2026 World Cup: club + country at a glance
   topPlayers: [
