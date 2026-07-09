@@ -620,17 +620,17 @@ window.APP_DATA = {
       rows: [
         [{ name: "Jordan Pickford", pos: "GK", club: "Everton" }],
         [
-          { name: "Myles Lewis-Skelly", pos: "LB", club: "Arsenal" },
-          { name: "Marc Guéhi", pos: "CB", club: "Crystal Palace" },
-          { name: "John Stones", pos: "CB", club: "Manchester City" },
-          { name: "Reece James", pos: "RB", club: "Chelsea" },
+          { name: "Nico O'Reilly", pos: "LB", club: "Manchester City" },
+          { name: "Marc Guéhi", pos: "CB", club: "Manchester City" },
+          { name: "Ezri Konsa", pos: "CB", club: "Aston Villa" },
+          { name: "Jarell Quansah", pos: "RB", club: "Bayer Leverkusen" },
         ],
         [
           { name: "Declan Rice", pos: "DM", club: "Arsenal" },
           { name: "Elliot Anderson", pos: "CM", club: "Nottingham Forest" },
         ],
         [
-          { name: "Anthony Gordon", pos: "LW", club: "Newcastle United" },
+          { name: "Anthony Gordon", pos: "LW", club: "Barcelona" },
           { name: "Jude Bellingham", pos: "AM", club: "Real Madrid" },
           { name: "Bukayo Saka", pos: "RW", club: "Arsenal" },
         ],
@@ -666,10 +666,10 @@ window.APP_DATA = {
       rows: [
         [{ name: "Alisson Becker", pos: "GK", club: "Liverpool" }],
         [
-          { name: "Alex Sandro", pos: "LB", club: "Flamengo" },
+          { name: "Douglas Santos", pos: "LB", club: "Zenit St. Petersburg" },
           { name: "Gabriel Magalhães", pos: "CB", club: "Arsenal" },
           { name: "Marquinhos", pos: "CB", club: "Paris Saint-Germain" },
-          { name: "Wesley França", pos: "RB", club: "Roma" },
+          { name: "Danilo", pos: "RB", club: "Flamengo" },
         ],
         [
           { name: "Casemiro", pos: "DM", club: "Manchester United" },
@@ -677,10 +677,10 @@ window.APP_DATA = {
         ],
         [
           { name: "Vinícius Júnior", pos: "LW", club: "Real Madrid" },
-          { name: "Matheus Cunha", pos: "AM", club: "Manchester United" },
-          { name: "Estêvão", pos: "RW", club: "Chelsea" },
+          { name: "Gabriel Martinelli", pos: "AM", club: "Arsenal" },
+          { name: "Rayan", pos: "RW", club: "AFC Bournemouth" },
         ],
-        [{ name: "João Pedro", pos: "ST", club: "Chelsea" }],
+        [{ name: "Matheus Cunha", pos: "ST", club: "Manchester United" }],
       ],
     },
     es: {
@@ -714,7 +714,7 @@ window.APP_DATA = {
         [
           { name: "Micky van de Ven", pos: "LB", club: "Tottenham Hotspur" },
           { name: "Virgil van Dijk", pos: "CB", club: "Liverpool" },
-          { name: "Matthijs de Ligt", pos: "CB", club: "Manchester United" },
+          { name: "Jan Paul van Hecke", pos: "CB", club: "Tottenham Hotspur" },
           { name: "Denzel Dumfries", pos: "RB", club: "Inter Milan" },
         ],
         [
@@ -725,7 +725,7 @@ window.APP_DATA = {
         [
           { name: "Cody Gakpo", pos: "LW", club: "Liverpool" },
           { name: "Brian Brobbey", pos: "ST", club: "Sunderland" },
-          { name: "Crysencio Summerville", pos: "RW", club: "West Ham United" },
+          { name: "Donyell Malen", pos: "RW", club: "AS Roma" },
         ],
       ],
     },
@@ -777,25 +777,25 @@ window.APP_DATA = {
     },
     be: {
       name: "Belgium",
-      formation: "4-2-3-1",
+      formation: "4-3-3",
       rows: [
         [{ name: "Thibaut Courtois", pos: "GK", club: "Real Madrid" }],
         [
-          { name: "Arthur Theate", pos: "LB", club: "Eintracht Frankfurt" },
-          { name: "Wout Faes", pos: "CB", club: "Leicester City" },
-          { name: "Zeno Debast", pos: "CB", club: "Sporting CP" },
+          { name: "Maxim De Cuyper", pos: "LB", club: "Brighton & Hove Albion" },
+          { name: "Nathan Ngoy", pos: "CB", club: "Lille" },
+          { name: "Brandon Mechele", pos: "CB", club: "Club Brugge" },
           { name: "Timothy Castagne", pos: "RB", club: "Fulham" },
         ],
         [
           { name: "Amadou Onana", pos: "DM", club: "Aston Villa" },
+          { name: "Nicolas Raskin", pos: "CM", club: "Rangers" },
           { name: "Youri Tielemans", pos: "CM", club: "Aston Villa" },
         ],
         [
-          { name: "Jérémy Doku", pos: "LW", club: "Manchester City" },
-          { name: "Kevin De Bruyne", pos: "AM", club: "Napoli" },
-          { name: "Leandro Trossard", pos: "RW", club: "Arsenal" },
+          { name: "Leandro Trossard", pos: "LW", club: "Arsenal" },
+          { name: "Charles De Ketelaere", pos: "ST", club: "Atalanta" },
+          { name: "Dodi Lukébakio", pos: "RW", club: "Benfica" },
         ],
-        [{ name: "Romelu Lukaku", pos: "ST", club: "Napoli" }],
       ],
     },
     it: {
