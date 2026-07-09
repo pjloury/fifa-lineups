@@ -1101,12 +1101,12 @@ window.APP_DATA = {
       name: "Uruguay",
       formation: "4-3-3",
       rows: [
-        [{ name: "Sergio Rochet", pos: "GK", club: "Internacional" }],
+        [{ name: "Fernando Muslera", pos: "GK", club: "Estudiantes" }],
         [
-          { name: "Matías Viña", pos: "LB", club: "Flamengo" },
-          { name: "José María Giménez", pos: "CB", club: "Atlético Madrid" },
-          { name: "Ronald Araújo", pos: "CB", club: "Barcelona" },
-          { name: "Nahitan Nández", pos: "RB", club: "Al-Qadsiah" },
+          { name: "Juan Manuel Sanabria", pos: "LB", club: "Real Salt Lake" },
+          { name: "Sebastián Cáceres", pos: "CB", club: "Club América" },
+          { name: "Mathías Olivera", pos: "CB", club: "Napoli" },
+          { name: "Guillermo Varela", pos: "RB", club: "Flamengo" },
         ],
         [
           { name: "Rodrigo Bentancur", pos: "CM", club: "Tottenham Hotspur" },
@@ -1116,31 +1116,31 @@ window.APP_DATA = {
         [
           { name: "Maximiliano Araújo", pos: "LW", club: "Sporting CP" },
           { name: "Darwin Núñez", pos: "ST", club: "Al-Hilal" },
-          { name: "Facundo Pellistri", pos: "RW", club: "Panathinaikos" },
+          { name: "Agustín Canobbio", pos: "RW", club: "Fluminense" },
         ],
       ],
     },
     gh: {
       name: "Ghana",
-      formation: "4-2-3-1",
+      formation: "4-3-3",
       rows: [
-        [{ name: "Lawrence Ati-Zigi", pos: "GK", club: "St. Gallen" }],
+        [{ name: "Lawrence Ati Zigi", pos: "GK", club: "St. Gallen" }],
         [
           { name: "Gideon Mensah", pos: "LB", club: "Auxerre" },
-          { name: "Mohammed Salisu", pos: "CB", club: "Monaco" },
-          { name: "Alexander Djiku", pos: "CB", club: "Spartak Moscow" },
-          { name: "Tariq Lamptey", pos: "RB", club: "Fiorentina" },
+          { name: "Jerome Opoku", pos: "CB", club: "Istanbul Başakşehir" },
+          { name: "Derrick Luckassen", pos: "CB", club: "Pafos" },
+          { name: "Marvin Senaya", pos: "RB", club: "Auxerre" },
         ],
         [
           { name: "Thomas Partey", pos: "DM", club: "Villarreal" },
-          { name: "Salis Abdul Samed", pos: "CM", club: "Sunderland" },
+          { name: "Kwasi Sibo", pos: "CM", club: "Real Oviedo" },
+          { name: "Caleb Yirenkyi", pos: "CM", club: "FC Nordsjælland" },
         ],
         [
           { name: "Antoine Semenyo", pos: "LW", club: "Bournemouth" },
-          { name: "Mohammed Kudus", pos: "AM", club: "Tottenham Hotspur" },
+          { name: "Jordan Ayew", pos: "ST", club: "Leicester City" },
           { name: "Iñaki Williams", pos: "RW", club: "Athletic Club" },
         ],
-        [{ name: "Jordan Ayew", pos: "ST", club: "Leicester City" }],
       ],
     },
     pl: {
@@ -1170,11 +1170,11 @@ window.APP_DATA = {
       name: "Austria",
       formation: "4-2-3-1",
       rows: [
-        [{ name: "Patrick Pentz", pos: "GK", club: "Brøndby" }],
+        [{ name: "Alexander Schlager", pos: "GK", club: "Salzburg" }],
         [
-          { name: "Phillipp Mwene", pos: "LB", club: "Mainz 05" },
+          { name: "Konrad Laimer", pos: "LB", club: "Bayern Munich" },
           { name: "Kevin Danso", pos: "CB", club: "Tottenham Hotspur" },
-          { name: "Philipp Lienhart", pos: "CB", club: "Freiburg" },
+          { name: "David Alaba", pos: "CB", club: "Real Madrid" },
           { name: "Stefan Posch", pos: "RB", club: "Como" },
         ],
         [
@@ -1182,11 +1182,11 @@ window.APP_DATA = {
           { name: "Xaver Schlager", pos: "CM", club: "RB Leipzig" },
         ],
         [
-          { name: "Christoph Baumgartner", pos: "LW", club: "RB Leipzig" },
+          { name: "Paul Wanner", pos: "LW", club: "PSV Eindhoven" },
           { name: "Marcel Sabitzer", pos: "AM", club: "Borussia Dortmund" },
-          { name: "Konrad Laimer", pos: "RW", club: "Bayern Munich" },
+          { name: "Romano Schmid", pos: "RW", club: "Werder Bremen" },
         ],
-        [{ name: "Marko Arnautović", pos: "ST", club: "Red Star Belgrade" }],
+        [{ name: "Michael Gregoritsch", pos: "ST", club: "Augsburg" }],
       ],
     },
     co: {
@@ -1306,25 +1306,25 @@ window.APP_DATA = {
     },
     ma: {
       name: "Morocco",
-      formation: "4-3-3",
+      formation: "4-2-3-1",
       rows: [
         [{ name: "Yassine Bounou", pos: "GK", club: "Al-Hilal" }],
         [
           { name: "Noussair Mazraoui", pos: "LB", club: "Manchester United" },
-          { name: "Nayef Aguerd", pos: "CB", club: "Marseille" },
-          { name: "Abdelkabir Abqar", pos: "CB", club: "Alavés" },
+          { name: "Issa Diop", pos: "CB", club: "Fulham" },
+          { name: "Redouane Halhal", pos: "CB", club: "KV Mechelen" },
           { name: "Achraf Hakimi", pos: "RB", club: "Paris Saint-Germain" },
         ],
         [
-          { name: "Azzedine Ounahi", pos: "CM", club: "Girona" },
-          { name: "Sofyan Amrabat", pos: "DM", club: "Real Betis" },
-          { name: "Ismael Saibari", pos: "CM", club: "PSV Eindhoven" },
+          { name: "Ayyoub Bouaddi", pos: "DM", club: "Lille" },
+          { name: "Neil El Aynaoui", pos: "DM", club: "Roma" },
         ],
         [
-          { name: "Abde Ezzalzouli", pos: "LW", club: "Real Betis" },
-          { name: "Youssef En-Nesyri", pos: "ST", club: "Fenerbahçe" },
-          { name: "Brahim Díaz", pos: "RW", club: "Real Madrid" },
+          { name: "Azzedine Ounahi", pos: "LW", club: "Girona" },
+          { name: "Brahim Díaz", pos: "AM", club: "Real Madrid" },
+          { name: "Bilal El Khannouss", pos: "RW", club: "Stuttgart" },
         ],
+        [{ name: "Ismael Saibari", pos: "ST", club: "Bayern Munich" }],
       ],
     },
     ge: {
