@@ -690,17 +690,17 @@ window.APP_DATA = {
         [{ name: "Unai Simón", pos: "GK", club: "Athletic Club" }],
         [
           { name: "Marc Cucurella", pos: "LB", club: "Chelsea" },
-          { name: "Dean Huijsen", pos: "CB", club: "Real Madrid" },
-          { name: "Robin Le Normand", pos: "CB", club: "Atlético Madrid" },
+          { name: "Aymeric Laporte", pos: "CB", club: "Athletic Club" },
+          { name: "Pau Cubarsí", pos: "CB", club: "Barcelona" },
           { name: "Pedro Porro", pos: "RB", club: "Tottenham Hotspur" },
         ],
         [
           { name: "Pedri", pos: "CM", club: "Barcelona" },
-          { name: "Martín Zubimendi", pos: "DM", club: "Arsenal" },
-          { name: "Mikel Merino", pos: "CM", club: "Arsenal" },
+          { name: "Rodri", pos: "DM", club: "Manchester City" },
+          { name: "Dani Olmo", pos: "CM", club: "Barcelona" },
         ],
         [
-          { name: "Nico Williams", pos: "LW", club: "Athletic Club" },
+          { name: "Álex Baena", pos: "LW", club: "Atlético Madrid" },
           { name: "Mikel Oyarzabal", pos: "ST", club: "Real Sociedad" },
           { name: "Lamine Yamal", pos: "RW", club: "Barcelona" },
         ],
